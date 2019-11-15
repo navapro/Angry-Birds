@@ -1,10 +1,10 @@
 # Major Project Proposal
 
 ## Description
-The goal for this Major Project is to create an angry bird clone using p5.js and a physics engine. It will have few charecters and levels.
+The goal for this Major Project is to create an angry bird clone using p5.js and a physics engine. It will have a few characters,levels and will have collition gravity, friction, inerta and other physics principles.
 
 ## Need To Have List
-- Charecteters that can collide with objects.
+- Characters that can collide with objects.
 - Objects that  follows the laws of physics and collide with other objects.
 - A scoring system with coins.
 - Atleast 3 levels.
@@ -16,13 +16,13 @@ The goal for this Major Project is to create an angry bird clone using p5.js and
 
 ## Nice To Have List 
 
+- practice level.
 - coins for pushasing skin and astethics.
 - better sound efffects and settings to control it.
 - More than 5 levels with incresing dificulty.
 - Inventory and store with fancy charecters.
 - TNT and explotions with posibily fancy animations and GFX.
 - User name and password(maybe) to log in
-- mobile website
 - Smooth animations.
+- mobile website, which support touch contols.
 - Maybe convert to a mobile hybrid app.
-- practice level.
