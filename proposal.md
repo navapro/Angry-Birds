@@ -1,7 +1,7 @@
 # Major Project Proposal
 
 ## Description
-The goal for this Major Project is to create an angry bird clone using p5.js and a physics engine. It will have a few characters,levels and will have collition gravity, friction, inerta and other physics principles.
+The goal for this Major Project is to create an angry bird clone using p5.js and a physics engine.I'm planning to use matter.js or phaser as my physics engine. It will have a few characters,levels and will have collition gravity, friction, inerta and other physics principles.
 
 ## Need To Have List
 - Characters that can collide with objects.
