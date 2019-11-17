@@ -9,8 +9,12 @@ class Bird {
       }
       
       show() {
-        const POS = this.body.position;
+      const POS = this.body.position;
       const ANGLE = this.body.angle;
+      if (hit){
+        POS.y = mouseY;
+      POS.x = mouseX;
+      }
       push();
       birdY = POS.y;
       birdX = POS.x;
@@ -21,6 +25,6 @@ class Bird {
       circle(0, 0, this.r*2);
       pop(); 
     }
-   
+    
   }
 

@@ -15,7 +15,8 @@ let bird;
 let box;
 let engine,world;
 let mConstraint;
-let hit;
+let hit = false;
+
 let birdX = 0;
 let birdY = 0;
 let birdR = 50;
@@ -32,14 +33,21 @@ function setup() {
 
 function draw() {
   background(0);
+  
   Matter.Engine.update(engine);
   ground.show();
   box.show();
   bird.show();
-
+  checkCollide();
   
   
 }
-
-
+function checkCollide(){
+  if (mouseIsPressed){
+  hit = collidePointCircle(mouseX,mouseY,birdX,birdY,birdR*2)
+  }
+  else {
+    hit = false;
+  }
+}
 
