@@ -10,12 +10,12 @@ The goal for this Major Project is to create an angry bird clone using p5.js and
 - Atleast 3 levels.
 - Maps that show progress and levels.
 - Start/Menu page.
-- Background Music and sound effects.
 - tutorial and game play explanation.
-- Atleast 2 mods for better performance (EX: guide lines for better aiming and bigger birds).
 
 ## Nice To Have List 
 
+- Background Music and sound effects.
+- Atleast 2 mods for better performance (EX: guide lines for better aiming and bigger birds).
 - practice level.
 - coins for pushasing skin and astethics.
 - better sound efffects and settings to control it.

@@ -32,6 +32,7 @@ function setup() {
 }
 
 function draw() {
+ 
   background(0);
   
   Matter.Engine.update(engine);
@@ -39,10 +40,11 @@ function draw() {
   box.show();
   bird.show();
   checkCollide();
-  
+
   
 }
 function checkCollide(){
+  
   if (mouseIsPressed){
   hit = collidePointCircle(mouseX,mouseY,birdX,birdY,birdR*2)
   }
