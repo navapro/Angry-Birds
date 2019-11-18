@@ -25,7 +25,7 @@ function setup() {
   const CANVAS = createCanvas(windowWidth, windowHeight);
   engine = Matter.Engine.create();
   world = engine.world;
-  ground = new Ground(width/2,height -10,width,40);
+  ground = new Ground(width/2,height -10,width,20);
   box = new Box(width/2, height/2,100,175);
   bird = new Bird(width/6, height-200,50);
 
