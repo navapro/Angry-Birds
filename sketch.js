@@ -13,7 +13,7 @@ let bkgImg;
 
 function preload() {
   dotImg = loadImage('assets/redBird.png');
-  boxImg = loadImage('images/equals.png');
+  boxImg = loadImage('assets/wood.png');
   bkgImg = loadImage('images/skyBackground.png');
 }
 
