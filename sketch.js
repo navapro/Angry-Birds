@@ -10,13 +10,14 @@ let slingshot;
 let dotImg;
 let boxImg;
 let bkgImg;
-let slingShotImg;
+let slingShotImgLeft,slingShotImgRight;
 
 function preload() {
   dotImg = loadImage('assets/redBird.png');
   boxImg = loadImage('assets/wood.png');
   bkgImg = loadImage('images/skyBackground.png');
-  slingShotImg = loadImage('images/skyBackground.png');
+  slingShotImgLeft = loadImage('assets/slingshotLeft.png');
+  slingShotImgRight = loadImage('assets/slingshotRight.png');
 }
 
 function setup() {
@@ -27,9 +28,10 @@ function setup() {
   for (let i = 0; i < 3; i++) {
     boxes[i] = new Box(width/1.5, (height-200) - i * 75, 126, 150);
   }
-  bird = new Bird(300, height/1.2, 40);
+  bird = new Bird(width/3, height/1.5, 40);
 
-  slingshot = new SlingShot(300, height/1.2, bird.body);
+ 
+  slingshot = new SlingShot(width/3.5, height/1.5, bird.body);
 
   const mouse = Mouse.create(canvas.elt);
   const options = {
@@ -59,6 +61,7 @@ function mouseReleased() {
 
 function draw() {
   background(bkgImg);
+  image(slingShotImgRight,width/3.5 ,height/1.53,45,250);
   Matter.Engine.update(engine);
   ground.show();
   for (let box of boxes) {
@@ -66,4 +69,5 @@ function draw() {
   }
   slingshot.show();
   bird.show();
+  image(slingShotImgLeft,width/3.9 ,height/1.555,50,250);
 }
