@@ -10,11 +10,13 @@ let slingshot;
 let dotImg;
 let boxImg;
 let bkgImg;
+let slingShotImg;
 
 function preload() {
   dotImg = loadImage('assets/redBird.png');
   boxImg = loadImage('assets/wood.png');
   bkgImg = loadImage('images/skyBackground.png');
+  slingShotImg = loadImage('images/skyBackground.png');
 }
 
 function setup() {
