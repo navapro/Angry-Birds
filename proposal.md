@@ -10,7 +10,7 @@ The goal for this Major Project is to create an angry bird clone using p5.js and
 - Atleast 3 levels.
 - Maps that show progress and levels.
 - Start/Menu page.
-- tutorial and game play explanation.
+- tutorial/game play explanation.
 
 ## Nice To Have List 
 
@@ -22,7 +22,7 @@ The goal for this Major Project is to create an angry bird clone using p5.js and
 - More than 5 levels with incresing dificulty.
 - Inventory and store with fancy charecters.
 - TNT and explotions with posibily fancy animations and GFX.
-- User name and password(maybe) to log in
+- User name and password(maybe)to log in
 - Smooth animations.
 - mobile website, which support touch contols.
 - Maybe convert to a mobile hybrid app.
