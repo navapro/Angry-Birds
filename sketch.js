@@ -64,10 +64,10 @@ function mouseReleased() {
 
 function draw() {
   background(bkgImg);
-  image(slingShotImgRight,width/3.5 ,height/1.53,45,250);
+  image(slingShotImgRight,width/3.5 ,height/1.53,width/25,height/3);
 
-  image(slingShotBandBack,width/3.5 ,height/1.53,45,250);
-  image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
+  // image(slingShotBandBack,width/3.5 ,height/1.53,45,250);
+  // image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
 
   Matter.Engine.update(engine);
   ground.show();
@@ -76,5 +76,5 @@ function draw() {
   }
   slingshot.show();
   bird.show();
-  image(slingShotImgLeft,width/3.9 ,height/1.555,50,250);
+  image(slingShotImgLeft,width/4 ,height/1.555,width/25,height/3);
 }
