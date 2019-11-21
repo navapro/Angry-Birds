@@ -11,6 +11,7 @@ let dotImg;
 let boxImg;
 let bkgImg;
 let slingShotImgLeft,slingShotImgRight;
+let slingShotBandFront,slingShotBandBack;
 
 function preload() {
   dotImg = loadImage('assets/redBird.png');
@@ -18,6 +19,8 @@ function preload() {
   bkgImg = loadImage('images/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
   slingShotImgRight = loadImage('assets/slingshotRight.png');
+  slingShotBandBack = loadImage('assets/slingshotBackSling.png');
+  slingShotBandFront = loadImage('assets/slingshotFrontSling.png');
 }
 
 function setup() {
@@ -28,7 +31,7 @@ function setup() {
   for (let i = 0; i < 3; i++) {
     boxes[i] = new Box(width/1.5, (height-200) - i * 75, 126, 150);
   }
-  bird = new Bird(width/3, height/1.5, 40);
+  bird = new Bird(width/3.5, height/1.5, 40);
 
  
   slingshot = new SlingShot(width/3.5, height/1.5, bird.body);
@@ -47,7 +50,7 @@ function setup() {
 function keyPressed() {
   if (key == ' ') {
     World.remove(world, bird.body);
-    bird = new Bird(300, height/1.2, 40);
+    bird = new Bird(width/3.5, height/1.5, 40);
     slingshot.attach(bird.body);
   }
 
@@ -62,6 +65,10 @@ function mouseReleased() {
 function draw() {
   background(bkgImg);
   image(slingShotImgRight,width/3.5 ,height/1.53,45,250);
+
+  image(slingShotBandBack,width/3.5 ,height/1.53,45,250);
+  image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
+
   Matter.Engine.update(engine);
   ground.show();
   for (let box of boxes) {
