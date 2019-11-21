@@ -65,10 +65,11 @@ function mouseReleased() {
 function draw() {
   background(bkgImg);
   image(slingShotImgRight,width/3.5 ,height/1.53,width/25,height/3);
+push();
 
-  // image(slingShotBandBack,width/3.5 ,height/1.53,45,250);
-  // image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
-
+  image(slingShotBandBack,width/5.3 ,height/1.5,100,width/25);
+  //image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
+pop();
   Matter.Engine.update(engine);
   ground.show();
   for (let box of boxes) {
