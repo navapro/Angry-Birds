@@ -1,26 +1,12 @@
-const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
-
-let ground;
-const boxes = [];
-let bird;
-let world, engine;
-let mConstraint;
-let slingshot;
-
-let dotImg;
-let boxImg;
-let bkgImg;
-let slingShotImgLeft,slingShotImgRight;
-let slingShotBandFront,slingShotBandBack;
-
 function preload() {
-  dotImg = loadImage('assets/redBird.png');
+  birdImg = loadImage('assets/redBird.png');
   boxImg = loadImage('assets/wood.png');
   bkgImg = loadImage('images/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
   slingShotImgRight = loadImage('assets/slingshotRight.png');
   slingShotBandBack = loadImage('assets/slingshotBackSling.png');
   slingShotBandFront = loadImage('assets/slingshotFrontSling.png');
+  minnionPigImg = loadImage('assets/pig.png');
 }
 
 function setup() {
@@ -29,28 +15,65 @@ function setup() {
   world = engine.world;
   ground = new Ground(width / 2, height - 10, width, 20);
   for (let i = 0; i < 3; i++) {
-    boxes[i] = new Box(width/1.5, (height-200) - i * 75, 126, 150);
+    boxes[i] = new Box(width / 1.5, (height - 200) - i * 75, 126, 150);
   }
-  bird = new Bird(width/3.5, height/1.5, 40);
+  bird = new Bird(width / 3.5, height / 1.5, 40);
+  minnionPig = new Pig(width / 2, height / 2, 40);
 
- 
-  slingshot = new SlingShot(width/3.5, height/1.5, bird.body);
+
+
+  slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
 
   const mouse = Mouse.create(canvas.elt);
   const options = {
     mouse: mouse,
   }
 
-  // A fix for HiDPI displays
+  // A fix for high pixel density displays
   mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, options);
   World.add(world, mConstraint);
 }
 
+
+function draw() {
+
+  background(bkgImg);
+  image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
+  Matter.Engine.update(engine);
+  ground.show();
+
+  push();
+  rotate(.01)
+  translate(width / 4, height / 1.48);
+  imageMode(CENTER)
+
+  image(slingShotBandFront, 0, 0, width / 15, width / 25);
+  pop();
+
+
+  for (let box of boxes) {
+    box.show();
+  }
+  slingshot.show();
+  bird.show();
+  minnionPig.show();
+  image(slingShotImgLeft, width / 4, height / 1.5559, width / 25, height / 3);
+  push();
+  rotate(.01)
+  translate(width / 4.6, height / 1.48);
+  image(slingShotBandBack, 0, 0, 100, width / 25);
+
+  pop();
+}
+
+
+
+
 function keyPressed() {
   if (key == ' ') {
     World.remove(world, bird.body);
-    bird = new Bird(width/3.5, height/1.5, 40);
+    bird = new Bird(width / 3.5, height / 1.5, 40);
     slingshot.attach(bird.body);
   }
 
@@ -60,33 +83,4 @@ function mouseReleased() {
   setTimeout(() => {
     slingshot.fly();
   }, 100);
-}
-
-function draw() {
-  background(bkgImg);
-  image(slingShotImgRight,width/3.5 ,height/1.53,width/25,height/3);
-  Matter.Engine.update(engine);
-  ground.show();
-
-  push();
-    rotate(.01)
-    translate(width/4,height/1.48);
-    imageMode(CENTER)
-    
-    image(slingShotBandFront,0,0,width/15,width/25);
-  pop();
-
-
-  for (let box of boxes) {
-    box.show();
-  }
-  slingshot.show();
-  bird.show();
-  image(slingShotImgLeft,width/4 ,height/1.545,width/25,height/3);
-  push();
-    rotate(.01)
-    translate(width/4.5,height/1.48);
-    image(slingShotBandBack,0,0,100,width/25);
-    
-  pop();
 }
