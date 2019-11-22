@@ -65,17 +65,28 @@ function mouseReleased() {
 function draw() {
   background(bkgImg);
   image(slingShotImgRight,width/3.5 ,height/1.53,width/25,height/3);
-push();
-
-  image(slingShotBandBack,width/5.3 ,height/1.5,100,width/25);
-  //image(slingShotBandFront,width/3.5 ,height/1.53,45,250);
-pop();
   Matter.Engine.update(engine);
   ground.show();
+
+  push();
+    rotate(.01)
+    translate(width/4,height/1.48);
+    imageMode(CENTER)
+    
+    image(slingShotBandFront,0,0,width/15,width/25);
+  pop();
+
+
   for (let box of boxes) {
     box.show();
   }
   slingshot.show();
   bird.show();
-  image(slingShotImgLeft,width/4 ,height/1.555,width/25,height/3);
+  image(slingShotImgLeft,width/4 ,height/1.545,width/25,height/3);
+  push();
+    rotate(.01)
+    translate(width/4.5,height/1.48);
+    image(slingShotBandBack,0,0,100,width/25);
+    
+  pop();
 }
