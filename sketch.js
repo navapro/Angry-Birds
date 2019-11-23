@@ -1,14 +1,3 @@
-function preload() {
-  birdImg = loadImage('assets/redBird.png');
-  boxImg = loadImage('assets/wood.png');
-  bkgImg = loadImage('images/skyBackground.png');
-  slingShotImgLeft = loadImage('assets/slingshotLeft.png');
-  slingShotImgRight = loadImage('assets/slingshotRight.png');
-  slingShotBandBack = loadImage('assets/slingshotBackSling.png');
-  slingShotBandFront = loadImage('assets/slingshotFrontSling.png');
-  minnionPigImg = loadImage('assets/pig.png');
-}
-
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
@@ -32,11 +21,20 @@ function setup() {
   // A fix for high pixel density displays
   mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, options);
-  World.add(world, mConstraint);
+  console.log(mConstraint)
+  // World.add(world, mConstraint);
+  World.remove(world, mConstraint);
 }
 
 
 function draw() {
+  if (mouseX< width/3 && mouseY > height/2){
+  World.add(world, mConstraint);
+  console.log('added')}
+  else{
+    console.log('removed')
+  World.remove(world, mConstraint);
+}
 
   background(bkgImg);
   image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
@@ -58,13 +56,21 @@ function draw() {
   slingshot.show();
   bird.show();
   minnionPig.show();
-  image(slingShotImgLeft, width / 4, height / 1.5559, width / 25, height / 3);
+  image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
   push();
   rotate(.01)
   translate(width / 4.6, height / 1.48);
   image(slingShotBandBack, 0, 0, 100, width / 25);
 
   pop();
+  
+  if (mouseX< width/3 &&mouseY > height/2){
+    World.add(world, mConstraint);
+    console.log('added')}
+    else{
+      console.log('removed')
+    World.remove(world, mConstraint);
+  }
 }
 
 
