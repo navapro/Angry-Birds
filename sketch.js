@@ -3,9 +3,11 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   ground = new Ground(width / 2, height - 10, width, 20);
-  for (let i = 0; i < 3; i++) {
-    boxes[i] = new Box(width / 1.5, (height - 200) - i * 75, 126, 150);
-  }
+
+  box1 = new Box(width / 1.5, (height - 20), 120, 160);
+  box2 = new Box(width / 1.2, (height - 20), 120, 160);
+  box3 = new Box(width / 1.333333, (height - 200), 180, 100);
+
   bird = new Bird(width / 3.5, height / 1.5, 40);
   minnionPig = new Pig(width / 2, height / 2, 40);
 
@@ -28,13 +30,14 @@ function setup() {
 
 
 function draw() {
-  if (mouseX< width/3 && mouseY > height/2){
-  World.add(world, mConstraint);
-  console.log('added')}
-  else{
+  if (mouseX < width / 3 && mouseY > height / 2) {
+    World.add(world, mConstraint);
+    console.log('added')
+  }
+  else {
     console.log('removed')
-  World.remove(world, mConstraint);
-}
+    World.remove(world, mConstraint);
+  }
 
   background(bkgImg);
   image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
@@ -50,9 +53,11 @@ function draw() {
   pop();
 
 
-  for (let box of boxes) {
-    box.show();
-  }
+
+  box1.show();
+  box2.show();
+  box3.show();
+
   slingshot.show();
   bird.show();
   minnionPig.show();
@@ -63,12 +68,13 @@ function draw() {
   image(slingShotBandBack, 0, 0, 100, width / 25);
 
   pop();
-  
-  if (mouseX< width/3 &&mouseY > height/2){
+
+  if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
-    console.log('added')}
-    else{
-      console.log('removed')
+    console.log('added')
+  }
+  else {
+    console.log('removed')
     World.remove(world, mConstraint);
   }
 }

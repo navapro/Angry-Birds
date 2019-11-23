@@ -1,6 +1,6 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 let ground;
-const boxes = [];
+let box1,box2,box3;
 let bird;
 let world, engine;
 let mConstraint;
