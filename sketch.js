@@ -9,7 +9,7 @@ function setup() {
   box3 = new Box(width / 1.333333, (height - 200), 180, 100);
 
   bird = new Bird(width / 3.5, height / 1.5, 40);
-  minnionPig = new Pig(width / 2, height / 2, 40);
+  minnionPig = new Pig(width / 1.33, height -20, 40);
 
 
 
@@ -30,6 +30,7 @@ function setup() {
 
 
 function draw() {
+
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
     console.log('added')
@@ -72,6 +73,7 @@ function draw() {
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
     console.log('added')
+    slingShotRemoval = true;
   }
   else {
     console.log('removed')
@@ -92,7 +94,9 @@ function keyPressed() {
 }
 
 function mouseReleased() {
+  if (slingShotRemoval){
   setTimeout(() => {
     slingshot.fly();
   }, 100);
+}
 }
