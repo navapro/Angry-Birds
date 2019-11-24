@@ -10,3 +10,4 @@ let slingShotImgLeft, slingShotImgRight;
 let slingShotBandFront, slingShotBandBack;
 let minnionPig;
 let slingShotRemoval = false;
+let birdX, birdY;

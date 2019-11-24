@@ -16,6 +16,8 @@ class Bird {
     const angle = this.body.angle;
     push();
     translate(pos.x, pos.y);
+    birdX = pos.x;
+    birdY = pos.y;
     rotate(angle);
     imageMode(CENTER);
     image(birdImg, 0, 0, this.r * 2, this.r * 2);

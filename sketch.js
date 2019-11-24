@@ -33,10 +33,10 @@ function draw() {
 
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
-    console.log('added')
+    // console.log('added')
   }
   else {
-    console.log('removed')
+    // console.log('removed')
     World.remove(world, mConstraint);
   }
 
@@ -45,13 +45,13 @@ function draw() {
   Matter.Engine.update(engine);
   ground.show();
 
-  push();
-  rotate(.01)
-  translate(width / 4, height / 1.48);
-  imageMode(CENTER)
+  // push();
+  // rotate(.01)
+  // translate(width / 4, height / 1.48);
+  // imageMode(CENTER)
 
-  image(slingShotBandFront, 0, 0, width / 15, width / 25);
-  pop();
+  // image(slingShotBandFront, 0, 0, width / 15, width / 25);
+  // pop();
 
 
 
@@ -63,22 +63,29 @@ function draw() {
   bird.show();
   minnionPig.show();
   image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-  push();
-  rotate(.01)
-  translate(width / 4.6, height / 1.48);
-  image(slingShotBandBack, 0, 0, 100, width / 25);
+  // push();
+  // rotate(.01)
+  // translate(width / 4.6, height / 1.48);
+  // image(slingShotBandBack, 0, 0, 100, width / 25);
 
-  pop();
+  // pop();
 
+ if (birdX < 270){
+  slingShotRemoval =true;
+  }
+  else{
+    slingShotRemoval = false;
+  }
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
-    console.log('added')
-    slingShotRemoval = true;
+    // console.log('added')
+   
   }
   else {
-    console.log('removed')
+    // console.log('removed')
     World.remove(world, mConstraint);
   }
+  
 }
 
 

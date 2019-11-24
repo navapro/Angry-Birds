@@ -12,7 +12,7 @@ class SlingShot {
     }
     this.sling = Constraint.create(options);
     World.add(world, this.sling);
-    //console.log(this.sling)
+    console.log(this.sling)
   }
 
   fly() {
