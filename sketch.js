@@ -11,7 +11,10 @@ function setup() {
   bird = new Bird(width / 3.5, height / 1.5, 40);
   minnionPig = new Pig(width / 1.33, height -20, 40);
 
+  collitionForce = minnionPig.body.torque
 
+  console.log(collitionForce);
+ // console.log(minnionPig);
 
   slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
 
@@ -52,8 +55,8 @@ function draw() {
 
   // image(slingShotBandFront, 0, 0, width / 15, width / 25);
   // pop();
-
-
+  collitionForce = minnionPig.body.torque
+  console.log(collitionForce);
 
   box1.show();
   box2.show();
