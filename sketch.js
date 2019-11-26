@@ -60,6 +60,9 @@ if (collitionForce !== 0){
   console.log('ya')
   World.remove(world, minnionPig.body);
 }
+else{
+  minnionPig.show();
+}
   // console.log(collitionForce);
 
   box1.show();
@@ -68,7 +71,7 @@ if (collitionForce !== 0){
 
   slingshot.show();
   bird.show();
-  minnionPig.show();
+
   image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
   // push();
   // rotate(.01)
