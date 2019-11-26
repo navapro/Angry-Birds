@@ -55,8 +55,12 @@ function draw() {
 
   // image(slingShotBandFront, 0, 0, width / 15, width / 25);
   // pop();
-  collitionForce = minnionPig.body.torque
-  console.log(collitionForce);
+  collitionForce = minnionPig.body.positionImpulse.y;
+if (collitionForce !== 0){
+  console.log('ya')
+  World.remove(world, minnionPig.body);
+}
+  // console.log(collitionForce);
 
   box1.show();
   box2.show();
