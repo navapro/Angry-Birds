@@ -58,7 +58,7 @@ function draw() {
   let collitionForceX = minnionPig.body.positionImpulse.x;
   let collitionForceY = minnionPig.body.positionImpulse.y;
 
-  let collitionForce = collitionForceX + collitionForceY;
+  let collitionForce = collitionForceX;
 
 if (collitionForce !== 0){
   console.log('ya')

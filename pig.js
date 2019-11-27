@@ -2,7 +2,7 @@ class Pig {
 
     constructor(x, y, r) {
       const options = {
-        restitution: 1
+        restitution: .59
       }
       this.body = Matter.Bodies.circle(x, y, r, options);
       Matter.Body.setMass(this.body, this.body.mass*4);
