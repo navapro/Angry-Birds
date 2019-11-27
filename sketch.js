@@ -35,6 +35,7 @@ function setup() {
 
 function draw() {
   if (state === "menu") {
+    background(bkgImg);
     showMenu();
     checkIfButtonClicked();
   }
@@ -120,11 +121,13 @@ function keyPressed() {
 }
 
 function mouseReleased() {
-  //if (slingShotRemoval){
+  if (state === "game"){
+     //if (slingShotRemoval){
   setTimeout(() => {
     slingshot.fly();
   }, 100);
 //}
+  }
 }
 
 function showMenu() {
