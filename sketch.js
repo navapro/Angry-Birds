@@ -32,8 +32,13 @@ function setup() {
 }
 
 
-function draw() {
 
+function draw() {
+  if (state === "menu") {
+    showMenu();
+    checkIfButtonClicked();
+  }
+  else if (state === "game"){
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
     // console.log('added')
@@ -99,7 +104,7 @@ else{
     // console.log('removed')
     World.remove(world, mConstraint);
   }
-  
+}
 }
 
 
@@ -120,4 +125,21 @@ function mouseReleased() {
     slingshot.fly();
   }, 100);
 //}
+}
+
+function showMenu() {
+  image(play, width / 2.7, height / 2, 400,200);
+}
+
+// check if mouse is clicked and if the mouse pointer is inside the playbutton.
+function checkIfButtonClicked() {
+
+  if (mouseIsPressed) {
+  click = collidePointRect(mouseX,mouseY,width/2.7, height/2, 400,200);
+
+  // if the mouse pointer is inside the play button then switch the state to game.
+  if(click === true){
+    state = "game";
+  }
+}
 }

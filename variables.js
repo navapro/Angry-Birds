@@ -12,3 +12,5 @@ let minnionPig;
 let slingShotRemoval = false;
 let birdX, birdY;
 let collitionForce;
+let state = "menu";
+let play;

@@ -7,4 +7,5 @@ function preload() {
   slingShotBandBack = loadImage('assets/slingshotBackSling.png');
   slingShotBandFront = loadImage('assets/slingshotFrontSling.png');
   minnionPigImg = loadImage('assets/pig.png');
+  play = loadImage('assets/play.png');
 }
