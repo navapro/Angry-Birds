@@ -64,7 +64,7 @@ function draw() {
   let collitionForceX = minnionPig.body.positionImpulse.x;
   let collitionForceY = minnionPig.body.positionImpulse.y;
 
-  let collitionForce = collitionForceX;
+  let collitionForce = collitionForceY;
 
 if (collitionForce !== 0){
   console.log('ya')
@@ -121,13 +121,12 @@ function keyPressed() {
 }
 
 function mouseReleased() {
-  if (state === "game"){
-     //if (slingShotRemoval){
+ if (birdX < width / 4){
   setTimeout(() => {
     slingshot.fly();
   }, 100);
-//}
-  }
+}
+
 }
 
 function showMenu() {
