@@ -54,13 +54,15 @@ function draw() {
   Matter.Engine.update(engine);
   ground.show();
 
-  // push();
-  // rotate(.01)
-  // translate(width / 4, height / 1.48);
-  // imageMode(CENTER)
+  push();
+  rotate(.01)
+  translate(width / 3.6, height / 1.4);
+  
+//width / 3.6
+  image(slingShotBandFront, 0, 0, width / 15 + birdX*-1, height /20 );
 
-  // image(slingShotBandFront, 0, 0, width / 15, width / 25);
-  // pop();
+  pop();
+
   let collitionForceX = minnionPig.body.positionImpulse.x;
   let collitionForceY = minnionPig.body.positionImpulse.y;
 
