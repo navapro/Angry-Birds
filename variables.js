@@ -14,3 +14,5 @@ let birdX, birdY;
 let collitionForce;
 let state = "menu";
 let play;
+let coin;
+let coinCounter = 0;

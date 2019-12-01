@@ -14,7 +14,6 @@ function setup() {
   collitionForce = minnionPig.body.torque
 
   console.log(collitionForce);
- // console.log(minnionPig);
 
   slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
 
@@ -71,6 +70,7 @@ function draw() {
 if (collitionForce !== 0){
   console.log('ya')
   World.remove(world, minnionPig.body);
+  coinCounter = 100;
 }
 else{
   minnionPig.show();
@@ -107,6 +107,13 @@ else{
     // console.log('removed')
     World.remove(world, mConstraint);
   }
+  image(coin,width / 100 , width / 100, width / 15, width / 15);
+  push();
+  textSize(width / 20);
+  fill(0);
+  
+  text(coinCounter, width / 12, width / 15);
+pop();
 }
 }
 
@@ -132,14 +139,14 @@ function mouseReleased() {
 }
 
 function showMenu() {
-  image(play, width / 2.7, height / 2, 400,200);
+  image(play, width / 2.7, height / 2, width / 5,height /4.5);
 }
 
 // check if mouse is clicked and if the mouse pointer is inside the playbutton.
 function checkIfButtonClicked() {
 
   if (mouseIsPressed) {
-  click = collidePointRect(mouseX,mouseY,width/2.7, height/2, 400,200);
+  click = collidePointRect(mouseX,mouseY,width/2.7, height/2,  width / 5,height /4.5);
 
   // if the mouse pointer is inside the play button then switch the state to game.
   if(click === true){
