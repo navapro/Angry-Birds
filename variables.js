@@ -16,3 +16,4 @@ let state = "menu";
 let play;
 let coin;
 let coinCounter = 0;
+let goBack;

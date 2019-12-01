@@ -113,7 +113,8 @@ else{
   fill(0);
   
   text(coinCounter, width / 12, width / 15);
-pop();
+  pop();
+  image(goBack,width / 1.1, height/1.2, width / 15, width / 15);
 }
 }
 
