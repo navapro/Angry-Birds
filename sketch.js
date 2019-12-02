@@ -53,14 +53,14 @@ function draw() {
   Matter.Engine.update(engine);
   ground.show();
 
-  push();
-  rotate(.01)
-  translate(birdX, height / 1.4);
+//   push();
+//   rotate(.01)
+//   translate(birdX, height / 1.4);
   
-//width / 3.6
-  image(slingShotBandFront, 0, 0, width / 15 + birdX*-1, height /20 );
+// //width / 3.6
+//   image(slingShotBandFront, 0, 0, width / 15 + birdX*1, height /20 );
 
-  pop();
+//   pop();
 
   let collitionForceX = minnionPig.body.positionImpulse.x;
   let collitionForceY = minnionPig.body.positionImpulse.y;
@@ -75,8 +75,6 @@ if (collitionForce !== 0){
 else{
   minnionPig.show();
 }
-  // console.log(collitionForce);
-
   box1.show();
   box2.show();
   box3.show();
@@ -100,19 +98,19 @@ else{
   }
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
-    // console.log('added')
+    
    
   }
   else {
-    // console.log('removed')
+    
     World.remove(world, mConstraint);
   }
-  image(coin,width / 100 , width / 100, width / 15, width / 15);
+  image(coin,width / 100 , width / 100, width / 20, width / 20);
   push();
-  textSize(width / 20);
+  textSize(width / 25);
   fill(0);
   
-  text(coinCounter, width / 12, width / 15);
+  text(coinCounter, width / 12, width / 20);
   pop();
   image(goBack,width / 1.1, height/1.2, width / 15, width / 15);
 }
