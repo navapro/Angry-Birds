@@ -55,7 +55,7 @@ function draw() {
 
   push();
   rotate(.01)
-  translate(width / 3.6, height / 1.4);
+  translate(birdX, height / 1.4);
   
 //width / 3.6
   image(slingShotBandFront, 0, 0, width / 15 + birdX*-1, height /20 );
