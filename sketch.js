@@ -68,9 +68,9 @@ function draw() {
   let collitionForce = collitionForceY;
 
 if (collitionForce !== 0){
-  console.log('ya')
   World.remove(world, minnionPig.body);
   coinCounter = 100;
+  //image(killPoint,minnionPig.body.position.x, height/1.5, width / 8, width / 8);
 }
 else{
   minnionPig.show();
@@ -114,6 +114,7 @@ else{
   pop();
   image(goBack,width / 1.1, height/1.2, width / 15, width / 15);
 }
+
 }
 
 
