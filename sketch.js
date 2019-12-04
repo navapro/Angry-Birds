@@ -33,12 +33,16 @@ function setup() {
 
 
 function draw() {
+  
   if (state === "menu") {
     background(bkgImg);
     showMenu();
     checkIfButtonClicked();
   }
   else if (state === "game"){
+    
+    checkIfMenuIsClicked();
+
   if (mouseX < width / 3 && mouseY > height / 2) {
     World.add(world, mConstraint);
     // console.log('added')
@@ -112,7 +116,7 @@ else{
   
   text(coinCounter, width / 12, width / 20);
   pop();
-  image(goBack,width / 1.1, height/1.2, width / 15, width / 15);
+  image(goBack,width / 1.1,  width / 100, width / 15, width / 15);
 }
 
 }
@@ -153,4 +157,13 @@ function checkIfButtonClicked() {
     state = "game";
   }
 }
+}
+function checkIfMenuIsClicked(){
+  if (mouseIsPressed) {
+  menuClicked = collidePointCircle(mouseX,mouseY,width / 1.059,  width / 24, width / 15)
+
+  }
+  if (menuClicked){
+    state = "menu";
+  }
 }

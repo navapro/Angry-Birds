@@ -18,3 +18,4 @@ let coin;
 let coinCounter = 0;
 let goBack;
 let killPoint;
+let menuClicked;
