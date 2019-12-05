@@ -40,8 +40,8 @@ function draw() {
     checkIfButtonClicked();
   }
   else if (state === "level"){
-    background(bkgImg);
-    image(levelBackground, width / 3.5, height / 1.53, width / 25, height / 3);
+    background(levelList);
+    image(levelBackground, width / 3.5, height / 1.53, width / 15, width / 15);
 
   }
   else if (state === "game"){
