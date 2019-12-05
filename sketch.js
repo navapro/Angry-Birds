@@ -28,6 +28,9 @@ function setup() {
   console.log(mConstraint)
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
+
+
+  
 }
 
 
@@ -41,8 +44,7 @@ function draw() {
   }
   else if (state === "level"){
     background(levelList);
-    image(levelBackground, width / 3.5, height / 1.53, width / 15, width / 15);
-
+    
   }
   else if (state === "game"){
     
