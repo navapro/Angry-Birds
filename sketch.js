@@ -39,6 +39,11 @@ function draw() {
     showMenu();
     checkIfButtonClicked();
   }
+  else if (state === "level"){
+    background(bkgImg);
+    
+
+  }
   else if (state === "game"){
     
     checkIfMenuIsClicked();
@@ -154,7 +159,7 @@ function checkIfButtonClicked() {
 
   // if the mouse pointer is inside the play button then switch the state to game.
   if(click === true){
-    state = "game";
+    state = "level";
   }
 }
 }
@@ -164,6 +169,7 @@ function checkIfMenuIsClicked(){
 
   }
   if (menuClicked){
+    World.add(world, minnionPig.body);
     state = "menu";
   }
 }
