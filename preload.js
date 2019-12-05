@@ -10,5 +10,6 @@ function preload() {
   play = loadImage('assets/play.png');
   coin = loadImage('assets/coin.png');
   goBack = loadImage('assets/back.png');
-  killPoint= loadImage('assets/killPoint.png');;
+  killPoint= loadImage('assets/killPoint.png');
+  levelBackground = loadImage('assets/levelBackground.png');
 }

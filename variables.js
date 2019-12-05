@@ -1,3 +1,4 @@
+
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 let ground;
 let box1,box2,box3;
@@ -19,3 +20,4 @@ let coinCounter = 0;
 let goBack;
 let killPoint;
 let menuClicked;
+let levelBackground;

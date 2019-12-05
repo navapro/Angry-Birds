@@ -41,7 +41,7 @@ function draw() {
   }
   else if (state === "level"){
     background(bkgImg);
-    
+    image(levelBackground, width / 3.5, height / 1.53, width / 25, height / 3);
 
   }
   else if (state === "game"){
