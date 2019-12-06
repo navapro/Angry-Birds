@@ -23,8 +23,8 @@ function setup() {
 
 
   }
-  for (let i = 0; i < 3; i++) {
-    levels[i] = new Levels(450, 300 - i * 75, 84, 100);
+  for (let i = 0; i < 4; i++) {
+    levels[i] = new Levels(width/4 + i *width/7, 300 , width/13,width/13);
    // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
@@ -50,6 +50,7 @@ function draw() {
   }
   else if (state === "level"){
     background(levelList);
+    
     for (let Levels of levels){
     Levels.show();
     }
@@ -169,7 +170,7 @@ function checkIfButtonClicked() {
 
   // if the mouse pointer is inside the play button then switch the state to game.
   if(click === true){
-    state = "game";
+    state = "level";
   }
 }
 }
