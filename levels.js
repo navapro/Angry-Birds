@@ -11,8 +11,8 @@ class Levels {
     show() {
 
         fill(255);
-        rect(this.x, this.y, this.w, this.h);
-        text(level, this.x, this.y, this.w, this.h);
+        image(levelBackground,this.x, this.y, this.w, this.h);
+        text(this.level, this.x, this.y, this.w, this.h);
     }
 
 }

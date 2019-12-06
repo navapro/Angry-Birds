@@ -22,3 +22,4 @@ let killPoint;
 let menuClicked;
 let levelBackground;
 let levelList;
+let levels =[];

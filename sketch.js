@@ -20,6 +20,12 @@ function setup() {
   const mouse = Mouse.create(canvas.elt);
   const options = {
     mouse: mouse,
+
+
+  }
+  for (let i = 0; i < 3; i++) {
+    levels[i] = new Levels(450, 300 - i * 75, 84, 100);
+   // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
   // A fix for high pixel density displays
@@ -44,7 +50,9 @@ function draw() {
   }
   else if (state === "level"){
     background(levelList);
-    
+    for (let Levels of levels){
+    Levels.show();
+    }
   }
   else if (state === "game"){
     
