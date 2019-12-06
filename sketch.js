@@ -6,7 +6,7 @@ function setup() {
 
   box1 = new Box(width / 1.5, (height - 20), 120, 160);
   box2 = new Box(width / 1.2, (height - 20), 120, 160);
-  box3 = new Box(width / 1.333333, (height - 200), 180, 100);
+  box3 = new Box(width / 1.333333, (height - 300), width/9, 100);
 
   bird = new Bird(width / 3.5, height / 1.5, 40);
   minnionPig = new Pig(width / 1.33, height -20, 40);
@@ -169,7 +169,7 @@ function checkIfButtonClicked() {
 
   // if the mouse pointer is inside the play button then switch the state to game.
   if(click === true){
-    state = "level";
+    state = "game";
   }
 }
 }
