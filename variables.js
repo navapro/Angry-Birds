@@ -23,3 +23,5 @@ let menuClicked;
 let levelBackground;
 let levelList;
 let levels =[];
+let levelClicked;
+let levelWait =0;

@@ -20,7 +20,12 @@ class Levels {
         
         text(this.level, this.x+ width/55, this.y+ width/15.4);
         pop();
-        let clicked = collidePointRect(mouseX,mouseY,width/2.7, height/2,  width / 5,height /4.5);
+        if (levelClicked) {
+        
+        if (collidePointRect(mouseX,mouseY,this.x, this.y, this.w, this.h)){
+            state = "game";
+        }
+    }
     }
 
 }

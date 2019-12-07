@@ -24,7 +24,7 @@ function setup() {
 
   }
   for (let i = 0; i < 4; i++) {
-    levels[i] = new Levels(width/4 + i *width/7, height/2-width/13, width/13,width/13,i+1);
+    levels[i] = new Levels(width/4 + i *width/7, height/2, width/13,width/13,i+1);
    // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
@@ -47,16 +47,20 @@ function draw() {
     background(bkgImg);
     showMenu();
     checkIfButtonClicked();
+    levelClicked = false;
   }
   else if (state === "level"){
-    background(levelList);
+    background(bkgImg);
+    levelWait ++;
+    
     
     for (let Levels of levels){
-    Levels.show();
+      Levels.show();
     }
+    levelClicked = false;
   }
   else if (state === "game"){
-    
+    levelClicked = false;
     checkIfMenuIsClicked();
 
   if (mouseX < width / 3 && mouseY > height / 2) {
@@ -156,6 +160,10 @@ function mouseReleased() {
   }, 100);
 }
 
+if (levelWait >10){
+  levelClicked = true
+ }
+
 }
 
 function showMenu() {
@@ -184,3 +192,6 @@ function checkIfMenuIsClicked(){
     state = "menu";
   }
 }
+// function mousePressed() {
+//   d = d + 10;
+// }
