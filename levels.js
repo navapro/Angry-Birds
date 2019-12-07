@@ -1,18 +1,26 @@
 class Levels {
 
-    constructor(x, y, w, h,level) {
+    constructor(x, y, w, h, level) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.level = level;
+
     }
 
     show() {
 
-        fill(255);
-        image(levelBackground,this.x, this.y, this.w, this.h);
-        text(this.level, this.x, this.y, this.w, this.h);
+        fill(0);
+        image(levelBackground, this.x, this.y, this.w, this.h);
+        
+        push();
+        textSize(this.h);
+        fill(0);
+        
+        text(this.level, this.x+ width/55, this.y+ width/15.4);
+        pop();
+        let clicked = collidePointRect(mouseX,mouseY,width/2.7, height/2,  width / 5,height /4.5);
     }
 
 }

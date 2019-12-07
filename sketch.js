@@ -24,7 +24,7 @@ function setup() {
 
   }
   for (let i = 0; i < 4; i++) {
-    levels[i] = new Levels(width/4 + i *width/7, 300 , width/13,width/13);
+    levels[i] = new Levels(width/4 + i *width/7, height/2-width/13, width/13,width/13,i+1);
    // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
