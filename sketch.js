@@ -4,9 +4,11 @@ function setup() {
   world = engine.world;
   ground = new Ground(width / 2, height - 10, width, 20);
 
-  box1 = new Box(width / 1.5, (height - 20), 120, 160);
-  box2 = new Box(width / 1.2, (height - 20), 120, 160);
-  box3 = new Box(width / 1.333333, (height - 300), width/9, 100);
+  box1 = new Box(width / 1.5, (height - 20), 120, 160,woodImg);
+  box2 = new Box(width / 1.2, (height - 20), 120, 160,woodImg);
+  box3 = new Box(width / 1.333333, (height - 300), width/9, 100,woodImg);
+
+  
 
   bird = new Bird(width / 3.5, height / 1.5, 40);
   minnionPig = new Pig(width / 1.33, height -20, 40);
@@ -77,14 +79,7 @@ function draw() {
   Matter.Engine.update(engine);
   ground.show();
 
-//   push();
-//   rotate(.01)
-//   translate(birdX, height / 1.4);
-  
-// //width / 3.6
-//   image(slingShotBandFront, 0, 0, width / 15 + birdX*1, height /20 );
 
-//   pop();
 
   let collitionForceX = minnionPig.body.positionImpulse.x;
   let collitionForceY = minnionPig.body.positionImpulse.y;
@@ -94,7 +89,7 @@ function draw() {
 if (collitionForce !== 0){
   World.remove(world, minnionPig.body);
   coinCounter = 100;
-  //image(killPoint,minnionPig.body.position.x, height/1.5, width / 8, width / 8);
+  
 }
 else{
   minnionPig.show();
@@ -107,12 +102,7 @@ else{
   bird.show();
 
   image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-  // push();
-  // rotate(.01)
-  // translate(width / 4.6, height / 1.48);
-  // image(slingShotBandBack, 0, 0, 100, width / 25);
-
-  // pop();
+  
 
  if (birdX < 270){
   slingShotRemoval =true;
@@ -166,32 +156,3 @@ if (levelWait >10){
 
 }
 
-function showMenu() {
-  image(play, width / 2.7, height / 2, width / 5,height /4.5);
-}
-
-// check if mouse is clicked and if the mouse pointer is inside the playbutton.
-function checkIfButtonClicked() {
-
-  if (mouseIsPressed) {
-  click = collidePointRect(mouseX,mouseY,width/2.7, height/2,  width / 5,height /4.5);
-
-  // if the mouse pointer is inside the play button then switch the state to game.
-  if(click === true){
-    state = "level";
-  }
-}
-}
-function checkIfMenuIsClicked(){
-  if (mouseIsPressed) {
-  menuClicked = collidePointCircle(mouseX,mouseY,width / 1.059,  width / 24, width / 15)
-
-  }
-  if (menuClicked){
-    World.add(world, minnionPig.body);
-    state = "menu";
-  }
-}
-// function mousePressed() {
-//   d = d + 10;
-// }

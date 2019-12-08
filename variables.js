@@ -1,5 +1,8 @@
-// define all varialbles.
+
+// the following matter.js fuctions can be used without "matter.js" prefix.
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
+
+// define all varialbles.
 let ground;
 let box1,box2,box3;
 let bird;
@@ -22,6 +25,8 @@ let killPoint;
 let menuClicked;
 let levelBackground;
 let levelList;
-let levels =[];
+let levels = [];
 let levelClicked;
-let levelWait =0;
+let levelWait = 0;
+let levelState;
+let box21,box22,box23;

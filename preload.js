@@ -1,6 +1,7 @@
+// preload all the images.
 function preload() {
   birdImg = loadImage('assets/redBird.png');
-  boxImg = loadImage('assets/wood.png');
+  woodImg = loadImage('assets/wood.png');
   bkgImg = loadImage('images/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
   slingShotImgRight = loadImage('assets/slingshotRight.png');
