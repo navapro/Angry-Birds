@@ -4,40 +4,40 @@ function setup() {
   world = engine.world;
   ground = new Ground(width / 2, height - 10, width, 20);
 
+  
   box1 = new Box(width / 1.5, (height - 20), 120, 160,woodImg);
   box2 = new Box(width / 1.2, (height - 20), 120, 160,woodImg);
   box3 = new Box(width / 1.333333, (height - 300), width/9, 100,woodImg);
-
   
-
+  
   bird = new Bird(width / 3.5, height / 1.5, 40);
-  minnionPig = new Pig(width / 1.33, height -20, 40);
-
-  collitionForce = minnionPig.body.torque
-
-  console.log(collitionForce);
-
   slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-
+  minnionPig = new Pig(width / 1.33, height -20, 40);
+  
+  collitionForce = minnionPig.body.torque
+  
+  console.log(collitionForce);
+  
+  
   const mouse = Mouse.create(canvas.elt);
   const options = {
     mouse: mouse,
-
-
+    
+    
   }
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width/4 + i *width/7, height/2, width/13,width/13,i+1);
-   // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
+    // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
-
+  
   // A fix for high pixel density displays
   mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, options);
   console.log(mConstraint)
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
-
-
+  
+  
   
 }
 
@@ -85,7 +85,7 @@ function draw() {
   let collitionForceY = minnionPig.body.positionImpulse.y;
 
   let collitionForce = collitionForceY;
-
+if (stateLevel === "level1"){
 if (collitionForce !== 0){
   World.remove(world, minnionPig.body);
   coinCounter = 100;
@@ -98,9 +98,9 @@ else{
   box2.show();
   box3.show();
 
-  slingshot.show();
-  bird.show();
-
+}
+slingshot.show();
+bird.show();
   image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
   
 
@@ -150,7 +150,7 @@ function mouseReleased() {
   }, 100);
 }
 
-if (levelWait >10){
+if (levelWait >30){
   levelClicked = true
  }
 

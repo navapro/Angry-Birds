@@ -28,5 +28,5 @@ let levelList;
 let levels = [];
 let levelClicked;
 let levelWait = 0;
-let levelState;
+let stateLevel;
 let box21,box22,box23;
