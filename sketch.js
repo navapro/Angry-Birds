@@ -7,7 +7,7 @@ function setup() {
   
   box1 = new Box(width / 1.5, (height - 20), 120, 160,woodImg);
   box2 = new Box(width / 1.2, (height - 20), 120, 160,woodImg);
-  box3 = new Box(width / 1.333333, (height - 300), width/9, 100,woodImg);
+  box3 = new Box(width / 1.333333, height/1.345 , width/9, 100,woodImg);
   
   
   bird = new Bird(width / 3.5, height / 1.5, 40);
