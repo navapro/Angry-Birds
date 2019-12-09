@@ -2,7 +2,7 @@
 function preload() {
   birdImg = loadImage('assets/redBird.png');
   woodImg = loadImage('assets/wood.png');
-  bkgImg = loadImage('images/skyBackground.png');
+  bkgImg = loadImage('assets/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
   slingShotImgRight = loadImage('assets/slingshotRight.png');
   slingShotBandBack = loadImage('assets/slingshotBackSling.png');
