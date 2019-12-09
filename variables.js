@@ -30,4 +30,4 @@ let levelClicked;
 let levelWait = 0;
 let stateLevel;
 let box21,box22,box23;
-let vv;
+let vv = 1;
