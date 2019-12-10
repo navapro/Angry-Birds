@@ -4,20 +4,20 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  ground = new Ground(width / 2, height - 10, width, 20);
-  if (state === "level1"){
+  // ground = new Ground(width / 2, height - 10, width, 20);
+  
 
-  box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
-  box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
-  box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
+  // box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
+  // box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
+  // box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
 
-  bird = new Bird(width / 3.5, height / 1.5, 40);
-  slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-  minnionPig = new Pig(width / 1.33, height - 40, 40);
-  collitionForce = minnionPig.body.torque
+  // bird = new Bird(width / 3.5, height / 1.5, 40);
+  // slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
+  // minnionPig = new Pig(width / 1.33, height - 40, 40);
+  // collitionForce = minnionPig.body.torque
 
-  console.log(collitionForce);
-  }
+  // console.log(collitionForce);
+  
 
 
 
@@ -73,11 +73,23 @@ function draw() {
     
     
     if (stateLevel === "level1") {
-      if (vv === 1){
+      if (level1){
+        ground = new Ground(width / 2, height - 10, width, 20);
+  
+
+        box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
+        box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
+        box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
+      
+        bird = new Bird(width / 3.5, height / 1.5, 40);
+        slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
+        minnionPig = new Pig(width / 1.33, height - 40, 40);
         
-        setup();
-        vv++
+        
+        level1= false;
       }
+
+      
       levelClicked = false;
       checkIfMenuIsClicked();
   
@@ -156,7 +168,12 @@ function keyPressed() {
   }
 
 }
+function mousePressed() {
+  if (state === "level") {
+  level1= true;
+  }
 
+}
 function mouseReleased() {
   if (birdX < width / 4) {
     setTimeout(() => {
@@ -167,6 +184,6 @@ function mouseReleased() {
   if (levelWait > 30) {
     levelClicked = true
   }
-
+  
 }
 
