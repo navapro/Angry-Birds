@@ -67,7 +67,21 @@ function draw() {
     for (let Levels of levels) {
       Levels.show();
     }
-    levelClicked = false;
+    // levelClicked = false;
+
+
+    // ground = null;
+        
+        
+    // box1 = null;
+    // box2 = null;
+    // box3 = null;
+    
+    // bird = null;
+    // slingshot = null;
+    // minnionPig = null;
+    
+
   }
   else if (state === "game") {
     
@@ -75,19 +89,21 @@ function draw() {
     if (stateLevel === "level1") {
       if (level1){
         ground = new Ground(width / 2, height - 10, width, 20);
-  
-
+        
+        
         box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
         box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
         box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
-      
+        
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
         minnionPig = new Pig(width / 1.33, height - 40, 40);
         
-        
         level1= false;
+        
       }
+
+     
 
       
       levelClicked = false;
