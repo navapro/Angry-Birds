@@ -25,5 +25,7 @@ class Box {
     image(this.img, 0, 0, this.w, this.h);
     pop(); 
   }
-  
+  delete(){
+    Matter.World.remove(world, this.body);
+  }
 }

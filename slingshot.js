@@ -35,5 +35,7 @@ class SlingShot {
     this.sling.bodyB = body; 
   }
 
-
+  delete(){
+    Matter.World.remove(world, this.sling);
+  }
 }

@@ -24,4 +24,7 @@ class Bird {
     pop();
 
   }
+  delete(){
+    Matter.World.remove(world, this.body);
+  }
 }

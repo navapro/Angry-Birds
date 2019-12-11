@@ -18,26 +18,13 @@ function setup() {
 
   // console.log(collitionForce);
   
-
-
-
-  const mouse = Mouse.create(canvas.elt);
-  const options = {
-    mouse: mouse,
-
-
-  }
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
     // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
-  // A fix for high pixel density displays
-  mouse.pixelRatio = pixelDensity();
-  mConstraint = MouseConstraint.create(engine, options);
-  console.log(mConstraint)
-  // World.add(world, mConstraint);
-  World.remove(world, mConstraint);
+
+  
 
 
 
@@ -67,20 +54,32 @@ function draw() {
     for (let Levels of levels) {
       Levels.show();
     }
+
     levelClicked = false;
 
-
-    ground = null;
-        
-        
+    if(ground){
+    ground.delete()
+      ground = null;
+    
+      box1.delete();
     box1 = null;
+    box2.delete();
     box2 = null;
+    
+    box3.delete();
     box3 = null;
     
+    bird.delete();
     bird = null;
+    slingshot.delete();
     slingshot = null;
+    minnionPig.delete();
     minnionPig = null;
     
+    mConstraint = null
+    console.log('yaayay');
+    }
+
 
   }
   else if (state === "game") {
@@ -99,6 +98,20 @@ function draw() {
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
         minnionPig = new Pig(width / 1.33, height - 40, 40);
         
+        const mouse = Mouse.create(canvas.elt);
+  const options = {
+    mouse: mouse,
+
+
+  }
+  
+
+  // A fix for high pixel density displays
+  mouse.pixelRatio = pixelDensity();
+  mConstraint = MouseConstraint.create(engine, options);
+  console.log(mConstraint)
+  // World.add(world, mConstraint);
+  World.remove(world, mConstraint);
         level1= false;
         
       }

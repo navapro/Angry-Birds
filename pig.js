@@ -21,4 +21,7 @@ class Pig {
       pop();
   
     }
+    delete(){
+      Matter.World.remove(world, this.body);
+    }
   }
