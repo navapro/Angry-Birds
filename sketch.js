@@ -67,19 +67,19 @@ function draw() {
     for (let Levels of levels) {
       Levels.show();
     }
-    // levelClicked = false;
+    levelClicked = false;
 
 
-    // ground = null;
+    ground = null;
         
         
-    // box1 = null;
-    // box2 = null;
-    // box3 = null;
+    box1 = null;
+    box2 = null;
+    box3 = null;
     
-    // bird = null;
-    // slingshot = null;
-    // minnionPig = null;
+    bird = null;
+    slingshot = null;
+    minnionPig = null;
     
 
   }
