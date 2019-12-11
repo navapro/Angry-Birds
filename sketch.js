@@ -73,7 +73,8 @@ function draw() {
     bird = null;
     slingshot.delete();
     slingshot = null;
-    minnionPig.delete();
+    World.remove(world, minnionPig.body);
+    minnionPig.body = null;
     minnionPig = null;
     
     mConstraint = null
