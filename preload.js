@@ -14,5 +14,6 @@ function preload() {
   
   levelBackground = loadImage('assets/levelBackground.png');
   metalImg = loadImage('assets/metal.png');
+  metalHorizontalImg= loadImage('assets/metalhorizon.png');
 
 }
