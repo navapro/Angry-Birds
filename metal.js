@@ -1,11 +1,11 @@
 class Metal {
   
     constructor(x, y, w, h,img) {
-      const options = {
-        restitution:.1
-      }    
-      this.body = Matter.Bodies.rectangle(x, y, w, h, options);
-      Matter.Body.setMass(this.body, this.body.mass*2);
+      // const options = {
+      //   restitution:.1
+      // }    
+      this.body = Matter.Bodies.rectangle(x, y, w, h);
+      Matter.Body.setMass(this.body, this.body.mass*10);
       Matter.World.add(world, this.body);
       this.w = w;
       this.h = h;

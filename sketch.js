@@ -46,6 +46,7 @@ function setup() {
 
 
 function draw() {
+  woodWidth = width / 15;
 
   if (state === "menu") {
     background(bkgImg);
@@ -104,9 +105,9 @@ function draw() {
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
-        box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
-        box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
+        box1 = new Box(width / 1.5, (height - 20), woodWidth, width / 10, woodImg);
+        box2 = new Box(width / 1.2, (height - 20), woodWidth, width / 10, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.345, width / 8.2,width/17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -182,7 +183,7 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      image(goBack, width / 1.1, width / 100, woodWidth, woodWidth);
     }
     if (stateLevel === "level2") {
       if (level2) {
@@ -196,9 +197,9 @@ function draw() {
         box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
         box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
 
-        metal1 = new Metal(width / 1.1, (height - 20), width / 40, height /2.7, metalImg);
-        metal2 = new Metal(width / 1.7, (height - 20), width / 40, height /2.7, metalImg);
-        metal3 = new Metal(width / 1.333333, height / 1.7,width /2.7, width / 40, metalHorizontalImg);
+        metal1 = new Metal(width / 1.1, (height - 20), width / 20, height /2.7, metalImg);
+        metal2 = new Metal(width / 1.7, (height - 20), width / 20, height /2.7, metalImg);
+        metal3 = new Metal(width / 1.333333, height / 1.7,width /2.7, width / 50, metalHorizontalImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -277,7 +278,7 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      image(goBack, width / 1.1, width / 100, woodWidth, woodWidth);
     }
   }
 }
