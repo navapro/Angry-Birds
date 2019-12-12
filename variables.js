@@ -31,3 +31,4 @@ let levelWait = 0;
 let stateLevel;
 let box21,box22,box23;
 let level1 = false;
+let level2 = false;
