@@ -196,6 +196,10 @@ function draw() {
         box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
         box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
 
+        metal1 = new Metal(width / 1.1, (height - 20), 20, 160, metalImg);
+        // metal2 = new Metal(width / 1.2, (height - 20), 120, 160, woodImg);
+        // metal3 = new Metal(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
+
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
         minnionPig = new Pig(width / 1.33, height - 40, 40);
@@ -241,6 +245,9 @@ function draw() {
       box1.show();
       box2.show();
       box3.show();
+      metal1.show();
+      // metal2.show();
+      // metal3.show();
 
 
       slingshot.show();

@@ -13,5 +13,6 @@ function preload() {
   goBack = loadImage('assets/back.png');
   
   levelBackground = loadImage('assets/levelBackground.png');
-  
+  metalImg = loadImage('assets/metal.png');
+
 }
