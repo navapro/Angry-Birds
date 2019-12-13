@@ -1,5 +1,5 @@
 function setup() {
-
+  frameRate(120);
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
