@@ -1,5 +1,5 @@
 function setup() {
-  frameRate(120);
+  
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
@@ -46,6 +46,7 @@ function setup() {
 
 
 function draw() {
+  frameRate(240);
   woodWidth = width / 15;
 
   if (state === "menu") {
@@ -85,14 +86,16 @@ function draw() {
       slingshot.delete();
       slingshot = null;
       World.remove(world, minnionPig.body);
-      // minnionPig = null;
+      
+
+      if (metal1){
       metal1.delete();
       metal1 = null;
       metal2.delete();
       metal2 = null;
       metal3.delete();
       metal3 = null;
-     
+      }
       console.log('yaayay');
     }
 
@@ -194,6 +197,8 @@ function draw() {
       if (level2) {
         if (minnionPig){
           World.remove(world, minnionPig.body);
+          World.remove(world, minnionPig2.body);
+          World.remove(world, minnionPig3.body);
         }
         ground = new Ground(width / 2, height - 10, width, 20);
 
@@ -210,7 +215,10 @@ function draw() {
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
         minnionPig = new Pig(width / 1.33, height - 40, 40);
 
-       
+        minnionPig2 = new Pig(width / 1.2, height /1.33, 40);
+        
+        minnionPig3 = new Pig(width / 1.5, height /1.33, 40);
+        
         level2 = false;
 
       }
@@ -238,9 +246,11 @@ function draw() {
 
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
-      let collitionForce = collitionForceY;
+      let collitionForce1 = collitionForceY;
+      let collitionForce2 =minnionPig2.body.positionImpulse.y;
+      let collitionForce3 =minnionPig3.body.positionImpulse.y;
 
-      if (collitionForce !== 0) {
+      if (collitionForce1 !== 0) {
         World.remove(world, minnionPig.body);
         coinCounter = 100;
 
@@ -248,6 +258,25 @@ function draw() {
       else {
         minnionPig.show();
       }
+      if (collitionForce2 !== 0) {
+        World.remove(world, minnionPig2.body);
+        coinCounter = 100;
+
+      }
+      else {
+        minnionPig2.show();
+      }
+      if (collitionForce3 !== 0) {
+        World.remove(world, minnionPig3.body);
+        coinCounter = 100;
+
+      }
+      else {
+        minnionPig3.show();
+      }
+     
+     
+    
       box1.show();
       box2.show();
       box3.show();

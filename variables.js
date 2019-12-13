@@ -31,5 +31,5 @@ let stateLevel;
 let metal1,metal2,metal3;
 let level1 = false;
 let level2 = false;
-let minnionPig,minnionPig2, kingPig;
+let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
