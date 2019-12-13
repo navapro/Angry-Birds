@@ -86,7 +86,12 @@ function draw() {
       slingshot = null;
       World.remove(world, minnionPig.body);
       // minnionPig = null;
-
+      metal1.delete();
+      metal1 = null;
+      metal2.delete();
+      metal2 = null;
+      metal3.delete();
+      metal3 = null;
      
       console.log('yaayay');
     }
@@ -199,7 +204,7 @@ function draw() {
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height /2.7, metalImg);
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height /2.7, metalImg);
-        metal3 = new Metal(width / 1.333333, height / 1.7,width /2.7, width / 50, metalHorizontalImg);
+        metal3 = new Metal(width / 1.333333, height / 1.7,width /2.7, width / 30, metalHorizontalImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
