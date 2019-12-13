@@ -55,6 +55,7 @@ function draw() {
     checkIfButtonClicked();
     levelClicked = false;
     vv = 1;
+    minnionPig1Die = minnionPig2Die = minnionPig3Die= true;
 
   }
 
@@ -153,8 +154,10 @@ function draw() {
 
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
-        coinCounter = 100;
-
+        if(minnionPig1Die){
+        coinCounter += 100;
+        minnionPig1Die = false;
+        }
       }
       else {
         minnionPig.show();
@@ -252,7 +255,10 @@ function draw() {
 
       if (collitionForce1 !== 0) {
         World.remove(world, minnionPig.body);
-        coinCounter = 100;
+        if(minnionPig1Die){
+          coinCounter += 100;
+          minnionPig1Die = false;
+          }
 
       }
       else {
@@ -260,7 +266,10 @@ function draw() {
       }
       if (collitionForce2 !== 0) {
         World.remove(world, minnionPig2.body);
-        coinCounter = 100;
+        if(minnionPig2Die){
+          coinCounter += 100;
+          minnionPig2Die = false;
+          }
 
       }
       else {
@@ -268,7 +277,10 @@ function draw() {
       }
       if (collitionForce3 !== 0) {
         World.remove(world, minnionPig3.body);
-        coinCounter = 100;
+        if(minnionPig3Die){
+          coinCounter += 100;
+          minnionPig3Die = false;
+          }
 
       }
       else {

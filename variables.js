@@ -33,3 +33,4 @@ let level1 = false;
 let level2 = false;
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
+let minnionPig1Die,minnionPig2Die,minnionPig3Die ;
