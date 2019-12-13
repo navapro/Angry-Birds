@@ -8,7 +8,7 @@ class Metal {
       Matter.Body.setMass(this.body, this.body.mass*5);
       this.body.density=  1;
       this.body.friction =  .5;
-      this.body.frictionAir =  .01;
+      this.body.frictionAir =  .015;
       Matter.World.add(world, this.body,options);
       this.w = w;
       this.h = h;

@@ -6,6 +6,7 @@ class Box {
     }    
     this.body = Matter.Bodies.rectangle(x, y, w, h, options);
     Matter.Body.setMass(this.body, this.body.mass*2);
+    this.body.friction =  .5;
     Matter.World.add(world, this.body);
     this.w = w;
     this.h = h;
