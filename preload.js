@@ -16,5 +16,7 @@ function preload() {
   metalImg = loadImage('assets/metal.png');
   metalHorizontalImg= loadImage('assets/metalhorizon.png');
   woodHorizontalImg= loadImage('assets/woodHorizon.png');
-
+  
+  glassHorizontalImg= loadImage('assets/glassHorizontal.png');
+ glassImg= loadImage('assets/glass1.png');
 }

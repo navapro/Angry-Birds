@@ -31,6 +31,8 @@ let stateLevel;
 let metal1,metal2,metal3;
 let level1 = false;
 let level2 = level3 =false;
+let glassImg, glassHorizontalImg;
+let glass1,glass2,glass3;
 
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
