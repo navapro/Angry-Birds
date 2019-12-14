@@ -30,7 +30,8 @@ let levelWait = 0;
 let stateLevel;
 let metal1,metal2,metal3;
 let level1 = false;
-let level2 = false;
+let level2 = level3 =false;
+
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
 let minnionPig1Die,minnionPig2Die,minnionPig3Die ;
