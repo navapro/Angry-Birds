@@ -49,7 +49,7 @@ function setup() {
 
 
 function draw() {
-  Matter.Engine.update(engine);
+ Matter.Engine.update(engine);
   //frameRate(240);
   woodWidth = width / 15;
 
@@ -357,8 +357,8 @@ function draw() {
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
         metal3 = new Metal(width / 1.37, height / 1.7, width / 3, width / 40, metalHorizontalImg);
         
-        glass1 = new Glass(width / 1.1, (height - 20), width / 25, height / 2.7 + width / 40, glassImg);
-        glass2 = new Glass(width / 1.8, (height - 20), width / 25, height / 2.7 + width / 40, glassImg);
+        glass1 = new Glass(width / 1.09, height/1.25, width / 25, height / 2.7 + width / 40, glassImg);
+        glass2 = new Glass(width / 1.8, height/1.25, width / 25, height / 2.7 + width / 40, glassImg);
         glass3 = new Glass(width / 1.37, height / 1.8, width / 2.41, width / 40, glassHorizontalImg);
 
         
@@ -376,11 +376,11 @@ function draw() {
       }
 
 
-
-
+      
+      
       levelClicked = false;
       checkIfMenuIsClicked();
-
+      
       if (mouseX < width / 3 && mouseY > height / 2) {
         World.add(world, mConstraint);
         // console.log('added')
@@ -389,12 +389,43 @@ function draw() {
         // console.log('removed')
         World.remove(world, mConstraint);
       }
-
+      
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
       // Matter.Engine.update(engine);
       ground.show();
+      
+      let glass1CollitionForce = glass1.body.positionImpulse.x;
+      let glass2CollitionForce = glass2.body.positionImpulse.x;
+      let glass3CollitionForce = glass3.body.positionImpulse.x;
+      
+     
+      
 
+      if (glass1CollitionForce > .5) {
+        World.remove(world, glass1.body);
+       
+
+      }
+      else {
+        glass1.show();
+      }
+      if (glass2CollitionForce >.5) {
+        World.remove(world, glass2.body);
+        
+
+      }
+      else {
+        glass2.show();
+      }
+      if (glass3CollitionForce >.5) {
+        World.remove(world, glass3.body);
+        
+
+      }
+      else {
+        glass3.show();
+      }
 
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
@@ -444,9 +475,6 @@ function draw() {
       metal1.show();
       metal2.show();
       metal3.show();
-      glass1.show();
-      glass2.show();
-      glass3.show();
 
 
       slingshot.show();
@@ -480,7 +508,7 @@ function draw() {
     }
   }
 
-  Matter.Engine.update(engine);
+ Matter.Engine.update(engine);
 }
 
 
