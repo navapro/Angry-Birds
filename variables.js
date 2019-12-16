@@ -33,7 +33,7 @@ let level1 = false;
 let level2 = level3 =false;
 let glassImg, glassHorizontalImg;
 let glass1,glass2,glass3;
-let galss3Wait = false;
+let galss3Wait;
 
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;

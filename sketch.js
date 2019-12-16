@@ -3,7 +3,7 @@ function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
-
+ frameRate(60);
 
 
   // Matter.Engine.run(engine);
@@ -49,8 +49,9 @@ function setup() {
 
 
 function draw() {
+  console.log(frameRate())
  Matter.Engine.update(engine);
-  //frameRate(240);
+ 
   woodWidth = width / 15;
 
   if (state === "menu") {
@@ -66,7 +67,7 @@ function draw() {
   else if (state === "level") {
     background(bkgImg);
     levelWait++;
-    galss3Wait = false;
+    galss3Wait =0;
 
 
     for (let Levels of levels) {
@@ -356,11 +357,11 @@ function draw() {
 
         metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
-        metal3 = new Metal(width / 1.37, height / 1.7, width / 3, width / 40, metalHorizontalImg);
+        metal3 = new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
         
-        glass1 = new Glass(width / 1.09, height/1.25, width / 25, height / 2.7 + width / 40, glassImg);
-        glass2 = new Glass(width / 1.8, height/1.25, width / 25, height / 2.7 + width / 40, glassImg);
-        glass3 = new Glass(width / 1.37, height / 1.8, width / 2.41, width / 40, glassHorizontalImg);
+        glass1 = new Glass(width / 1.08, height/1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        glass2 = new Glass(width / 1.9, height/1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
       
 
@@ -422,7 +423,7 @@ function draw() {
         glass2.show();
       }
       if (glass3CollitionForce >1) {
-        if (galss3Wait){
+        if (galss3Wait >10){
           World.remove(world, glass3.body);
         }
         
@@ -432,7 +433,7 @@ function draw() {
         
         glass3.show();
       }
-      let galss3Wait = true;
+      galss3Wait ++;
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce1 = collitionForceY;
@@ -514,7 +515,7 @@ function draw() {
     }
   }
 
- Matter.Engine.update(engine);
+ //Matter.Engine.update(engine);
 }
 
 
