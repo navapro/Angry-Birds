@@ -66,6 +66,7 @@ function draw() {
   else if (state === "level") {
     background(bkgImg);
     levelWait++;
+    galss3Wait = false;
 
 
     for (let Levels of levels) {
@@ -361,7 +362,7 @@ function draw() {
         glass2 = new Glass(width / 1.8, height/1.25, width / 25, height / 2.7 + width / 40, glassImg);
         glass3 = new Glass(width / 1.37, height / 1.8, width / 2.41, width / 40, glassHorizontalImg);
 
-        
+      
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -372,10 +373,10 @@ function draw() {
         minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
 
         level3 = false;
-
+    
       }
 
-
+      //console.log()
       
       
       levelClicked = false;
@@ -395,14 +396,16 @@ function draw() {
       // Matter.Engine.update(engine);
       ground.show();
       
-      let glass1CollitionForce = glass1.body.positionImpulse.x;
-      let glass2CollitionForce = glass2.body.positionImpulse.x;
-      let glass3CollitionForce = glass3.body.positionImpulse.x;
+      let glass1CollitionForce = glass1.body.speed;
+      let glass2CollitionForce =glass2.body.speed;
+      let glass3CollitionForce = glass3.body.speed;
+      // let glass1CollitionForce = glass1.body.positionImpulse.x;
+      // let glass2CollitionForce = glass2.body.positionImpulse.x;
+      // let glass3CollitionForce = glass3.body.positionImpulse.y;
       
-     
       
 
-      if (glass1CollitionForce > .5) {
+      if (glass1CollitionForce > 1) {
         World.remove(world, glass1.body);
        
 
@@ -410,7 +413,7 @@ function draw() {
       else {
         glass1.show();
       }
-      if (glass2CollitionForce >.5) {
+      if (glass2CollitionForce >1) {
         World.remove(world, glass2.body);
         
 
@@ -418,15 +421,18 @@ function draw() {
       else {
         glass2.show();
       }
-      if (glass3CollitionForce >.5) {
-        World.remove(world, glass3.body);
+      if (glass3CollitionForce >1) {
+        if (galss3Wait){
+          World.remove(world, glass3.body);
+        }
         
 
       }
       else {
+        
         glass3.show();
       }
-
+      let galss3Wait = true;
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce1 = collitionForceY;
