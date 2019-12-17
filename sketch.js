@@ -7,6 +7,7 @@ function setup() {
 
   engine.positionIterations = 20;
 
+  engine.velocityIterations=20;
   
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
