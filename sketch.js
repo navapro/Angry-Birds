@@ -37,7 +37,8 @@ function draw() {
   console.log(frameRate());
   Matter.Engine.update(engine);
 
-  woodWidth = width / 15;
+
+  
 
   if (state === "menu") {
     background(bkgImg);
@@ -114,8 +115,10 @@ function draw() {
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, (height - 20), woodWidth, width / 10, woodImg);
-        box2 = new Box(width / 1.2, (height - 20), woodWidth, width / 10, woodImg);
+        box1 = new Box(width / 1.5, (height - 20), width/15
+        , width / 10, woodImg);
+        box2 = new Box(width / 1.2, (height - 20), width/15
+        , width / 10, woodImg);
         box3 = new Box(width / 1.333334, height / 1.345, width / 8.2, width / 17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
@@ -151,9 +154,12 @@ function draw() {
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce = collitionForceY;
-
+      if(gameEnd){
+        image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
+      }
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
+        gameEnd = true;
         if (minnionPig1Die) {
           coinCounter += 100;
           minnionPig1Die = false;
@@ -194,7 +200,9 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, woodWidth, woodWidth);
+      image(goBack, width / 1.1, width / 100, width/15
+        , width/15
+        );
     }
     if (stateLevel === "level2") {
       if (level2) {
@@ -324,7 +332,9 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, woodWidth, woodWidth);
+      image(goBack, width / 1.1, width / 100, width/15
+        , width/15
+        );
     }
     if (stateLevel === "level3") {
       if (level3) {
@@ -385,9 +395,7 @@ function draw() {
       let glass1CollitionForce = glass1.body.speed;
       let glass2CollitionForce = glass2.body.speed;
       let glass3CollitionForce = glass3.body.speed;
-      // let glass1CollitionForce = glass1.body.positionImpulse.x;
-      // let glass2CollitionForce = glass2.body.positionImpulse.x;
-      // let glass3CollitionForce = glass3.body.positionImpulse.y;
+     
 
 
 
@@ -496,7 +504,7 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, woodWidth, woodWidth);
+      image(goBack, width / 1.1, width / 100, width/15, width/15);
     }
   }
 

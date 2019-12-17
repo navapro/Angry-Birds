@@ -34,8 +34,9 @@ let level2 = level3 =false;
 let glassImg, glassHorizontalImg;
 let glass1,glass2,glass3;
 let galss3Wait;
-
+let gameEnd = false;
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
 let minnionPig1Die,minnionPig2Die,minnionPig3Die ;
+let gameEndImg;
 
