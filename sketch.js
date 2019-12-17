@@ -3,34 +3,18 @@ function setup() {
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
- frameRate(60);
+  frameRate(60);
 
+  engine.positionIterations = 20;
 
-  // Matter.Engine.run(engine);
-  // ground = new Ground(width / 2, height - 10, width, 20);
-
-
-  // box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
-  // box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
-  // box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
-
-  // bird = new Bird(width / 3.5, height / 1.5, 40);
-  // slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-  // minnionPig = new Pig(width / 1.33, height - 40, 40);
-  // collitionForce = minnionPig.body.torque
-
-  // console.log(collitionForce);
-
+  
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
-    // levels = new Levels (width / 1.333333, (height - 200), 180, 100);
   }
 
   const mouse = Mouse.create(canvas.elt);
   const options = {
     mouse: mouse,
-
-
   }
 
 
@@ -49,9 +33,9 @@ function setup() {
 
 
 function draw() {
-  console.log(frameRate())
- Matter.Engine.update(engine);
- 
+  console.log(frameRate());
+  Matter.Engine.update(engine);
+
   woodWidth = width / 15;
 
   if (state === "menu") {
@@ -67,7 +51,7 @@ function draw() {
   else if (state === "level") {
     background(bkgImg);
     levelWait++;
-    galss3Wait =0;
+    galss3Wait = 0;
 
 
     for (let Levels of levels) {
@@ -104,13 +88,13 @@ function draw() {
         metal3 = null;
       }
       if (glass1) {
-         glass1.delete();
-         glass1 = null;
-         glass2.delete();
-         glass2 = null;
-         glass3.delete();
-         glass3 = null;
-       
+        glass1.delete();
+        glass1 = null;
+        glass2.delete();
+        glass2 = null;
+        glass3.delete();
+        glass3 = null;
+
       }
       console.log('yaayay');
     }
@@ -358,12 +342,12 @@ function draw() {
         metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
         metal3 = new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
-        
-        glass1 = new Glass(width / 1.08, height/1.25, width / 25, height / 2.7 + width / 35, glassImg);
-        glass2 = new Glass(width / 1.9, height/1.25, width / 25, height / 2.7 + width / 35, glassImg);
+
+        glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
         glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
-      
+
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -374,15 +358,15 @@ function draw() {
         minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
 
         level3 = false;
-    
+
       }
 
       //console.log()
-      
-      
+
+
       levelClicked = false;
       checkIfMenuIsClicked();
-      
+
       if (mouseX < width / 3 && mouseY > height / 2) {
         World.add(world, mConstraint);
         // console.log('added')
@@ -391,49 +375,49 @@ function draw() {
         // console.log('removed')
         World.remove(world, mConstraint);
       }
-      
+
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
       // Matter.Engine.update(engine);
       ground.show();
-      
+
       let glass1CollitionForce = glass1.body.speed;
-      let glass2CollitionForce =glass2.body.speed;
+      let glass2CollitionForce = glass2.body.speed;
       let glass3CollitionForce = glass3.body.speed;
       // let glass1CollitionForce = glass1.body.positionImpulse.x;
       // let glass2CollitionForce = glass2.body.positionImpulse.x;
       // let glass3CollitionForce = glass3.body.positionImpulse.y;
-      
-      
+
+
 
       if (glass1CollitionForce > 1) {
         World.remove(world, glass1.body);
-       
+
 
       }
       else {
         glass1.show();
       }
-      if (glass2CollitionForce >1) {
+      if (glass2CollitionForce > 1) {
         World.remove(world, glass2.body);
-        
+
 
       }
       else {
         glass2.show();
       }
-      if (glass3CollitionForce >1) {
-        if (galss3Wait >10){
+      if (glass3CollitionForce > 1) {
+        if (galss3Wait > 10) {
           World.remove(world, glass3.body);
         }
-        
+
 
       }
       else {
-        
+
         glass3.show();
       }
-      galss3Wait ++;
+      galss3Wait++;
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce1 = collitionForceY;
@@ -515,7 +499,7 @@ function draw() {
     }
   }
 
- //Matter.Engine.update(engine);
+  //Matter.Engine.update(engine);
 }
 
 
