@@ -154,9 +154,7 @@ function draw() {
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce = collitionForceY;
-      if(gameEnd){
-        image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-      }
+      
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
         gameEnd = true;
@@ -166,6 +164,7 @@ function draw() {
         }
       }
       else {
+        gameEnd = false;
         minnionPig.show();
       }
       box1.show();
@@ -200,17 +199,25 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width/15
-        , width/15
-        );
+      image(goBack, width / 1.1, width / 100, width/15, width/15);
+      if(gameEnd){
+        push();
+        imageMode(CENTER)
+        image( gameEndImg, width / 2, height / 2, width/2,height/2);
+        pop();
+      }
     }
     if (stateLevel === "level2") {
       if (level2) {
         if (minnionPig) {
           World.remove(world, minnionPig.body);
+          if (minnionPig2) {
           World.remove(world, minnionPig2.body);
+          }
+          if (minnionPig3) {
           World.remove(world, minnionPig3.body);
         }
+      }
         ground = new Ground(width / 2, height - 10, width, 20);
 
 

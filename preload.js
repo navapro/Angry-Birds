@@ -19,6 +19,9 @@ function preload() {
   
   glassHorizontalImg= loadImage('assets/glassHorizontal.png');
  glassImg= loadImage('assets/glass1.png');
- gameEndImg;;
- /// get the game to display  the rectangle 
+ gameEndImg= loadImage('assets/gameEndDisplay.png');
+ 
+ redo = loadImage('assets/replay.png');
+ goToLevels = loadImage('assets/goToLevelimg.png');
+ 
 }

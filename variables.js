@@ -38,5 +38,5 @@ let gameEnd = false;
 let minnionPig,minnionPig2,minnionPig3 ;
 let woodWidth ;
 let minnionPig1Die,minnionPig2Die,minnionPig3Die ;
-let gameEndImg;
+let gameEndImg,redo,goToLevels; 
 
