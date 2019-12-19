@@ -203,7 +203,11 @@ function draw() {
       if(gameEnd){
         push();
         imageMode(CENTER)
+        let buttonSize = (width+height) /17;
         image( gameEndImg, width / 2, height / 2, width/2,height/2);
+        image( redo, width / 3, height / 1.4, buttonSize,buttonSize);
+        image( goToLevels, width / 2, height / 1.4, buttonSize,buttonSize);
+        image( next, width / 1.5, height / 1.4, buttonSize,buttonSize);
         pop();
       }
     }
