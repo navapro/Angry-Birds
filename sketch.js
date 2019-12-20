@@ -369,6 +369,7 @@ if ( counter === 3){
         glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
 
+        counter =0;
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -447,34 +448,40 @@ if ( counter === 3){
         World.remove(world, minnionPig.body);
         if (minnionPig1Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig1Die = false;
         }
 
       }
       else {
         minnionPig.show();
+        gameEnd = false;
       }
       if (collitionForce2 !== 0) {
         World.remove(world, minnionPig2.body);
         if (minnionPig2Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig2Die = false;
         }
 
       }
       else {
         minnionPig2.show();
+        gameEnd = false;
       }
       if (collitionForce3 !== 0) {
         World.remove(world, minnionPig3.body);
         if (minnionPig3Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig3Die = false;
         }
 
       }
       else {
         minnionPig3.show();
+        gameEnd = false;
       }
 
 
@@ -490,7 +497,9 @@ if ( counter === 3){
       slingshot.show();
       bird.show();
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-
+      if ( counter === 3){
+        gameEnd = true;
+      }
 
       if (birdX < 270) {
         slingShotRemoval = true;
