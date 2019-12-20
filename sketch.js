@@ -200,16 +200,7 @@ function draw() {
       text(coinCounter, width / 12, width / 20);
       pop();
       image(goBack, width / 1.1, width / 100, width/15, width/15);
-      if(gameEnd){
-        push();
-        imageMode(CENTER)
-        let buttonSize = (width+height) /17;
-        image( gameEndImg, width / 2, height / 2, width/2,height/2);
-        image( redo, width / 3, height / 1.4, buttonSize,buttonSize);
-        image( goToLevels, width / 2, height / 1.4, buttonSize,buttonSize);
-        image( next, width / 1.5, height / 1.4, buttonSize,buttonSize);
-        pop();
-      }
+     
     }
     if (stateLevel === "level2") {
       if (level2) {
@@ -240,7 +231,7 @@ function draw() {
         minnionPig2 = new Pig(width / 1.2, height / 1.33, 40);
 
         minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
-
+      counter =0;
         level2 = false;
 
       }
@@ -276,36 +267,44 @@ function draw() {
         World.remove(world, minnionPig.body);
         if (minnionPig1Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig1Die = false;
         }
 
       }
       else {
         minnionPig.show();
+        gameEnd = false;
       }
       if (collitionForce2 !== 0) {
         World.remove(world, minnionPig2.body);
         if (minnionPig2Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig2Die = false;
         }
 
       }
       else {
         minnionPig2.show();
+        gameEnd = false;
       }
       if (collitionForce3 !== 0) {
         World.remove(world, minnionPig3.body);
         if (minnionPig3Die) {
           coinCounter += 100;
+          counter ++;
           minnionPig3Die = false;
         }
 
       }
       else {
         minnionPig3.show();
+        gameEnd = false;
       }
-
+if ( counter === 3){
+  gameEnd = true;
+}
 
 
       box1.show();
@@ -516,6 +515,16 @@ function draw() {
       text(coinCounter, width / 12, width / 20);
       pop();
       image(goBack, width / 1.1, width / 100, width/15, width/15);
+    }
+    if(gameEnd){
+      push();
+      imageMode(CENTER)
+      let buttonSize = (width+height) /17;
+      image( gameEndImg, width / 2, height / 2, width/2,height/2);
+      image( redo, width / 3, height / 1.4, buttonSize,buttonSize);
+      image( goToLevels, width / 2, height / 1.4, buttonSize,buttonSize);
+      image( next, width / 1.5, height / 1.4, buttonSize,buttonSize);
+      pop();
     }
   }
 
