@@ -25,6 +25,7 @@ class Levels {
         if (collidePointRect(mouseX,mouseY,this.x, this.y, this.w, this.h)){
             state = "game";
             stateLevel = "level"+this.level;
+            currentLevel = this.level;
         }
     }
     }

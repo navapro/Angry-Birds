@@ -7,8 +7,8 @@ function setup() {
 
   engine.positionIterations = 20;
 
-  engine.velocityIterations=20;
-  
+  engine.velocityIterations = 20;
+
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
   }
@@ -34,11 +34,11 @@ function setup() {
 
 
 function draw() {
-  console.log(frameRate());
+ 
   Matter.Engine.update(engine);
 
 
-  
+
 
   if (state === "menu") {
     background(bkgImg);
@@ -61,45 +61,8 @@ function draw() {
     }
 
     levelClicked = false;
-
-    if (ground) {
-      ground.delete()
-      ground = null;
-
-      box1.delete();
-      box1 = null;
-      box2.delete();
-      box2 = null;
-
-      box3.delete();
-      box3 = null;
-
-      bird.delete();
-      bird = null;
-      slingshot.delete();
-      slingshot = null;
-      World.remove(world, minnionPig.body);
-
-
-      if (metal1) {
-        metal1.delete();
-        metal1 = null;
-        metal2.delete();
-        metal2 = null;
-        metal3.delete();
-        metal3 = null;
-      }
-      if (glass1) {
-        glass1.delete();
-        glass1 = null;
-        glass2.delete();
-        glass2 = null;
-        glass3.delete();
-        glass3 = null;
-
-      }
-      console.log('yaayay');
-    }
+deleteObjects();
+   
 
     level2 = level3 = true;
     level1 = true;
@@ -108,17 +71,18 @@ function draw() {
 
 
     if (stateLevel === "level1") {
-      if (level1) {
+      
+        if (currentLevel ===1){
         if (minnionPig) {
           World.remove(world, minnionPig.body);
         }
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, (height - 20), width/15
-        , width / 10, woodImg);
-        box2 = new Box(width / 1.2, (height - 20), width/15
-        , width / 10, woodImg);
+        box1 = new Box(width / 1.5, (height - 20), width / 15
+          , width / 10, woodImg);
+        box2 = new Box(width / 1.2, (height - 20), width / 15
+          , width / 10, woodImg);
         box3 = new Box(width / 1.333334, height / 1.345, width / 8.2, width / 17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
@@ -126,7 +90,7 @@ function draw() {
         minnionPig = new Pig(width / 1.33, height - 40, 40);
 
 
-        level1 = false;
+        currentLevel = 0;
 
       }
 
@@ -154,7 +118,7 @@ function draw() {
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce = collitionForceY;
-      
+
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
         gameEnd = true;
@@ -199,20 +163,20 @@ function draw() {
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width/15, width/15);
-     
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+
     }
     if (stateLevel === "level2") {
-      if (level2) {
+      if (currentLevel ===2){
         if (minnionPig) {
           World.remove(world, minnionPig.body);
           if (minnionPig2) {
-          World.remove(world, minnionPig2.body);
+            World.remove(world, minnionPig2.body);
           }
           if (minnionPig3) {
-          World.remove(world, minnionPig3.body);
+            World.remove(world, minnionPig3.body);
+          }
         }
-      }
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
@@ -231,9 +195,8 @@ function draw() {
         minnionPig2 = new Pig(width / 1.2, height / 1.33, 40);
 
         minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
-      counter =0;
-        level2 = false;
-
+        counter = 0;
+        currentLevel = 0;
       }
 
 
@@ -267,7 +230,7 @@ function draw() {
         World.remove(world, minnionPig.body);
         if (minnionPig1Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig1Die = false;
         }
 
@@ -280,7 +243,7 @@ function draw() {
         World.remove(world, minnionPig2.body);
         if (minnionPig2Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig2Die = false;
         }
 
@@ -293,7 +256,7 @@ function draw() {
         World.remove(world, minnionPig3.body);
         if (minnionPig3Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig3Die = false;
         }
 
@@ -302,9 +265,9 @@ function draw() {
         minnionPig3.show();
         gameEnd = false;
       }
-if ( counter === 3){
-  gameEnd = true;
-}
+      if (counter === 3) {
+        gameEnd = true;
+      }
 
 
       box1.show();
@@ -342,16 +305,20 @@ if ( counter === 3){
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width/15
-        , width/15
-        );
+      image(goBack, width / 1.1, width / 100, width / 15
+        , width / 15
+      );
     }
     if (stateLevel === "level3") {
-      if (level3) {
+      if (currentLevel ===3){
         if (minnionPig) {
           World.remove(world, minnionPig.body);
+          if (minnionPig2) {
           World.remove(world, minnionPig2.body);
+          }
+          if (minnionPig3) {
           World.remove(world, minnionPig3.body);
+          }
         }
         ground = new Ground(width / 2, height - 10, width, 20);
 
@@ -369,7 +336,7 @@ if ( counter === 3){
         glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
 
-        counter =0;
+        counter = 0;
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -379,7 +346,7 @@ if ( counter === 3){
 
         minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
 
-        level3 = false;
+        currentLevel = 0;
 
       }
 
@@ -406,7 +373,7 @@ if ( counter === 3){
       let glass1CollitionForce = glass1.body.speed;
       let glass2CollitionForce = glass2.body.speed;
       let glass3CollitionForce = glass3.body.speed;
-     
+
 
 
 
@@ -448,7 +415,7 @@ if ( counter === 3){
         World.remove(world, minnionPig.body);
         if (minnionPig1Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig1Die = false;
         }
 
@@ -461,7 +428,7 @@ if ( counter === 3){
         World.remove(world, minnionPig2.body);
         if (minnionPig2Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig2Die = false;
         }
 
@@ -474,7 +441,7 @@ if ( counter === 3){
         World.remove(world, minnionPig3.body);
         if (minnionPig3Die) {
           coinCounter += 100;
-          counter ++;
+          counter++;
           minnionPig3Die = false;
         }
 
@@ -497,7 +464,7 @@ if ( counter === 3){
       slingshot.show();
       bird.show();
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-      if ( counter === 3){
+      if (counter === 3) {
         gameEnd = true;
       }
 
@@ -523,17 +490,50 @@ if ( counter === 3){
 
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width/15, width/15);
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
-    if(gameEnd){
+    if (gameEnd) {
       push();
       imageMode(CENTER)
-      let buttonSize = (width+height) /17;
-      image( gameEndImg, width / 2, height / 2, width/2,height/2);
-      image( redo, width / 3, height / 1.4, buttonSize,buttonSize);
-      image( goToLevels, width / 2, height / 1.4, buttonSize,buttonSize);
-      image( next, width / 1.5, height / 1.4, buttonSize,buttonSize);
+      let buttonSize = (width + height) / 17;
+      image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
+      image(redo, width / 3, height / 1.4, buttonSize, buttonSize);
+      image(goToLevels, width / 2, height / 1.4, buttonSize, buttonSize);
+      image(next, width / 1.5, height / 1.4, buttonSize, buttonSize);
       pop();
+      push()
+      fill(255)
+      circle();
+
+      pop()
+
+      if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize-5) && mouseIsPressed) {
+        state = "level";
+        levelClicked = false;
+        minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
+        
+
+      }
+      if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize-5) && mouseIsPressed) {
+        
+        deleteObjects();
+        currentLevel = int(stateLevel[5]);
+        levelClicked = false;
+        minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
+        
+
+      }
+      if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize-5) && mouseIsPressed) {
+        
+        deleteObjects();
+        let temp = int(stateLevel[5]) +1;
+        levelClicked = false;
+        minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
+        stateLevel = "level"+temp;
+       currentLevel = temp;
+        
+
+      }
     }
   }
 
