@@ -492,7 +492,7 @@ deleteObjects();
       pop();
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
-    if (gameEnd) {
+    if (gameEnd ||pause) {
       push();
       imageMode(CENTER)
       let buttonSize = (width + height) / 17;
@@ -511,7 +511,7 @@ deleteObjects();
         state = "level";
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
-        
+        pause = false; 
 
       }
       if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize-5) && mouseIsPressed) {
@@ -520,7 +520,7 @@ deleteObjects();
         currentLevel = int(stateLevel[5]);
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
-        
+        pause = false;
 
       }
       if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize-5) && mouseIsPressed) {
@@ -531,7 +531,7 @@ deleteObjects();
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         stateLevel = "level"+temp;
        currentLevel = temp;
-        
+       pause = false;
 
       }
     }

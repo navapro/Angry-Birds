@@ -24,11 +24,9 @@ function showMenu() {
       menuClicked = false;
     }
     if (menuClicked){
-      World.add(world, minnionPig.body);
-      state = "menu";
+      
+      pause = true;
     }
-    else{
-      state = "game";
-    }
+    
   }
   

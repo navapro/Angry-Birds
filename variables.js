@@ -41,3 +41,4 @@ let minnionPig1Die,minnionPig2Die,minnionPig3Die ;
 let gameEndImg,redo,goToLevels,next; 
 let counter;
 let currentLevel =0;
+let pause = false;
