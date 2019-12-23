@@ -24,4 +24,5 @@ function preload() {
  redo = loadImage('assets/replay.png');
  goToLevels = loadImage('assets/goToLevelimg.png');
  next = loadImage('assets/next.png');
+ closeImg = loadImage('assets/close.png');
 }

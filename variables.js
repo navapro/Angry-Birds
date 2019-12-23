@@ -42,3 +42,4 @@ let gameEndImg,redo,goToLevels,next;
 let counter;
 let currentLevel =0;
 let pause = false;
+let closeImg;

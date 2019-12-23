@@ -500,13 +500,20 @@ deleteObjects();
       image(redo, width / 3, height / 1.4, buttonSize, buttonSize);
       image(goToLevels, width / 2, height / 1.4, buttonSize, buttonSize);
       image(next, width / 1.5, height / 1.4, buttonSize, buttonSize);
+      if (pause){
+      image(closeImg, width /1.35, height /3.8, buttonSize/2, buttonSize/2);
+      }
       pop();
       push()
       fill(255)
       circle();
 
       pop()
-
+      if (pause){
+        if (collidePointCircle(mouseX, mouseY, width /1.35, height /3.8, buttonSize/2) && mouseIsPressed) {
+          pause = false;
+        }
+      }
       if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize-5) && mouseIsPressed) {
         state = "level";
         levelClicked = false;
