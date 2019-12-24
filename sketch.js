@@ -335,7 +335,7 @@ deleteObjects();
         glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
         glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
-
+        glass1break= glass2break= glass3break = true;
         counter = 0;
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
@@ -379,15 +379,20 @@ deleteObjects();
 
       if (glass1CollitionForce > 1) {
         World.remove(world, glass1.body);
-
-
+        if ( glass1break){
+          glassSound.play();
+          glass1break = false;
+       }
       }
       else {
         glass1.show();
       }
       if (glass2CollitionForce > 1) {
         World.remove(world, glass2.body);
-
+        if ( glass2break){
+          glassSound.play();
+          glass2break = false;
+       }
 
       }
       else {
@@ -396,6 +401,10 @@ deleteObjects();
       if (glass3CollitionForce > 1) {
         if (galss3Wait > 10) {
           World.remove(world, glass3.body);
+          if ( glass3break){
+            glassSound.play();
+            glass3break = false;
+         }
         }
 
 
