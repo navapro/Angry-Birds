@@ -26,6 +26,7 @@ class Levels {
             state = "game";
             stateLevel = "level"+this.level;
             currentLevel = this.level;
+            clickSound.play();
         }
     }
     }

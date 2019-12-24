@@ -11,12 +11,13 @@ function showMenu() {
     // if the mouse pointer is inside the play button then switch the state to game.
     if(click === true){
       state = "level";
+      clickSound.play();
     }
   }
 
   }
   function checkIfMenuIsClicked(){
-    if (mouseIsPressed) {
+    if (pauseClicked) {
     menuClicked = collidePointCircle(mouseX,mouseY,width / 1.059,  width / 24, width / 15)
   
     }
@@ -24,9 +25,10 @@ function showMenu() {
       menuClicked = false;
     }
     if (menuClicked){
-      
+      clickSound.play();
       pause = true;
     }
-    
+
+   
   }
   

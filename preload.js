@@ -24,6 +24,9 @@ function preload() {
  goToLevels = loadImage('assets/goToLevelimg.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
+ clickSound = loadSound('assets/click.mp3');
 //  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
-
+// tommorow add all sound effecsts except for collition 
+// glass break pig die slig relese and streach 
+// clickable 
 }

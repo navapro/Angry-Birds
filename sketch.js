@@ -38,7 +38,7 @@ function draw() {
   Matter.Engine.update(engine);
   // backgroundMusic.play();
 
-
+  
 
   if (state === "menu") {
     background(bkgImg);
@@ -493,7 +493,9 @@ deleteObjects();
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
     if (gameEnd ||pause) {
+      pauseClicked =  false;
       push();
+      
       imageMode(CENTER)
       let buttonSize = (width + height) / 17;
       image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
@@ -512,6 +514,7 @@ deleteObjects();
       if (pause){
         if (collidePointCircle(mouseX, mouseY, width /1.35, height /3.8, buttonSize/2) && mouseIsPressed) {
           pause = false;
+          clickSound.play();
         }
       }
       if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize-5) && mouseIsPressed) {
@@ -519,7 +522,7 @@ deleteObjects();
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         pause = false; 
-
+        clickSound.play();
       }
       if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize-5) && mouseIsPressed) {
         
@@ -528,7 +531,7 @@ deleteObjects();
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         pause = false;
-
+        clickSound.play();
       }
       if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize-5) && mouseIsPressed) {
         
@@ -539,7 +542,7 @@ deleteObjects();
         stateLevel = "level"+temp;
        currentLevel = temp;
        pause = false;
-
+       clickSound.play();
       }
     }
   }
@@ -559,6 +562,7 @@ function keyPressed() {
 
 }
 function mousePressed() {
+  pauseClicked =  true;
   if (state === "level") {
     // level1 = true;
   }
@@ -574,7 +578,7 @@ function mouseReleased() {
   if (levelWait > 30) {
     levelClicked = true
   }
-
+  pauseClicked =  false;
 }
 
 // function windowResized() {
