@@ -36,7 +36,7 @@ function setup() {
 function draw() {
  
   Matter.Engine.update(engine);
-
+  backgroundMusic.play();
 
 
 
@@ -577,3 +577,6 @@ function mouseReleased() {
 
 }
 
+// function windowResized() {
+//   setup();
+// }

@@ -38,3 +38,4 @@ let gameEndImg, redo, goToLevels, next, closeImg;
 let counter;
 let currentLevel = 0;
 let pause = false;
+let backgroundMusic;

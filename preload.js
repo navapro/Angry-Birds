@@ -5,8 +5,7 @@ function preload() {
   bkgImg = loadImage('assets/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
   slingShotImgRight = loadImage('assets/slingshotRight.png');
-  slingShotBandBack = loadImage('assets/slingshotBackSling.png');
-  slingShotBandFront = loadImage('assets/slingshotFrontSling.png');
+  
   minnionPigImg = loadImage('assets/pig.png');
   play = loadImage('assets/play.png');
   coin = loadImage('assets/coin.png');
@@ -25,4 +24,5 @@ function preload() {
  goToLevels = loadImage('assets/goToLevelimg.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
+ backgroundMusic = loadSound('assets/backgroundMusic.mp3');
 }
