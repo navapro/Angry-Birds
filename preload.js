@@ -25,4 +25,5 @@ function preload() {
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
 //  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
+
 }
