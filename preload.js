@@ -24,5 +24,5 @@ function preload() {
  goToLevels = loadImage('assets/goToLevelimg.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
- backgroundMusic = loadSound('assets/backgroundMusic.mp3');
+//  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
 }

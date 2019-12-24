@@ -36,7 +36,7 @@ function setup() {
 function draw() {
  
   Matter.Engine.update(engine);
-  backgroundMusic.play();
+  // backgroundMusic.play();
 
 
 
