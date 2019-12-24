@@ -21,7 +21,7 @@ function preload() {
  gameEndImg= loadImage('assets/gameEndDisplay.png');
  
  redo = loadImage('assets/replay.png');
- goToLevels = loadImage('assets/goToLevelimg.png');
+ goToLevels = loadImage('assets/close.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
 //  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
