@@ -21,14 +21,14 @@ function preload() {
  gameEndImg= loadImage('assets/gameEndDisplay.png');
  
  redo = loadImage('assets/replay.png');
- goToLevels = loadImage('assets/goToLevelimg.png');
+ goToLevels = loadImage('assets/goToLevel.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
  clickSound = loadSound('assets/click.mp3');
  glassSound = loadSound('assets/glassBreak.mp3');
  pigDieSound= loadSound('assets/pigDie.mp3');
 //  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
-// tommorow add all sound effecsts except for collition 
+// tommorow add all sound effecsts except for collition.
 //   slig relese and streach 
 
 }
