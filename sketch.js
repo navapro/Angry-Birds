@@ -51,6 +51,12 @@ function draw() {
   }
 
   else if (state === "level") {
+    if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
+      clickSound.play();
+      state = "menu";
+      console.log(11);
+    }
+  
     background(bkgImg);
     levelWait++;
     galss3Wait = 0;
@@ -62,8 +68,10 @@ function draw() {
 
     levelClicked = false;
 deleteObjects();
-   
-
+   push();
+   imageMode(CENTER);
+  image(backImg, width /15, height / 10, width / 15, width / 15);
+pop();
     level2 = level3 = true;
     level1 = true;
   }

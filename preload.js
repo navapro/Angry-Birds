@@ -24,6 +24,8 @@ function preload() {
  goToLevels = loadImage('assets/goToLevel.png');
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
+ backImg = loadImage('assets/goBack.png');
+
  clickSound = loadSound('assets/click.mp3');
  glassSound = loadSound('assets/glassBreak.mp3');
  pigDieSound= loadSound('assets/pigDie.mp3');

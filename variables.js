@@ -32,7 +32,7 @@ let gameEnd = false;
 let minnionPig, minnionPig2, minnionPig3;
 let woodWidth;
 let minnionPig1Die, minnionPig2Die, minnionPig3Die;
-let gameEndImg, redo, goToLevels, next, closeImg;
+let gameEndImg, redo, goToLevels, next, closeImg, backImg;
 let counter;
 let currentLevel = 0;
 let pause = false;
