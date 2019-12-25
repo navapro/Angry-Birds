@@ -121,8 +121,12 @@ deleteObjects();
 
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
+        
+        
         gameEnd = true;
         if (minnionPig1Die) {
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           coinCounter += 100;
           minnionPig1Die = false;
         }
@@ -231,6 +235,8 @@ deleteObjects();
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig1Die = false;
         }
 
@@ -244,6 +250,8 @@ deleteObjects();
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig2Die = false;
         }
 
@@ -257,6 +265,8 @@ deleteObjects();
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig3Die = false;
         }
 
@@ -425,6 +435,8 @@ deleteObjects();
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig1Die = false;
         }
 
@@ -438,6 +450,8 @@ deleteObjects();
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig2Die = false;
         }
 
@@ -451,6 +465,8 @@ deleteObjects();
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
           minnionPig3Die = false;
         }
 

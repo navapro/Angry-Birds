@@ -26,8 +26,9 @@ function preload() {
  closeImg = loadImage('assets/close.png');
  clickSound = loadSound('assets/click.mp3');
  glassSound = loadSound('assets/glassBreak.mp3');
+ pigDieSound= loadSound('assets/pigDie.mp3');
 //  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
 // tommorow add all sound effecsts except for collition 
-// glass break pig die slig relese and streach 
+//   slig relese and streach 
 
 }
