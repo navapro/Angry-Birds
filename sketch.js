@@ -87,11 +87,9 @@ pop();
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, (height - 20), width / 15
-          , width / 10, woodImg);
-        box2 = new Box(width / 1.2, (height - 20), width / 15
-          , width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.345, width / 8.2, width / 17, woodImg);
+        box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
+        box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.4, width / 8.2, width / 17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -192,9 +190,9 @@ pop();
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, (height - 20), 120, 160, woodImg);
-        box2 = new Box(width / 1.2, (height - 20), 120, 160, woodImg);
-        box3 = new Box(width / 1.333333, height / 1.345, width / 9, 100, woodImg);
+        box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
+        box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.4, width / 8.2, width / 17, woodImg);
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg);
