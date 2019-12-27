@@ -36,4 +36,4 @@ let gameEndImg, redo, goToLevels, next, closeImg, backImg;
 let counter;
 let currentLevel = 0;
 let pause = false;
-let backgroundMusic, clickSound,glassSound, pigDieSound;
+let backgroundMusic, clickSound,glassSound, pigDieSound, metalSound;

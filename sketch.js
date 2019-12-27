@@ -89,7 +89,7 @@ pop();
 
         box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
         box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.4, width / 8.2, width / 17, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -192,11 +192,13 @@ pop();
 
         box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
         box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.4, width / 8.2, width / 17, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg);
         metal3 = new Metal(width / 1.333333, height / 1.7, width / 2.7, width / 30, metalHorizontalImg);
+
+        console.log(metal1);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
@@ -339,9 +341,9 @@ pop();
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.52, (height - 20), 120, 150, woodImg);
-        box2 = new Box(width / 1.25, (height - 20), 120, 150, woodImg);
-        box3 = new Box(width / 1.4, height / 1.345, width / 10, 90, woodImg);
+        box1 = new Box(width / 1.52, height/1.1, 120, 150, woodImg);
+        box2 = new Box(width / 1.25, height/1.1, 120, 150, woodImg);
+        box3 = new Box(width / 1.38, height / 1.35, width / 11, 90, woodImg);
 
         metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
