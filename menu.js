@@ -17,7 +17,7 @@ function showMenu() {
 
   }
   function checkIfMenuIsClicked(){
-    if (pauseClicked) {
+    if (mouseIsPressed) {
     menuClicked = collidePointCircle(mouseX,mouseY,width / 1.059,  width / 24, width / 15)
   
     }
@@ -25,7 +25,7 @@ function showMenu() {
       menuClicked = false;
     }
     if (menuClicked){
-      clickSound.play();
+      
       pause = true;
     }
 

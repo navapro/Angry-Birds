@@ -3,7 +3,7 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
 // define all varialbles.
-
+let touched = false;
 let ground;
 let box1, box2, box3;
 let bird;

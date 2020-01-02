@@ -521,6 +521,9 @@ function draw() {
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
     if (gameEnd || pause) {
+      if ( mouseIsPressed&& pauseClicked){
+        clickSound.play();
+      }
       pauseClicked = false;
       push();
 
@@ -573,6 +576,9 @@ function draw() {
         clickSound.play();
       }
     }
+    else{
+      pauseClicked = true;
+    }
   }
 
 
@@ -589,13 +595,7 @@ function keyPressed() {
   }
 
 }
-function mousePressed() {
-  pauseClicked = true;
-  if (state === "level") {
-    // level1 = true;
-  }
 
-}
 function mouseReleased() {
   if (birdX < width / 4) {
     setTimeout(() => {
@@ -606,9 +606,10 @@ function mouseReleased() {
   if (levelWait > 30) {
     levelClicked = true
   }
-  pauseClicked = false;
+  
 }
 
 // function windowResized() {
 //   setup();
 // }
+
