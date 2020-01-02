@@ -23,7 +23,7 @@ function setup() {
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
   backgroundMusic.loop();
-  backgroundMusic.setVolume(0.2);
+  backgroundMusic.setVolume(0.1);
 }
 
 
@@ -36,14 +36,54 @@ function draw() {
 
 
   if (state === "menu") {
+    
     background(bkgImg);
     showMenu();
     checkIfButtonClicked();
     levelClicked = false;
     vv = 1;
     minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
+    image(settingsImg, width / 1.1, width / 100, width / 15, width / 15);
+   if (!settingsTemp ){
+    if (mouseIsPressed && collidePointCircle(mouseX,mouseY,width / 1.059,  width / 24, width / 15)) {
+      settingsTemp = true;
+      settingsSound ++;
+    }  
+      }
+    if (settingsSound === 1){
+      clickSound.play();
+    }
+    if (settingsTemp){
+      showSettings();
+    }
+
+    
+    push();
+    imageMode(CENTER);
+    image(storeImg, width / 1.059,  height / 1.1, width / 15, width / 15);
+    pop();
+
+    if (mouseIsPressed && collidePointCircle(mouseX,mouseY,width / 1.059, height / 1.1, width / 15)) {
+      storeSound ++;
+      if (storeSound === 1){
+        clickSound.play();
+      }
+      state = 'store';
+    }  
+
+
 
   }
+
+
+
+  if (state === "store") {
+    storeSound = 0;
+    background(bkgImg);
+
+
+  }
+
 
   else if (state === "level") {
     if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
@@ -534,14 +574,14 @@ function draw() {
       image(goToLevels, width / 2, height / 1.4, buttonSize, buttonSize);
       image(next, width / 1.5, height / 1.4, buttonSize, buttonSize);
       if (pause) {
-        image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
+      image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
       }
       pop();
-      push()
-      fill(255)
-      circle();
+      // push()
+      // fill(255)
+      // circle();
 
-      pop()
+      // pop()
       if (pause) {
         if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
           pause = false;
@@ -584,7 +624,20 @@ function draw() {
 
 }
 
-
+function showSettings(){
+  settingsSound = 0;
+  push();
+  imageMode(CENTER)
+      let buttonSize = (width + height) / 17;
+      image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
+      image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
+      
+      pop();
+  if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
+    settingsTemp = false;
+    clickSound.play();
+  }
+}
 
 
 function keyPressed() {

@@ -3,7 +3,6 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
 // define all varialbles.
-let touched = false;
 let ground;
 let box1, box2, box3;
 let bird;
@@ -17,7 +16,7 @@ let collitionForce;
 let state = "menu";
 let play, coin, goBack;
 let coinCounter = 0;
-let menuClicked, pauseClicked = false;
+let menuClicked, pauseClicked,settingsSound = storeSound = 0, settingsTemp = false;
 let levelBackground, levelList;
 let levels = [];
 let levelClicked;
@@ -33,7 +32,7 @@ let gameEnd = false;
 let minnionPig, minnionPig2, minnionPig3;
 let woodWidth;
 let minnionPig1Die, minnionPig2Die, minnionPig3Die;
-let gameEndImg, redo, goToLevels, next, closeImg, backImg;
+let gameEndImg, redo, goToLevels, next, closeImg, backImg,settingsImg, storeImg;
 let counter;
 let currentLevel = 0;
 let pause = false;
