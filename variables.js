@@ -3,6 +3,7 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
 // define all varialbles.
+
 let ground;
 let box1, box2, box3;
 let bird;
@@ -37,3 +38,4 @@ let counter;
 let currentLevel = 0;
 let pause = false;
 let backgroundMusic, clickSound,glassSound, pigDieSound, metalSound;
+// let birdImg1,birdImg2,birdImg3,birdImg4,birdImg1

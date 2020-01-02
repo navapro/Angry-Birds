@@ -30,8 +30,7 @@ function preload() {
  glassSound = loadSound('assets/glassBreak.mp3');
  metalSound = loadSound('assets/metalSound.mp3');
  pigDieSound= loadSound('assets/pigDie.mp3');
-//  backgroundMusic = loadSound('assets/backgroundMusic.mp3');
-// tommorow add all sound effecsts except for collition.
-//   slig relese and streach 
+backgroundMusic = loadSound('assets/backgroundMusic.mp3');
+
 
 }

@@ -5,9 +5,6 @@ function setup() {
   world = engine.world;
   frameRate(60);
 
-  engine.positionIterations = 20;
-
-  engine.velocityIterations = 20;
 
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
@@ -25,20 +22,18 @@ function setup() {
   console.log(mConstraint)
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
-
-
-
-
+  backgroundMusic.loop();
+  backgroundMusic.setVolume(0.2);
 }
 
 
 
 function draw() {
- 
-  Matter.Engine.update(engine);
-  // backgroundMusic.play();
 
-  
+  Matter.Engine.update(engine);
+
+
+
 
   if (state === "menu") {
     background(bkgImg);
@@ -56,7 +51,7 @@ function draw() {
       state = "menu";
       console.log(11);
     }
-  
+
     background(bkgImg);
     levelWait++;
     galss3Wait = 0;
@@ -67,11 +62,11 @@ function draw() {
     }
 
     levelClicked = false;
-deleteObjects();
-   push();
-   imageMode(CENTER);
-  image(backImg, width /15, height / 10, width / 15, width / 15);
-pop();
+    deleteObjects();
+    push();
+    imageMode(CENTER);
+    image(backImg, width / 15, height / 10, width / 15, width / 15);
+    pop();
     level2 = level3 = true;
     level1 = true;
   }
@@ -79,16 +74,16 @@ pop();
 
 
     if (stateLevel === "level1") {
-      
-        if (currentLevel ===1){
+
+      if (currentLevel === 1) {
         if (minnionPig) {
           World.remove(world, minnionPig.body);
         }
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
-        box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
+        box1 = new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg);
+        box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
         box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
@@ -127,8 +122,8 @@ pop();
 
       if (collitionForce !== 0) {
         World.remove(world, minnionPig.body);
-        
-        
+
+
         gameEnd = true;
         if (minnionPig1Die) {
           pigDieSound.setVolume(.5);
@@ -177,7 +172,7 @@ pop();
 
     }
     if (stateLevel === "level2") {
-      if (currentLevel ===2){
+      if (currentLevel === 2) {
         if (minnionPig) {
           World.remove(world, minnionPig.body);
           if (minnionPig2) {
@@ -190,8 +185,8 @@ pop();
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, height /1.1, width / 15 , width / 10, woodImg);
-        box2 = new Box(width / 1.2, height /1.1, width / 15, width / 10, woodImg);
+        box1 = new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg);
+        box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
         box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg);
@@ -328,21 +323,21 @@ pop();
       );
     }
     if (stateLevel === "level3") {
-      if (currentLevel ===3){
+      if (currentLevel === 3) {
         if (minnionPig) {
           World.remove(world, minnionPig.body);
           if (minnionPig2) {
-          World.remove(world, minnionPig2.body);
+            World.remove(world, minnionPig2.body);
           }
           if (minnionPig3) {
-          World.remove(world, minnionPig3.body);
+            World.remove(world, minnionPig3.body);
           }
         }
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.52, height/1.1, 120, 150, woodImg);
-        box2 = new Box(width / 1.25, height/1.1, 120, 150, woodImg);
+        box1 = new Box(width / 1.52, height / 1.1, 120, 150, woodImg);
+        box2 = new Box(width / 1.25, height / 1.1, 120, 150, woodImg);
         box3 = new Box(width / 1.38, height / 1.35, width / 11, 90, woodImg);
 
         metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
@@ -353,7 +348,7 @@ pop();
         glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
         glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
-        glass1break= glass2break= glass3break = true;
+        glass1break = glass2break = glass3break = true;
         counter = 0;
 
         bird = new Bird(width / 3.5, height / 1.5, 40);
@@ -397,20 +392,20 @@ pop();
 
       if (glass1CollitionForce > 1) {
         World.remove(world, glass1.body);
-        if ( glass1break){
+        if (glass1break) {
           glassSound.play();
           glass1break = false;
-       }
+        }
       }
       else {
         glass1.show();
       }
       if (glass2CollitionForce > 1) {
         World.remove(world, glass2.body);
-        if ( glass2break){
+        if (glass2break) {
           glassSound.play();
           glass2break = false;
-       }
+        }
 
       }
       else {
@@ -419,10 +414,10 @@ pop();
       if (glass3CollitionForce > 1) {
         if (galss3Wait > 10) {
           World.remove(world, glass3.body);
-          if ( glass3break){
+          if (glass3break) {
             glassSound.play();
             glass3break = false;
-         }
+          }
         }
 
 
@@ -525,18 +520,18 @@ pop();
       pop();
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
-    if (gameEnd ||pause) {
-      pauseClicked =  false;
+    if (gameEnd || pause) {
+      pauseClicked = false;
       push();
-      
+
       imageMode(CENTER)
       let buttonSize = (width + height) / 17;
       image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
       image(redo, width / 3, height / 1.4, buttonSize, buttonSize);
       image(goToLevels, width / 2, height / 1.4, buttonSize, buttonSize);
       image(next, width / 1.5, height / 1.4, buttonSize, buttonSize);
-      if (pause){
-      image(closeImg, width /1.35, height /3.8, buttonSize/2, buttonSize/2);
+      if (pause) {
+        image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
       }
       pop();
       push()
@@ -544,21 +539,21 @@ pop();
       circle();
 
       pop()
-      if (pause){
-        if (collidePointCircle(mouseX, mouseY, width /1.35, height /3.8, buttonSize/2) && mouseIsPressed) {
+      if (pause) {
+        if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
           pause = false;
           clickSound.play();
         }
       }
-      if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize-5) && mouseIsPressed) {
+      if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize - 5) && mouseIsPressed) {
         state = "level";
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
-        pause = false; 
+        pause = false;
         clickSound.play();
       }
-      if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize-5) && mouseIsPressed) {
-        
+      if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize - 5) && mouseIsPressed) {
+
         deleteObjects();
         currentLevel = int(stateLevel[5]);
         levelClicked = false;
@@ -566,21 +561,21 @@ pop();
         pause = false;
         clickSound.play();
       }
-      if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize-5) && mouseIsPressed) {
-        
+      if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize - 5) && mouseIsPressed) {
+
         deleteObjects();
-        let temp = int(stateLevel[5]) +1;
+        let temp = int(stateLevel[5]) + 1;
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
-        stateLevel = "level"+temp;
-       currentLevel = temp;
-       pause = false;
-       clickSound.play();
+        stateLevel = "level" + temp;
+        currentLevel = temp;
+        pause = false;
+        clickSound.play();
       }
     }
   }
 
-  //Matter.Engine.update(engine);
+
 }
 
 
@@ -595,7 +590,7 @@ function keyPressed() {
 
 }
 function mousePressed() {
-  pauseClicked =  true;
+  pauseClicked = true;
   if (state === "level") {
     // level1 = true;
   }
@@ -611,7 +606,7 @@ function mouseReleased() {
   if (levelWait > 30) {
     levelClicked = true
   }
-  pauseClicked =  false;
+  pauseClicked = false;
 }
 
 // function windowResized() {
