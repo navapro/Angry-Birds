@@ -23,13 +23,23 @@ function setup() {
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
   backgroundMusic.loop();
-  backgroundMusic.setVolume(0.1);
+ 
+  
+
   birdImgList = [birdImg1,birdImg2,birdImg3,birdImg4];
   for (let i = 0; i < 4; i++) {
     birds[i] = new StoreBird(width / 5+ i * width / 5, height / 2, width / 8, width / 8, i );
   }
 
   birdImg = birdImgList[0];
+
+
+  volumeSlider = createSlider(0, 1, 0.1, 0.1);
+  volumeSlider2 = createSlider(0,10, 1, 0.1);
+
+volumeSlider.position(width / 2, -height / 2);
+volumeSlider2.position(width / 2, -height / 2);
+
 }
 
 
@@ -37,16 +47,21 @@ function setup() {
 function draw() {
 
   Matter.Engine.update(engine);
- 
-
+  backgroundMusic.setVolume(volumeSlider.value());
+  clickSound.setVolume(volumeSlider2.value());  
+  glassSound.setVolume(volumeSlider2.value());  
+  metalSound.setVolume(volumeSlider2.value());  
+  pigDieSound.setVolume(volumeSlider2.value());
 
 
 
   if (state === "menu") {
     
     background(bkgImg);
+    if (!settings){
     showMenu();
     checkIfButtonClicked();
+    }
     levelClicked = false;
     vv = 1;
     minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
@@ -596,11 +611,11 @@ function draw() {
       image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
       }
       pop();
-      // push()
-      // fill(255)
+      // push();
+      // fill(255);
       // circle();
 
-      // pop()
+      // pop();
       if (pause) {
         if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
           pause = false;
@@ -645,20 +660,38 @@ function draw() {
 
 function showSettings(){
   settingsSound = 0;
-  push();
+  volumeSlider.position(width / 1.7, height / 2.7);
+  
+  volumeSlider2.position(width / 1.7, height / 2.125);
+ 
+        push();
   imageMode(CENTER)
       let buttonSize = (width + height) / 17;
       image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
       image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
       
       pop();
+
+  if (!collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2)){
+        settings = true;
+  }
+  
   if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
     settingsTemp = false;
     clickSound.play();
+    settings = false;
+    volumeSlider.position(width / 2, -height / 2);
+
   }
 
-volumeSlider = createSlider(0, 1, 0.1, 0.1);
-volumeSlider.position(width / 2, height / 2);
+
+  push();
+  textSize(width / 50);
+  fill(0);
+  
+  text('Background Music Volume', width / 3.5, height / 2.5);
+  text('SFX Volume', width / 3.5, height / 2);
+pop();
 }
 
 
@@ -681,10 +714,7 @@ function mouseReleased() {
   if (levelWait > 30) {
     levelClicked = true
   }
-  
 }
 
-// function windowResized() {
-//   setup();
-// }
+
 

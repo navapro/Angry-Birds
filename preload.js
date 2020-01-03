@@ -29,15 +29,15 @@ function preload() {
  next = loadImage('assets/next.png');
  closeImg = loadImage('assets/close.png');
  backImg = loadImage('assets/goBack.png');
+ settingsImg = loadImage('assets/settings.png');
+ storeImg = loadImage('assets/store.png');
+ levelBackgroundGlow = loadImage('assets/levelBackgroundGlow.png');
 
  clickSound = loadSound('assets/click.mp3');
  glassSound = loadSound('assets/glassBreak.mp3');
  metalSound = loadSound('assets/metalSound.mp3');
  pigDieSound= loadSound('assets/pigDie.mp3');
 backgroundMusic = loadSound('assets/backgroundMusic.mp3');
-settingsImg = loadImage('assets/settings.png');
-storeImg = loadImage('assets/store.png');
-levelBackgroundGlow = loadImage('assets/levelBackgroundGlow.png');
 
 
 }
