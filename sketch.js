@@ -25,6 +25,9 @@ function setup() {
   backgroundMusic.loop();
   backgroundMusic.setVolume(0.1);
   birdImgList = [birdImg1,birdImg2,birdImg3,birdImg4];
+  for (let i = 0; i < 4; i++) {
+    birds[i] = new StoreBird(width / 5+ i * width / 5, height / 2, width / 8, width / 8, i );
+  }
 }
 
 
@@ -72,7 +75,7 @@ function draw() {
       }
       state = 'store';
     }  
-    birdImg = birdImgList[0];
+   // birdImg = birdImgList[0];
 
 
 
@@ -84,8 +87,18 @@ function draw() {
   if (state === "store") {
     storeSound = 0;
     background(bkgImg);
-
-
+    for (let Birds of birds) {
+      Birds.show();
+    }
+    if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
+      clickSound.play();
+      state = "menu";
+      
+    }
+    push();
+    imageMode(CENTER);
+    image(backImg, width / 15, height / 10, width / 15, width / 15);
+    pop();
   }
 
 
@@ -93,7 +106,7 @@ function draw() {
     if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
       clickSound.play();
       state = "menu";
-      console.log(11);
+      
     }
 
     background(bkgImg);

@@ -12,21 +12,18 @@ class StoreBird {
     show() {
 
         fill(0);
-        image(levelBackground, this.x, this.y, this.w, this.h);
         
         push();
-        textSize(this.h);
-        fill(0);
-        
-        text(this.level, this.x+ width/55, this.y+ width/15.4);
+        imageMode(CENTER);
+        image(levelBackground, this.x, this.y, this.w, this.h);
+        image(birdImgList[this.bird], this.x , this.y , this.w/1.5, this.h/1.5);
         pop();
-        if (levelClicked) {
         
-        if (collidePointRect(mouseX,mouseY,this.x, this.y, this.w, this.h)){
-            state = "game";
-            stateLevel = "level"+this.level;
-            currentLevel = this.level;
-            birdImg = birdImg + this.level ;
+        if (mouseIsPressed) {
+        
+        if (collidePointRect(mouseX,mouseY,this.x - this.w/2, this.y - this.h/2, this.w, this.h)){
+            birdImg = birdImgList[this.bird];
+           
             clickSound.play();
         }
     }

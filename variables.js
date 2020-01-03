@@ -19,6 +19,7 @@ let coinCounter = 0;
 let menuClicked, pauseClicked,settingsSound = storeSound = 0, settingsTemp = false;
 let levelBackground, levelList;
 let levels = [];
+let birds = [];
 let levelClicked;
 let levelWait = 0;
 let stateLevel;
