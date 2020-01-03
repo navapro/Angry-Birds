@@ -39,6 +39,7 @@ function setup() {
 
 volumeSlider.position(width / 2, -height / 2);
 volumeSlider2.position(width / 2, -height / 2);
+birdImgID = 0;
 
 }
 
@@ -56,6 +57,7 @@ function draw() {
 
 
   if (state === "menu") {
+    levelWait = 0;
     
     background(bkgImg);
     if (!settings){
@@ -128,6 +130,7 @@ function draw() {
 
     background(bkgImg);
     levelWait++;
+    
     galss3Wait = 0;
 
 
@@ -681,6 +684,7 @@ function showSettings(){
     clickSound.play();
     settings = false;
     volumeSlider.position(width / 2, -height / 2);
+    volumeSlider2.position(width / 2, -height / 2);
 
   }
 

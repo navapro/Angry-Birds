@@ -15,7 +15,13 @@ class StoreBird {
         
         push();
         imageMode(CENTER);
-        image(levelBackground, this.x, this.y, this.w, this.h);
+        if (this.bird === birdImgID){
+            image(levelBackgroundGlow, this.x, this.y, this.w + this.w /5, this.h+ this.h /5);
+        }
+        else{
+
+            image(levelBackground, this.x, this.y, this.w, this.h);
+        }
         image(birdImgList[this.bird], this.x , this.y , this.w/1.5, this.h/1.5);
         pop();
         
@@ -23,7 +29,7 @@ class StoreBird {
         
         if (collidePointRect(mouseX,mouseY,this.x - this.w/2, this.y - this.h/2, this.w, this.h)){
             birdImg = birdImgList[this.bird];
-            image(levelBackgroundGlow, this.x, this.y, this.w, this.h);
+            birdImgID = this.bird;
             clickSound.play();
         }
     }
