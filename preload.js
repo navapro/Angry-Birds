@@ -37,6 +37,7 @@ function preload() {
 backgroundMusic = loadSound('assets/backgroundMusic.mp3');
 settingsImg = loadImage('assets/settings.png');
 storeImg = loadImage('assets/store.png');
+levelBackgroundGlow = loadImage('assets/levelBackgroundGlow.png');
 
 
 }

@@ -28,6 +28,8 @@ function setup() {
   for (let i = 0; i < 4; i++) {
     birds[i] = new StoreBird(width / 5+ i * width / 5, height / 2, width / 8, width / 8, i );
   }
+
+  birdImg = birdImgList[0];
 }
 
 
@@ -654,6 +656,9 @@ function showSettings(){
     settingsTemp = false;
     clickSound.play();
   }
+
+volumeSlider = createSlider(0, 1, 0.1, 0.1);
+volumeSlider.position(width / 2, height / 2);
 }
 
 

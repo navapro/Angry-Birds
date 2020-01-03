@@ -23,7 +23,7 @@ class StoreBird {
         
         if (collidePointRect(mouseX,mouseY,this.x - this.w/2, this.y - this.h/2, this.w, this.h)){
             birdImg = birdImgList[this.bird];
-           
+            image(levelBackgroundGlow, this.x, this.y, this.w, this.h);
             clickSound.play();
         }
     }
