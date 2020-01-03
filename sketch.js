@@ -709,6 +709,8 @@ function keyPressed() {
 }
 
 function mouseReleased() {
+  
+  
   if (birdX < width / 4) {
     setTimeout(() => {
       slingshot.fly();
