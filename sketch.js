@@ -34,8 +34,8 @@ function setup() {
   birdImg = birdImgList[0];
 
 
-  volumeSlider = createSlider(0, 1, 0.1, 0.1);
-  volumeSlider2 = createSlider(0,10, 1, 0.1);
+  volumeSlider = createSlider(0, 1, 0.1, 0.05);
+  volumeSlider2 = createSlider(0,10, 1, 0.05);
 
 volumeSlider.position(width / 2, -height / 2);
 volumeSlider2.position(width / 2, -height / 2);
@@ -662,6 +662,8 @@ function draw() {
 }
 
 function showSettings(){
+  
+  
   settingsSound = 0;
   volumeSlider.position(width / 1.7, height / 2.7);
   
@@ -689,13 +691,17 @@ function showSettings(){
   }
 
 
-  push();
+push();
+noStroke();
+
   textSize(width / 50);
   fill(0);
   
   text('Background Music Volume', width / 3.5, height / 2.5);
   text('SFX Volume', width / 3.5, height / 2);
 pop();
+
+
 }
 
 
