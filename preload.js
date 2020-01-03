@@ -1,6 +1,10 @@
 // preload all the images.
 function preload() {
-  birdImg = loadImage('assets/redBird.png');
+  birdImg1 = loadImage('assets/redBird.png');
+  birdImg2 = loadImage('assets/pinkBird.png');
+  birdImg3 = loadImage('assets/blueBird.png');
+  birdImg4 = loadImage('assets/blackBird.png');
+  
   woodImg = loadImage('assets/wood.png');
   bkgImg = loadImage('assets/skyBackground.png');
   slingShotImgLeft = loadImage('assets/slingshotLeft.png');
@@ -36,3 +40,4 @@ storeImg = loadImage('assets/store.png');
 
 
 }
+

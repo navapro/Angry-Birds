@@ -24,6 +24,7 @@ function setup() {
   World.remove(world, mConstraint);
   backgroundMusic.loop();
   backgroundMusic.setVolume(0.1);
+  birdImgList = [birdImg1,birdImg2,birdImg3,birdImg4];
 }
 
 
@@ -31,6 +32,7 @@ function setup() {
 function draw() {
 
   Matter.Engine.update(engine);
+ 
 
 
 
@@ -70,6 +72,8 @@ function draw() {
       }
       state = 'store';
     }  
+    birdImg = birdImgList[0];
+
 
 
 

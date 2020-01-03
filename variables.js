@@ -37,4 +37,4 @@ let counter;
 let currentLevel = 0;
 let pause = false;
 let backgroundMusic, clickSound,glassSound, pigDieSound, metalSound;
-// let birdImg1,birdImg2,birdImg3,birdImg4,birdImg1
+let birdImg1,birdImg2,birdImg3,birdImg4,birdImgList;
