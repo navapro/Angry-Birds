@@ -38,7 +38,7 @@ function preload() {
  metalSound = loadSound('assets/metalSound.mp3');
  pigDieSound= loadSound('assets/pigDie.mp3');
 backgroundMusic = loadSound('assets/backgroundMusic.mp3');
-
+font = loadFont('assets/font.ttf');
 
 }
 
