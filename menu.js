@@ -1,12 +1,15 @@
 function showMenu() {
-    image(play, width / 2.7, height / 2, width / 5,height /4.5);
+  push();
+  imageMode(CENTER)
+    image(play, width / 2, height / 2, width / 6,width /6.1);
+  pop();
   }
   
   // check if mouse is clicked and if the mouse pointer is inside the playbutton.
   function checkIfButtonClicked() {
   
     if (mouseIsPressed) {
-    click = collidePointRect(mouseX,mouseY,width/2.7, height/2,  width / 5,height /4.5);
+    click = collidePointCircle(mouseX,mouseY,width/2, height/2,  width / 6);
   
     // if the mouse pointer is inside the play button then switch the state to game.
     if(click === true){
