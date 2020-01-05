@@ -4,7 +4,7 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   frameRate(60);
-
+pigAndBirdSize = width /40;
 
   for (let i = 0; i < 4; i++) {
     levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
@@ -148,7 +148,12 @@ function draw() {
     level1 = true;
   }
   else if (state === "game") {
-
+    if (birdFly){
+      if (birdX > width/3.5){
+        birdFly = false;
+        slingshot.fly();
+      }
+    }
 
     if (stateLevel === "level1") {
 
@@ -163,9 +168,9 @@ function draw() {
         box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
         box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
 
-        bird = new Bird(width / 3.5, height / 1.5, 40);
+        bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-        minnionPig = new Pig(width / 1.33, height - 40, 40);
+        minnionPig = new Pig(width / 1.33, height - 40, pigAndBirdSize);
 
 
         currentLevel = 0;
@@ -173,19 +178,12 @@ function draw() {
       }
 
 
-
+     
 
       levelClicked = false;
       checkIfMenuIsClicked();
 
-      if (mouseX < width / 3 && mouseY > height / 2) {
-        World.add(world, mConstraint);
-        // console.log('added')
-      }
-      else {
-        // console.log('removed')
-        World.remove(world, mConstraint);
-      }
+
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
@@ -223,13 +221,15 @@ function draw() {
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
 
 
-      if (birdX < 270) {
+      if (birdX <width/10) {
         slingShotRemoval = true;
       }
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3 && mouseY > height / 2) {
+
+
+      if (mouseX < width / 3 ) {
         World.add(world, mConstraint);
 
 
@@ -264,7 +264,7 @@ function draw() {
 
         box1 = new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg);
         box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.48, width / 8.5, width / 17, woodImg);
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg);
@@ -272,13 +272,13 @@ function draw() {
 
         console.log(metal1);
 
-        bird = new Bird(width / 3.5, height / 1.5, 40);
+        bird = new Bird(width / 3.5, height / 1.5,pigAndBirdSize);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-        minnionPig = new Pig(width / 1.33, height - 40, 40);
+        minnionPig = new Pig(width / 1.33, height - 40, pigAndBirdSize);
 
-        minnionPig2 = new Pig(width / 1.2, height / 1.33, 40);
+        minnionPig2 = new Pig(width / 1.2, height / 1.33, pigAndBirdSize);
 
-        minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
+        minnionPig3 = new Pig(width / 1.5, height / 1.33, pigAndBirdSize);
         counter = 0;
         currentLevel = 0;
       }
@@ -289,14 +289,8 @@ function draw() {
       levelClicked = false;
       checkIfMenuIsClicked();
 
-      if (mouseX < width / 3 && mouseY > height / 2) {
-        World.add(world, mConstraint);
-        // console.log('added')
-      }
-      else {
-        // console.log('removed')
-        World.remove(world, mConstraint);
-      }
+    
+     
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
@@ -379,7 +373,7 @@ function draw() {
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3 && mouseY > height / 2) {
+      if (mouseX < width / 3 ) {
         World.add(world, mConstraint);
 
 
@@ -428,13 +422,13 @@ function draw() {
         glass1break = glass2break = glass3break = true;
         counter = 0;
 
-        bird = new Bird(width / 3.5, height / 1.5, 40);
+        bird = new Bird(width / 3.5, height / 1.5,pigAndBirdSize);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-        minnionPig = new Pig(width / 1.37, height - 40, 40);
+        minnionPig = new Pig(width / 1.37, height - 40, pigAndBirdSize);
 
-        minnionPig2 = new Pig(width / 1.2, height / 1.33, 40);
+        minnionPig2 = new Pig(width / 1.2, height / 1.33, pigAndBirdSize);
 
-        minnionPig3 = new Pig(width / 1.5, height / 1.33, 40);
+        minnionPig3 = new Pig(width / 1.5, height / 1.33, pigAndBirdSize);
 
         currentLevel = 0;
 
@@ -446,14 +440,7 @@ function draw() {
       levelClicked = false;
       checkIfMenuIsClicked();
 
-      if (mouseX < width / 3 && mouseY > height / 2) {
-        World.add(world, mConstraint);
-        // console.log('added')
-      }
-      else {
-        // console.log('removed')
-        World.remove(world, mConstraint);
-      }
+      
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
@@ -579,7 +566,7 @@ function draw() {
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3 && mouseY > height / 2) {
+      if (mouseX < width / 3) {
         World.add(world, mConstraint);
 
 
@@ -733,11 +720,16 @@ function keyPressed() {
 
 function mouseReleased() {
 
+  // if (birdX < width / 4) {
+  //   setTimeout(() => {
+  //     slingshot.fly();
+  //   }, 50);
+  // }
 
   if (birdX < width / 4) {
-    setTimeout(() => {
-      slingshot.fly();
-    }, 50);
+    
+    birdFly = true;
+   
   }
 
   if (levelWait > 30) {

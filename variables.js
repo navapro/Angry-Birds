@@ -42,3 +42,5 @@ let birdImg1,birdImg2,birdImg3,birdImg4,birdImgList,birdImgID;
 let volumeSlider,volumeSlider2;
 let font;
 let instructions =  true;
+let pigAndBirdSize;
+let birdFly = false;
