@@ -262,9 +262,9 @@ function draw() {
         ground = new Ground(width / 2, height - 10, width, 20);
 
 
-        box1 = new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg);
-        box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.48, width / 8.5, width / 17, woodImg);
+        box1 = new Box(width / 1.47, height / 1.1, width / 15, width / 10, woodImg);
+        box2 = new Box(width / 1.22, height / 1.1, width / 15, width / 10, woodImg);
+        box3 = new Box(width / 1.333334, height / 1.48, width / 12, width / 17, woodImg);
 
         metal1 = new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg);
@@ -712,7 +712,7 @@ function showSettings() {
 function keyPressed() {
   if (key == ' ') {
     World.remove(world, bird.body);
-    bird = new Bird(width / 3.5, height / 1.5, 40);
+    bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
     slingshot.attach(bird.body);
   }
 
