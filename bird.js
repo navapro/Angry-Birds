@@ -14,6 +14,13 @@ class Bird {
     World.remove(world, mConstraint);
     const pos = this.body.position;
     const angle = this.body.angle;
+    
+    if ( this.body.velocity.x> 0){
+      this.body.velocity.x = 0
+
+    }
+   console.log(this.body.velocity.x)
+
     push();
     translate(pos.x, pos.y);
     birdX = pos.x;
