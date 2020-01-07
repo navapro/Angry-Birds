@@ -37,6 +37,9 @@ function deleteObjects(){
       glass3 = null;
 
     }
-    console.log('yaayay');
+    if (tnt1) {
+      tnt1.delete();
+      tnt1 = null;
+    }
   }
 }
