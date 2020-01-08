@@ -235,12 +235,13 @@ function draw() {
 
       if (mouseX < width / 3 ) {
         World.add(world, mConstraint);
-
+        console.log(mConstraint);
 
       }
       else {
 
         World.remove(world, mConstraint);
+       
       }
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
@@ -274,7 +275,7 @@ function draw() {
         metal2 = new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg);
         metal3 = new Metal(width / 1.333333, height / 1.7, width / 2.7, width / 30, metalHorizontalImg);
 
-        console.log(metal1);
+        
 
         bird = new Bird(width / 3.5, height / 1.5,pigAndBirdSize);
         slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
