@@ -1,5 +1,6 @@
 function deleteObjects(){
    instructions = true;
+   tntDone= true;
    instructionsDelay = 0;
      if (ground) {
     ground.delete()

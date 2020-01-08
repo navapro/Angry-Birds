@@ -621,7 +621,7 @@ function draw() {
 
         minnionPig3 = new Pig(width / 1.5, height / 1.33, pigAndBirdSize);
 
-      tnt1 = new TNT(width / 1.38, height / 2, width / 20, 90, woodImg);
+      tnt1 = new TNT(width / 1.38, height / 2, width / 20, 90, tntImg);
         currentLevel = 0;
 
       }
@@ -644,9 +644,17 @@ function draw() {
       let glass3CollitionForce = glass3.body.speed;
 
 
+if (tnt1.body.speed >4 && tntDone){
+tnt1.explosion();
+tntDone = false;
+World.remove(world, tnt1.body);
 
+}
+if (tntDone){
+  tnt1.show();
+}
 
-      if (glass1CollitionForce > 1) {
+      if (glass1CollitionForce > .5) {
         World.remove(world, glass1.body);
         if (glass1break) {
           glassSound.play();
@@ -694,7 +702,7 @@ function draw() {
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
-          pigDieSound.setVolume(.5);
+          
           pigDieSound.play();
           minnionPig1Die = false;
         }
@@ -740,7 +748,7 @@ function draw() {
       box1.show();
       box2.show();
       box3.show();
-      tnt1.show();
+    
       metal1.show();
       metal2.show();
       metal3.show();

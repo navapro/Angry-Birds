@@ -35,11 +35,15 @@ class TNT {
 explosion(){
     let v =  Matter.Composite.allBodies(world);
   
+   let tempX = this.body.position.x;
+   let tempY =  this.body.position.y;
+  
 
     for (let i = 0; i < v.length; i++) {
         
-
- Body.applyForce( v[i], {x: v[i].position.x, y: v[i].position.y}, {x: 0.05, y: 0});
+       tempX = ( v[i].position.x -this.body.position.x )/300 ;
+       tempY =  (this.body.position.y - v[i].position.y)/300;
+  Matter.Body.applyForce( v[i], {x: v[i].position.x, y: v[i].position.y}, {x: tempX, y: tempY});
  }
 }
 }

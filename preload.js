@@ -32,6 +32,7 @@ function preload() {
  settingsImg = loadImage('assets/settings.png');
  storeImg = loadImage('assets/store.png');
  levelBackgroundGlow = loadImage('assets/levelBackgroundGlow.png');
+ tntImg = loadImage('assets/tnt.png');
 
  clickSound = loadSound('assets/click.mp3');
  glassSound = loadSound('assets/glassBreak.mp3');
