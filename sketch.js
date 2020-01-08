@@ -41,6 +41,8 @@ pigAndBirdSize = width /40;
   volumeSlider2.position(width / 2, -height / 2);
   birdImgID = 0;
 
+  
+
 }
 
 
@@ -148,6 +150,8 @@ function draw() {
     level1 = true;
   }
   else if (state === "game") {
+    
+  Matter.Events.on(engine,'CollitionStart',collision());
     if (birdFly){
       if (birdX > width/3.5){
         birdFly = false;
@@ -941,4 +945,6 @@ function mouseReleased() {
 }
 
 
-
+function collision(event){
+  console.log(event);
+}
