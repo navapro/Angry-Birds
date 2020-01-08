@@ -606,9 +606,9 @@ function draw() {
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
         metal3 = new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
 
-        glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
-        glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
-        glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
+        // glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        // glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        // glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
@@ -639,12 +639,12 @@ function draw() {
       // Matter.Engine.update(engine);
       ground.show();
 
-      let glass1CollitionForce = glass1.body.speed;
-      let glass2CollitionForce = glass2.body.speed;
-      let glass3CollitionForce = glass3.body.speed;
+      // let glass1CollitionForce = glass1.body.speed;
+      // let glass2CollitionForce = glass2.body.speed;
+      // let glass3CollitionForce = glass3.body.speed;
 
 
-if (tnt1.body.speed >4 && tntDone){
+if (tnt1.body.speed >4.5 && tntDone){
 tnt1.explosion();
 tntDone = false;
 World.remove(world, tnt1.body);
@@ -654,42 +654,42 @@ if (tntDone){
   tnt1.show();
 }
 
-      if (glass1CollitionForce > .5) {
-        World.remove(world, glass1.body);
-        if (glass1break) {
-          glassSound.play();
-          glass1break = false;
-        }
-      }
-      else {
-        glass1.show();
-      }
-      if (glass2CollitionForce > 1) {
-        World.remove(world, glass2.body);
-        if (glass2break) {
-          glassSound.play();
-          glass2break = false;
-        }
+      // if (glass1CollitionForce > .5) {
+      //   World.remove(world, glass1.body);
+      //   if (glass1break) {
+      //     glassSound.play();
+      //     glass1break = false;
+      //   }
+      // }
+      // else {
+      //   glass1.show();
+      // }
+      // if (glass2CollitionForce > 1) {
+      //   World.remove(world, glass2.body);
+      //   if (glass2break) {
+      //     glassSound.play();
+      //     glass2break = false;
+      //   }
 
-      }
-      else {
-        glass2.show();
-      }
-      if (glass3CollitionForce > 1) {
-        if (galss3Wait > 10) {
-          World.remove(world, glass3.body);
-          if (glass3break) {
-            glassSound.play();
-            glass3break = false;
-          }
-        }
+      // }
+      // else {
+      //   glass2.show();
+      // }
+      // if (glass3CollitionForce > 1) {
+      //   if (galss3Wait > 10) {
+      //     World.remove(world, glass3.body);
+      //     if (glass3break) {
+      //       glassSound.play();
+      //       glass3break = false;
+      //     }
+      //   }
 
 
-      }
-      else {
+      // }
+      // else {
 
-        glass3.show();
-      }
+      //   glass3.show();
+      // }
       galss3Wait++;
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
