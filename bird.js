@@ -10,6 +10,7 @@ class Bird {
     this.r = r;
 
     this.body.frictionAir = .06;
+    this.body.label = 'Bird';
   }
 
   show() {

@@ -44,4 +44,4 @@ let font;
 let instructions =  true;
 let pigAndBirdSize;
 let birdFly = false;
-let tnt1,tntImg,tntDone;
+let tnt1,tntImg,tntDone,tntEffect;

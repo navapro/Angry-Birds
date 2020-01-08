@@ -11,6 +11,7 @@ class Box {
     this.w = w;
     this.h = h;
     this.img = img;
+    this.body.label = 'Wood';
   }
   
   show() {

@@ -8,6 +8,7 @@ class Pig {
       Matter.Body.setMass(this.body, this.body.mass*4);
       Matter.World.add(world, this.body);
       this.r = r;
+      this.body.label = 'Pig';
     }
   
     show() {

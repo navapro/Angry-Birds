@@ -13,6 +13,7 @@ class Metal {
       this.w = w;
       this.h = h;
       this.img = img;
+      this.body.label = 'Metal';
     }
     
     show() {

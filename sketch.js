@@ -654,6 +654,9 @@ tntDone = false;
 World.remove(world, tnt1.body);
 
 }
+// if (tntEffect){
+//   tntEffect.effect();
+// }
 if (tntDone){
   tnt1.show();
 }

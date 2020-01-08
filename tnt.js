@@ -11,6 +11,7 @@ class TNT {
       this.w = w;
       this.h = h;
       this.img = img;
+      this.body.label = 'Tnt';
     }
     
     show() {
@@ -45,5 +46,11 @@ explosion(){
        tempY =  (this.body.position.y - v[i].position.y)/300;
   Matter.Body.applyForce( v[i], {x: v[i].position.x, y: v[i].position.y}, {x: tempX, y: tempY});
  }
+
 }
+// effect(){
+//   for (let i = 0; i <100; i++) {
+
+// }
+// }
 }
