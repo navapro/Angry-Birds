@@ -233,9 +233,17 @@ function draw() {
       }
 
 
-      if (mouseX < width / 3 ) {
+      if (mConstraint.body ) {
+        
+      if (mConstraint.body.label=== 'Bird' ) {
         World.add(world, mConstraint);
-        console.log(mConstraint);
+      }
+      else {
+
+        World.remove(world, mConstraint);
+       
+      }
+        console.log(mConstraint.body.label);
 
       }
       else {
