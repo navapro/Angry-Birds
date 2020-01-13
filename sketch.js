@@ -6,8 +6,8 @@ function setup() {
   frameRate(60);
 pigAndBirdSize = width /40;
 
-  for (let i = 0; i < 4; i++) {
-    levels[i] = new Levels(width / 4 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
+  for (let i = 0; i < 5; i++) {
+    levels[i] = new Levels(width / 6 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
   }
 
   const mouse = Mouse.create(canvas.elt);
@@ -15,11 +15,12 @@ pigAndBirdSize = width /40;
     mouse: mouse,
   }
 
-
+  // Matter.Events.on(engine, "afterUpdate", callback);
+  
   // A fix for high pixel density displays
   mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, options);
-  console.log(mConstraint)
+ 
   // World.add(world, mConstraint);
   World.remove(world, mConstraint);
   backgroundMusic.loop();
@@ -41,7 +42,7 @@ pigAndBirdSize = width /40;
   volumeSlider2.position(width / 2, -height / 2);
   birdImgID = 0;
 
-  
+   Matter.Events.on(engine,"collisionStart",collision);
 
 }
 
@@ -53,9 +54,10 @@ function draw() {
   backgroundMusic.setVolume(volumeSlider.value());
   clickSound.setVolume(volumeSlider2.value());
   glassSound.setVolume(volumeSlider2.value());
-  metalSound.setVolume(volumeSlider2.value());
+  metalSound.setVolume(volumeSlider2.value()/1.5);
   pigDieSound.setVolume(volumeSlider2.value());
-
+  woodSound.setVolume(volumeSlider2.value()/1.5);
+ 
 
 
   if (state === "menu") {
@@ -150,15 +152,40 @@ function draw() {
     level1 = true;
   }
   else if (state === "game") {
-    
-  Matter.Events.on(engine,'CollitionStart',collision());
+    woodSound.onended(woodsoundCallback);
+    metalSound.onended(metalsoundCallback);
+
     if (birdFly){
       if (birdX > width/3.5){
         birdFly = false;
         slingshot.fly();
       }
     }
-
+  if (bird){
+    if (birdCounter > 2 && birdX > windowWidth ||birdCounter > 1 &&birdX < 0){
+      if( birdCounterWait > 60){
+        birdCounter--;
+      }
+      birdCounterWait ++;
+    }
+    if (birdCounter === 1 && birdFlying &&  bird.body.speed < 0.28 ||birdCounter === 1 && birdX > windowWidth ||birdCounter === 1 &&birdX < 0){
+      if( birdCounterWait > 60){
+      gameOver  = true;
+      }
+      birdCounterWait ++;
+    }
+    if (birdCounter >1 && birdFlying &&  bird.body.speed < 0.28 || birdX > windowWidth ||birdX < 0){
+      if( birdCounterWait > 60){
+      World.remove(world, bird.body);
+      bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
+      slingshot.attach(bird.body);
+      birdCounterWait = 0;
+      birdCounter--;
+    }
+    birdCounterWait ++;
+    }
+  }
+    
     if (stateLevel === "level1") {
 
       if (currentLevel === 1) {
@@ -183,6 +210,7 @@ function draw() {
 
 
      
+
 
       levelClicked = false;
       checkIfMenuIsClicked();
@@ -243,7 +271,7 @@ function draw() {
         World.remove(world, mConstraint);
        
       }
-        console.log(mConstraint.body.label);
+        
 
       }
       else {
@@ -307,7 +335,7 @@ function draw() {
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
-      // Matter.Engine.update(engine);
+      
       ground.show();
 
 
@@ -386,15 +414,24 @@ function draw() {
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3 ) {
-        World.add(world, mConstraint);
-
-
-      }
-      else {
-
-        World.remove(world, mConstraint);
-      }
+      if (mConstraint.body ) {
+        
+        if (mConstraint.body.label=== 'Bird' ) {
+          World.add(world, mConstraint);
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
+          
+  
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
@@ -447,7 +484,6 @@ function draw() {
 
       }
 
-      //console.log()
 
 
       levelClicked = false;
@@ -457,7 +493,7 @@ function draw() {
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
-      // Matter.Engine.update(engine);
+      
       ground.show();
 
       let glass1CollitionForce = glass1.body.speed;
@@ -579,15 +615,25 @@ function draw() {
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3) {
-        World.add(world, mConstraint);
-
-
-      }
-      else {
-
-        World.remove(world, mConstraint);
-      }
+      
+      if (mConstraint.body ) {
+        
+        if (mConstraint.body.label=== 'Bird' ) {
+          World.add(world, mConstraint);
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
+        
+  
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
@@ -599,6 +645,219 @@ function draw() {
     }
     if (stateLevel === "level4") {
       if (currentLevel === 4) {
+        if (minnionPig) {
+          World.remove(world, minnionPig.body);
+          if (minnionPig2) {
+            World.remove(world, minnionPig2.body);
+          }
+          if (minnionPig3) {
+            World.remove(world, minnionPig3.body);
+          }
+        }
+        ground = new Ground(width / 2, height - 10, width, 20);
+
+
+        box1 = new Box(width / 1.52, height / 1.1, 120, 150, woodImg);
+        box2 = new Box(width / 1.25, height / 1.1, 120, 150, woodImg);
+        box3 = new Box(width / 1.38, height / 1.35, width / 11, 90, woodImg);
+
+        metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
+        metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
+        metal3 = new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
+
+        glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
+        glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
+
+        glass1break = glass2break = glass3break = true;
+        counter = 0;
+
+        bird = new Bird(width / 3.5, height / 1.5,pigAndBirdSize);
+        slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
+        minnionPig = new Pig(width / 1.37, height - 40, pigAndBirdSize);
+
+        minnionPig2 = new Pig(width / 1.2, height / 1.33, pigAndBirdSize);
+
+        minnionPig3 = new Pig(width / 1.5, height / 1.33, pigAndBirdSize);
+
+      tnt1 = new TNT(width / 1.38, height / 2, width / 20, 90, tntImg);
+        currentLevel = 0;
+
+      }
+
+    
+
+
+      levelClicked = false;
+      checkIfMenuIsClicked();
+
+      
+
+      background(bkgImg);
+      image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
+      // Matter.Engine.update(engine);
+      ground.show();
+
+      let glass1CollitionForce = glass1.body.speed;
+      let glass2CollitionForce = glass2.body.speed;
+      let glass3CollitionForce = glass3.body.speed;
+
+
+if (tnt1.body.speed >4.5 && tntDone){
+tnt1.explosion();
+tntDone = false;
+World.remove(world, tnt1.body);
+
+}
+// if (tntEffect){
+//   tntEffect.effect();
+// }
+if (tntDone){
+  tnt1.show();
+}
+
+      if (glass1CollitionForce > .5) {
+        World.remove(world, glass1.body);
+        if (glass1break) {
+          glassSound.play();
+          glass1break = false;
+        }
+      }
+      else {
+        glass1.show();
+      }
+      if (glass2CollitionForce > 1) {
+        World.remove(world, glass2.body);
+        if (glass2break) {
+          glassSound.play();
+          glass2break = false;
+        }
+
+      }
+      else {
+        glass2.show();
+      }
+      if (glass3CollitionForce > 1) {
+        if (galss3Wait > 10) {
+          World.remove(world, glass3.body);
+          if (glass3break) {
+            glassSound.play();
+            glass3break = false;
+          }
+        }
+
+
+      }
+      else {
+
+        glass3.show();
+      }
+      galss3Wait++;
+      let collitionForceY = minnionPig.body.positionImpulse.y;
+
+      let collitionForce1 = collitionForceY;
+      let collitionForce2 = minnionPig2.body.positionImpulse.y;
+      let collitionForce3 = minnionPig3.body.positionImpulse.y;
+
+      if (collitionForce1 !== 0) {
+        World.remove(world, minnionPig.body);
+        if (minnionPig1Die) {
+          coinCounter += 100;
+          counter++;
+          
+          pigDieSound.play();
+          minnionPig1Die = false;
+        }
+
+      }
+      else {
+        minnionPig.show();
+        gameEnd = false;
+      }
+      if (collitionForce2 !== 0) {
+        World.remove(world, minnionPig2.body);
+        if (minnionPig2Die) {
+          coinCounter += 100;
+          counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
+          minnionPig2Die = false;
+        }
+
+      }
+      else {
+        minnionPig2.show();
+        gameEnd = false;
+      }
+      if (collitionForce3 !== 0) {
+        World.remove(world, minnionPig3.body);
+        if (minnionPig3Die) {
+          coinCounter += 100;
+          counter++;
+          pigDieSound.setVolume(.5);
+          pigDieSound.play();
+          minnionPig3Die = false;
+        }
+
+      }
+      else {
+        minnionPig3.show();
+        gameEnd = false;
+      }
+
+
+
+      box1.show();
+      box2.show();
+      box3.show();
+    
+      metal1.show();
+      metal2.show();
+      metal3.show();
+
+
+      slingshot.show();
+      bird.show();
+      image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
+      if (counter === 3) {
+        gameEnd = true;
+      }
+
+      if (birdX < 270) {
+        slingShotRemoval = true;
+      }
+      else {
+        slingShotRemoval = false;
+      }
+      if (mConstraint.body ) {
+        
+        if (mConstraint.body.label=== 'Bird' ) {
+          World.add(world, mConstraint);
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
+       
+  
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
+      image(coin, width / 100, width / 100, width / 20, width / 20);
+      push();
+      textSize(width / 25);
+      fill(0);
+
+      text(coinCounter, width / 12, width / 20);
+      pop();
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+    }
+    if (stateLevel === "level5") {
+      if (currentLevel === 5) {
         if (minnionPig) {
           World.remove(world, minnionPig.body);
           if (minnionPig2) {
@@ -783,15 +1042,24 @@ if (tntDone){
       else {
         slingShotRemoval = false;
       }
-      if (mouseX < width / 3) {
-        World.add(world, mConstraint);
-
-
-      }
-      else {
-
-        World.remove(world, mConstraint);
-      }
+      if (mConstraint.body ) {
+        
+        if (mConstraint.body.label=== 'Bird' ) {
+          World.add(world, mConstraint);
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
+         
+  
+        }
+        else {
+  
+          World.remove(world, mConstraint);
+         
+        }
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
@@ -801,7 +1069,10 @@ if (tntDone){
       pop();
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
-    if (gameEnd || pause) {
+    if (gameEnd || pause || gameOver) {
+      
+      instructions = false;
+
       if (mouseIsPressed && pauseClicked) {
         clickSound.play();
       }
@@ -818,11 +1089,7 @@ if (tntDone){
         image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
       }
       pop();
-      // push();
-      // fill(255);
-      // circle();
-
-      // pop();
+     
       if (pause) {
         if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
           pause = false;
@@ -847,15 +1114,53 @@ if (tntDone){
       }
       if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize - 5) && mouseIsPressed) {
 
-        deleteObjects();
         let temp = int(stateLevel[5]) + 1;
+        if (temp < 6){
+          deleteObjects();
         levelClicked = false;
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         stateLevel = "level" + temp;
         currentLevel = temp;
-        pause = false;
+      
+      pause = false;
         clickSound.play();
       }
+    }
+        if (gameEnd){
+          push();
+          noStroke();
+          textFont(font);
+          textSize(width / 10);
+      
+          text("Victory !", width / 3, height / 2);
+      
+          pop();
+          pause = false;
+          gameOver= false;
+          
+        }
+    if (gameOver){
+      push();
+      noStroke();
+      textFont(font);
+      textSize(width / 15);
+  
+      text("Game Over", width / 3, height / 2);
+  
+      pop();
+      pause = false;
+    }
+    if (pause){
+      push();
+      noStroke();
+      textFont(font);
+      textSize(width / 15);
+  
+      text("Paused", width / 2.5, height / 2);
+  
+      pop();
+      
+    }
     }
     else {
       pauseClicked = true;
@@ -876,9 +1181,14 @@ if (tntDone){
     pop();
     
   }
+
+  if (mouseX > width / 3 || birdX > width / 3 ) {
+      World.remove(world, mConstraint);
+    
+    }
   }
   
-
+ 
 
 }
 
@@ -928,14 +1238,7 @@ function showSettings() {
 }
 
 
-function keyPressed() {
-  if (key == ' ') {
-    World.remove(world, bird.body);
-    bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
-    slingshot.attach(bird.body);
-  }
 
-}
 
 function mouseReleased() {
 
@@ -956,7 +1259,32 @@ function mouseReleased() {
   }
 }
 
-
-function collision(event){
-  console.log(event);
+function woodsoundCallback(){
+  woodSoundPlayed = true;
 }
+function metalsoundCallback(){
+  metalSoundPlayed = true;
+}
+function collision(event){
+ if ( !instructions){
+  let pairs = event.pairs;
+  
+  let bodyB = pairs[0].bodyB.label;
+  
+    if (bodyB === "Wood" ){
+     
+        if (woodSoundPlayed){
+     woodSound.play();
+     woodSoundPlayed = false;
+        }
+      
+    }
+    if (bodyB === "Metal" ){
+        if (metalSoundPlayed){
+      metalSound.play();
+      metalSoundPlayed = false;
+      }
+    }
+    }
+  }
+ 

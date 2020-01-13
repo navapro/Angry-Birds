@@ -18,6 +18,7 @@ class SlingShot {
   fly() {
     
     this.sling.bodyB = null;
+    
   }
 
   show() {
@@ -27,7 +28,11 @@ class SlingShot {
       const posA = this.sling.pointA;
       const posB = this.sling.bodyB.position;
       line(posA.x, posA.y, posB.x, posB.y);
+      birdFlying = false;
       
+    }
+    else{
+      birdFlying = true;
     }
   }
   

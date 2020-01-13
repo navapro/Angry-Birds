@@ -1,7 +1,10 @@
 function deleteObjects(){
    instructions = true;
    tntDone= true;
-   instructionsDelay = 0;
+   instructionsDelay = birdCounterWait = 0;
+   birdCounter =3;
+   gameOver = false;
+   
      if (ground) {
     ground.delete()
     ground = null;

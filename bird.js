@@ -9,7 +9,7 @@ class Bird {
     Matter.World.add(world, this.body);
     this.r = r;
 
-    this.body.frictionAir = .06;
+    this.body.frictionAir = .05;
     this.body.label = 'Bird';
   }
 

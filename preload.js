@@ -41,5 +41,8 @@ function preload() {
 backgroundMusic = loadSound('assets/backgroundMusic.mp3');
 font = loadFont('assets/font.ttf');
 
+metalSound = loadSound('assets/metal.mp3');
+woodSound = loadSound('assets/wood.mp3');
+
 }
 
