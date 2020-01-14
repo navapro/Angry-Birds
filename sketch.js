@@ -733,6 +733,7 @@ function draw() {
           glass4break = false;
         }
       }
+      
       else {
         glass4.show();
       }

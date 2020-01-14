@@ -17,7 +17,7 @@ class Bird {
     World.remove(world, mConstraint);
     const pos = this.body.position;
     const angle = this.body.angle;
-    console.log(this.body.velocity.x);
+    
   if (this.body.velocity.x > 60){
     Matter.Body.setVelocity(this.body, {
       x: 60,

@@ -6,9 +6,9 @@ class Metal {
       }    
       this.body = Matter.Bodies.rectangle(x, y, w, h);
       Matter.Body.setMass(this.body, this.body.mass*5);
-      this.body.density=  1;
-      this.body.friction =  .1;
-      this.body.frictionAir =  .02;
+      this.body.density=  0.5;
+      this.body.friction =  .05;
+      this.body.frictionAir =  .01;
       Matter.World.add(world, this.body,options);
       this.w = w;
       this.h = h;

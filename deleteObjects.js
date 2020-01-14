@@ -36,7 +36,7 @@ function deleteObjects(){
     if (glass1) {
       glass1.delete();
       glass1 = null;
-      glass5.delete();
+      glass2.delete();
       glass2 = null;
       glass3.delete();
       glass3 = null;
