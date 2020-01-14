@@ -7,7 +7,7 @@ class SlingShot {
         y: y
       },
       bodyB: body,
-      stiffness: 0.02,
+      stiffness: 0.01,
       length: 20
     }
     this.sling = Constraint.create(options);
@@ -23,13 +23,15 @@ class SlingShot {
 
   show() {
     if (this.sling.bodyB) {
+      push();
       stroke(0);
-      strokeWeight(4);
+      strokeWeight(10);
+   
       const posA = this.sling.pointA;
       const posB = this.sling.bodyB.position;
       line(posA.x, posA.y, posB.x, posB.y);
       birdFlying = false;
-      
+      pop();
     }
     else{
       birdFlying = true;

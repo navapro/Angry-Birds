@@ -663,11 +663,15 @@ function draw() {
 
         metal1 = new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg);
         metal2 = new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg);
-        metal3 = new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
+        metal3 = new Metal(width / 1.377, height / 1.7, width / 3.1, width / 40, metalHorizontalImg);
 
-        glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
-        glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg);
-        glass3 = new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg);
+        glass1 = new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 40, glassImg);
+        glass2 = new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 40, glassImg);
+        glass3 = new Glass(width / 1.376, height / 1.8, width / 2.3, width / 40, glassHorizontalImg);
+
+        glass6 = new Glass(width / 1.385, height / 2.5, width / 8.5, width / 50, glassHorizontalImg);
+        glass4 = new Glass(width / 1.482, height / 2, width / 40, height /7, glassImg);
+        glass5 = new Glass(width / 1.3, height / 2, width / 40, height /7, glassImg);
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
@@ -701,20 +705,57 @@ function draw() {
       let glass1CollitionForce = glass1.body.speed;
       let glass2CollitionForce = glass2.body.speed;
       let glass3CollitionForce = glass3.body.speed;
+      let glass4CollitionForce = glass4.body.speed;
+      let glass5CollitionForce = glass5.body.speed;
+      let glass6CollitionForce = glass6.body.speed;
+    
+      
+      if (tnt1.body.speed >4.5 && tntDone){
+        tnt1.explosion();
+        tntDone = false;
+        World.remove(world, tnt1.body);
+        
+      }
+      // if (tntEffect){
+        //   tntEffect.effect();
+        // }
+        if (tntDone){
+          tnt1.show();
+        }
+        
+        
+    
 
-
-if (tnt1.body.speed >4.5 && tntDone){
-tnt1.explosion();
-tntDone = false;
-World.remove(world, tnt1.body);
-
-}
-// if (tntEffect){
-//   tntEffect.effect();
-// }
-if (tntDone){
-  tnt1.show();
-}
+       if (glass4CollitionForce > .5 && glassBreak> 10) {
+        World.remove(world, glass4.body);
+        if (glass4break) {
+          glassSound.play();
+          glass4break = false;
+        }
+      }
+      else {
+        glass4.show();
+      }
+      if (glass5CollitionForce > .5&& glassBreak> 10) {
+        World.remove(world, glass5.body);
+        if (glass5break) {
+          glassSound.play();
+          glass5break = false;
+        }
+      }
+      else {
+        glass5.show();
+      }
+      if (glass6CollitionForce > .5&& glassBreak> 10) {
+        World.remove(world, glass6.body);
+        if (glass6break) {
+          glassSound.play();
+          glass6break = false;
+        }
+      }
+      else {
+        glass6.show();
+      }
 
       if (glass1CollitionForce > .5) {
         World.remove(world, glass1.body);
@@ -753,6 +794,7 @@ if (tntDone){
         glass3.show();
       }
       galss3Wait++;
+      glassBreak++;
       let collitionForceY = minnionPig.body.positionImpulse.y;
 
       let collitionForce1 = collitionForceY;
@@ -1176,7 +1218,7 @@ if (tntDone){
     textSize(width / 25);
     instructionsDelay ++;
 
-    text("Click And Drag The Bird To Shoot The Pig !", width / 6, height / 4);
+    text("Click And Drag The Bird  Back To Shoot The Pig !", width / 8, height / 4);
 
     pop();
     

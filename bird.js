@@ -9,7 +9,7 @@ class Bird {
     Matter.World.add(world, this.body);
     this.r = r;
 
-    this.body.frictionAir = .05;
+    // this.body.frictionAir = .05;
     this.body.label = 'Bird';
   }
 
@@ -17,9 +17,19 @@ class Bird {
     World.remove(world, mConstraint);
     const pos = this.body.position;
     const angle = this.body.angle;
-    
-
-
+    console.log(this.body.velocity.x);
+  if (this.body.velocity.x > 60){
+    Matter.Body.setVelocity(this.body, {
+      x: 60,
+      y: this.body.velocity.y
+    });
+  }
+  if (this.body.velocity.y < -50){
+    Matter.Body.setVelocity(this.body, {
+      x: this.body.velocity.x,
+      y: -50
+    });
+  }
     push();
     translate(pos.x, pos.y);
     birdX = pos.x;

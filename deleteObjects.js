@@ -1,9 +1,10 @@
 function deleteObjects(){
    instructions = true;
    tntDone= true;
-   instructionsDelay = birdCounterWait = 0;
+   instructionsDelay = birdCounterWait = glassBreak = 0;
    birdCounter =3;
    gameOver = false;
+   glass4break= glass5break= glass6break= true;
    
      if (ground) {
     ground.delete()
@@ -35,10 +36,19 @@ function deleteObjects(){
     if (glass1) {
       glass1.delete();
       glass1 = null;
-      glass2.delete();
+      glass5.delete();
       glass2 = null;
       glass3.delete();
       glass3 = null;
+
+    }
+    if (glass4) {
+      glass4.delete();
+      glass4 = null;
+      glass5.delete();
+      glass5 = null;
+      glass6.delete();
+      glass6 = null;
 
     }
     if (tnt1) {
