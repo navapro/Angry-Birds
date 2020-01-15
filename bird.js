@@ -1,5 +1,5 @@
 
-// Create a class called bird.
+// Create a class for the bird.
 
 class Bird {
 
@@ -23,11 +23,11 @@ class Bird {
   // display the bird.
   show() {
 
-    
+
     const POS = this.body.position;
     const ANGLE = this.body.angle;
 
-  // limit the maximum speed of the bird.
+    // limit the maximum speed of the bird.
 
     if (this.body.velocity.x > 60) {
       Matter.Body.setVelocity(this.body, {
@@ -54,7 +54,7 @@ class Bird {
     pop();
 
   }
-  
+
   // delete the body from the world.
   delete() {
     Matter.World.remove(world, this.body);

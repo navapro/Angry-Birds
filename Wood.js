@@ -1,6 +1,6 @@
-// Create a class for Metals.
 
-class Metal {
+// Create a class for wood bodies.
+class Wood {
 
   constructor(x, y, w, h, img) {
 
@@ -10,25 +10,21 @@ class Metal {
 
     // set the restitution of the body.
     const options = {
-      restitution: 0
+      restitution: .1
     }
 
-    // create the Metal's body set its properties and label and add the body to the world.
-
-    this.body = Matter.Bodies.rectangle(x, y, w, h);
-    Matter.Body.setMass(this.body, this.body.mass * 5);
-    this.body.density = 0.5;
-    this.body.friction = .05;
-    this.body.frictionAir = .01;
-    this.body.label = 'Metal';
-    Matter.World.add(world, this.body, options);
+    // create the wood's body set its properties and label and add the body to the world.
+    this.body = Matter.Bodies.rectangle(x, y, w, h, options);
+    Matter.Body.setMass(this.body, this.body.mass * 2);
+    this.body.friction = .5;
+    this.body.label = 'Wood';
+    Matter.World.add(world, this.body);
   }
 
-
-  // display the metal.
   show() {
 
-    // draw the metal's image at the body's position.
+    // draw the image at the body's position.
+
     const POS = this.body.position;
     const ANGLE = this.body.angle;
     push();

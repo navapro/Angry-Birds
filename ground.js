@@ -1,17 +1,22 @@
-class Ground extends Box {
+// Create a class for Ground using inheritance from wood.
+class Ground extends Wood {
 
   constructor(x, y, w, h) {
+    
     super(x, y, w, h);
+
+    // make the body static so it doesnt move and change its label.
     this.body.isStatic = true;
     this.body.label = 'Ground';
   }
 
+ // display the ground.
   show() {
-    const pos = this.body.position;
-    const angle = this.body.angle;
+    const POS = this.body.position;
+    const ANGLE = this.body.angle;
     push();
-    translate(pos.x, pos.y);
-    rotate(angle);
+    translate(POS.x, POS.y);
+    rotate(ANGLE);
     noStroke();
     fill(255);
     rectMode(CENTER);

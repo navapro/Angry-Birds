@@ -9,7 +9,7 @@ function setup() {
   world = engine.world;
   frameRate(60);
 
-  
+
 pigAndBirdSize = width /40;
 
   for (let i = 0; i < 5; i++) {
@@ -199,9 +199,9 @@ function draw() {
         bird =  new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
         objects.push(new Ground(width / 2, height - 10, width, 20));
-        objects.push(new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg));
-        objects.push(new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg));
-        objects.push(new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg));
+        objects.push(new Wood(width / 1.5, height / 1.1, width / 15, width / 10, woodImg));
+        objects.push(new Wood(width / 1.2, height / 1.1, width / 15, width / 10, woodImg));
+        objects.push(new Wood(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg));
         objects.push(new SlingShot(width / 3.5, height / 1.5, bird.body));
         objects.push(new Pig(width / 1.33, height - 40, pigAndBirdSize));
         
