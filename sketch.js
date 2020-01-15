@@ -1,9 +1,15 @@
+// I beta tested my game with a few people and I implemented the following :
+// A loading screen, slightly changed my instructions and added some new sound effects.
+// The beta tester recomened a guide line for the bird but that was had to do and i didn't have enough time to implement this.
+
 function setup() {
 
   const canvas = createCanvas(windowWidth, windowHeight);
   engine = Engine.create();
   world = engine.world;
   frameRate(60);
+
+  
 pigAndBirdSize = width /40;
 
   for (let i = 0; i < 5; i++) {
@@ -15,7 +21,7 @@ pigAndBirdSize = width /40;
     mouse: mouse,
   }
 
-  // Matter.Events.on(engine, "afterUpdate", callback);
+ 
   
   // A fix for high pixel density displays
   mouse.pixelRatio = pixelDensity();
