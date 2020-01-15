@@ -158,7 +158,7 @@ function draw() {
     if (birdFly){
       if (birdX > width/3.5){
         birdFly = false;
-        slingshot.fly();
+        objects[4].fly();
       }
     }
   if (bird){
@@ -178,7 +178,7 @@ function draw() {
       if( birdCounterWait > 60){
       World.remove(world, bird.body);
       bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
-      slingshot.attach(bird.body);
+      objects[4].attach(bird.body);
       birdCounterWait = 0;
       birdCounter--;
     }
@@ -189,21 +189,17 @@ function draw() {
     if (stateLevel === "level1") {
 
       if (currentLevel === 1) {
-        if (minnionPig) {
-          World.remove(world, minnionPig.body);
-        }
-        ground = new Ground(width / 2, height - 10, width, 20);
+    
+        bird =  new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
-
-        box1 = new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg);
-        box2 = new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg);
-        box3 = new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg);
-
-        bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
-        slingshot = new SlingShot(width / 3.5, height / 1.5, bird.body);
-        minnionPig = new Pig(width / 1.33, height - 40, pigAndBirdSize);
-
-
+        objects.push(new Ground(width / 2, height - 10, width, 20));
+        objects.push(new Box(width / 1.5, height / 1.1, width / 15, width / 10, woodImg));
+        objects.push(new Box(width / 1.2, height / 1.1, width / 15, width / 10, woodImg));
+        objects.push(new Box(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg));
+        objects.push(new SlingShot(width / 3.5, height / 1.5, bird.body));
+        objects.push(new Pig(width / 1.33, height - 40, pigAndBirdSize));
+        
+        
         currentLevel = 0;
 
       }
@@ -220,15 +216,15 @@ function draw() {
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
-      ground.show();
+      objects[0].show();
 
 
-      let collitionForceY = minnionPig.body.positionImpulse.y;
+      let collitionForceY = objects[5].body.positionImpulse.y;
 
       let collitionForce = collitionForceY;
 
       if (collitionForce !== 0) {
-        World.remove(world, minnionPig.body);
+        World.remove(world, objects[5].body);
 
 
         gameEnd = true;
@@ -241,14 +237,15 @@ function draw() {
       }
       else {
         gameEnd = false;
-        minnionPig.show();
+        objects[5].show();
       }
-      box1.show();
-      box2.show();
-      box3.show();
+      for (let i = 1; i < 4; i++) {
+        objects[i].show();
+      }
+ 
 
 
-      slingshot.show();
+      objects[4].show();
       bird.show();
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
 
@@ -733,7 +730,7 @@ function draw() {
           glass4break = false;
         }
       }
-      
+
       else {
         glass4.show();
       }

@@ -3,11 +3,9 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
 // define all varialbles.
-let ground;
-let box1, box2, box3;
-let bird;
+let objects =[];
 let world, engine,mConstraint;
-let slingshot;
+let bird;
 let birdImg, boxImg, bkgImg, minnionPigImg, metalImg, metalHorizontalImg, woodHorizontalImg;
 let slingShotImgLeft, slingShotImgRight;
 let slingShotRemoval = false;

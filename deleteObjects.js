@@ -6,23 +6,21 @@ function deleteObjects(){
    gameOver = false;
    glass4break= glass5break= glass6break= true;
    
-     if (ground) {
-    ground.delete()
-    ground = null;
+    
+   for (let i = 0; i < objects.length; i++) {
+     if (objects[i].body){
 
-    box1.delete();
-    box1 = null;
-    box2.delete();
-    box2 = null;
+       World.remove(world, objects[i].body);
+     }
+    objects[i].delete();
+  }
 
-    box3.delete();
-    box3 = null;
-
+objects = [];
+    
+  if (bird){
     bird.delete();
     bird = null;
-    slingshot.delete();
-    slingshot = null;
-    World.remove(world, minnionPig.body);
+  }
 
 
     if (metal1) {
@@ -56,4 +54,3 @@ function deleteObjects(){
       tnt1 = null;
     }
   }
-}
