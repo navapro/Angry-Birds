@@ -17,5 +17,7 @@ function deleteObjects() {
   }
 
   objects = [];
-
+if (bird){
+bird.delete();
+}
 }

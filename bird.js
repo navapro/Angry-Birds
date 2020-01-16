@@ -23,7 +23,7 @@ class Bird {
   // display the bird.
   show() {
 
-
+    World.remove(world, mConstraint);
     const POS = this.body.position;
     const ANGLE = this.body.angle;
 
@@ -35,10 +35,10 @@ class Bird {
         y: this.body.velocity.y
       });
     }
-    if (this.body.velocity.y < -50) {
+    if (this.body.velocity.y < -10) {
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
-        y: -50
+        y: -10
       });
     }
 

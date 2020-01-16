@@ -21,8 +21,6 @@ let birds = [];
 let levelClicked;
 let levelWait  = glassBreak = 0;
 let stateLevel;
-let metal1, metal2, metal3;
-let level1 = level2 = level3 = false;
 let glassImg, glassHorizontalImg;
 let glass1, glass2, glass3, glass4, glass5, glass6;
 let glass1break, glass2break, glass3break,glass4break, glass5break, glass6break;
