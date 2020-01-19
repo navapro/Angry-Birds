@@ -1,26 +1,29 @@
 class TNT {
   
     constructor(x, y, w, h,img) {
+
+      this.w = w;
+      this.h = h;
+      this.img = img;
+
       const options = {
         restitution:.1
       }    
+
       this.body = Matter.Bodies.rectangle(x, y, w, h, options);
       Matter.Body.setMass(this.body, this.body.mass*2);
       this.body.friction =  .5;
       Matter.World.add(world, this.body);
-      this.w = w;
-      this.h = h;
-      this.img = img;
       this.body.label = 'Tnt';
     }
     
     show() {
-      World.remove(world, mConstraint);
-      const pos = this.body.position;
-      const angle = this.body.angle;
+     
+      const POS = this.body.position;
+      const ANGLE = this.body.angle;
       push();
-      translate(pos.x, pos.y);
-      rotate(angle);
+      translate(POS.x, POS.y);
+      rotate(ANGLE);
       fill(255);
       rectMode(CENTER);
       imageMode(CENTER);
@@ -48,9 +51,5 @@ explosion(){
  }
 
 }
-// effect(){
-//   for (let i = 0; i <100; i++) {
 
-// }
-// }
 }
