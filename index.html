@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <link rel="icon" href="favicon.png" type="image/x-icon"/>
-      <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <link rel="stylesheet" href="css/fullscreenp5.css">
-    <script src="js/p5.min.js"></script>
-    <script src="js/matter.min.js"></script>
-    <script src="js/p5.dom.min.js"></script>
-    <script src="js/p5.sound.min.js"></script>
-    <script src="js/p5.collide2d.min.js"></script>
-  </head>
-  <body>
 
-    <div id="p5_loading" class="loadingclass"><style>
-     
-      body  {
-        /* set the background image to be gif and position it in the center, taing up the full screen and not repeating */
+<head>
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <link rel="stylesheet" href="css/fullscreenp5.css">
+  <script src="js/p5.min.js"></script>
+  <script src="js/matter.min.js"></script>
+  <script src="js/p5.dom.min.js"></script>
+  <script src="js/p5.sound.min.js"></script>
+  <script src="js/p5.collide2d.min.js"></script>
+</head>
+
+<body>
+
+  <!-- create a loading page by re witing the loading class built into p5.js -->
+  <div id="p5_loading" class="loadingclass">
+    <style>
+      body {
+        /* set the background image to be a gif and position it in the center, taking up the full screen and not repeating */
         background-image: url("loader.gif");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
       }
-      </style></div>
-    
+    </style>
+  </div>
+  <script src="variables.js"></script>
+  <script src="preload.js"></script>
+  <script src="slingshot.js"></script>
+  <script src="bird.js"></script>
+  <script src="Wood.js"></script>
+  <script src="pig.js"></script>
+  <script src="ground.js"></script>
+  <script src="metal.js"></script>
+  <script src="glass.js"></script>
+  <script src="levels.js"></script>
+  <script src="store.js"></script>
+  <script src="menu.js"></script>
+  <script src="deleteObjects.js"></script>
+  <script src="tnt.js"></script>
+  <script src="sketch.js"></script>
+</body>
 
-    <script src="variables.js"></script>
-    <script src="preload.js"></script>
-    <script src="slingshot.js"></script>
-    <script src="bird.js"></script>
-    <script src="Wood.js"></script>
-    <script src="pig.js"></script>
-    <script src="ground.js"></script>
-    <script src="metal.js"></script>
-    <script src="glass.js"></script>
-    <script src="levels.js"></script>
-    <script src="store.js"></script>
-    <script src="menu.js"></script>
-    <script src="deleteObjects.js"></script>
-    <script src="tnt.js"></script>
-    <script src="sketch.js"></script>
-  </body>
 </html>

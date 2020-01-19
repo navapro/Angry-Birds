@@ -13,7 +13,7 @@ class Wood {
       restitution: .1
     }
 
-    // create the wood's body set its properties and label and add the body to the world.
+    // create the wood's body, set its properties and label and add the body to the world.
     this.body = Matter.Bodies.rectangle(x, y, w, h, options);
     Matter.Body.setMass(this.body, this.body.mass * 2);
     this.body.friction = .5;
