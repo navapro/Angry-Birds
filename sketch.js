@@ -27,10 +27,11 @@ function setup() {
   mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, options);
 
-  // World.add(world, mConstraint);
-  World.remove(world, mConstraint);
-  backgroundMusic.loop();
 
+  World.remove(world, mConstraint);
+
+  // loop the background music so it doest stop.
+  backgroundMusic.loop();
 
 
   birdImgList = [birdImg1, birdImg2, birdImg3, birdImg4];
@@ -56,15 +57,17 @@ function setup() {
 
 function draw() {
 
+  // update the matter.js engine.
   Matter.Engine.update(engine);
+
+  // set the volume of sound effects to the value from slider.
+
   backgroundMusic.setVolume(volumeSlider.value());
   clickSound.setVolume(volumeSlider2.value());
   glassSound.setVolume(volumeSlider2.value());
   metalSound.setVolume(volumeSlider2.value() / 1.5);
   pigDieSound.setVolume(volumeSlider2.value());
   woodSound.setVolume(volumeSlider2.value() / 1.5);
-
-
 
   if (state === "menu") {
     levelWait = 0;
@@ -104,7 +107,7 @@ function draw() {
       }
       state = 'store';
     }
-    // birdImg = birdImgList[0];
+
 
 
 
@@ -213,11 +216,9 @@ function draw() {
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
-      let collitionForceY = objects[5].body.positionImpulse.y;
 
-      let collitionForce = collitionForceY;
 
-      if (collitionForce !== 0) {
+      if (objects[5].body.positionImpulse.y == 0) {
         World.remove(world, objects[5].body);
 
         gameEnd = true;
@@ -232,6 +233,7 @@ function draw() {
         gameEnd = false;
         objects[5].show();
       }
+
       for (let i = 0; i < 5; i++) {
         objects[i].show();
         World.remove(world, mConstraint);
@@ -277,41 +279,31 @@ function draw() {
         objects.push(new Wood(width / 1.333334, height / 1.48, width / 8.2, width / 17, woodImg));
         objects.push(new SlingShot(width / 3.5, height / 1.5, bird.body));
 
-        objects.push(new Pig(width / 1.33, height - 40, pigAndBirdSize));
-        objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
-        objects.push(new Pig(width / 1.5, height / 1.33, pigAndBirdSize));
-
         objects.push(new Metal(width / 1.1, (height - 20), width / 20, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.7, (height - 20), width / 20, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.333333, height / 1.7, width / 2.7, width / 30, metalHorizontalImg));
+
+        objects.push(new Pig(width / 1.33, height - 40, pigAndBirdSize));
+        objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
+        objects.push(new Pig(width / 1.5, height / 1.33, pigAndBirdSize));
 
         counter = 0;
         currentLevel = 0;
       }
 
-
-
-
       levelClicked = false;
       checkIfPauseIsClicked();
-
-
-
 
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
-      ground.show();
+      for (let i = 0; i < 8; i++) {
+        objects[i].show();
+        World.remove(world, mConstraint);
+      }
 
-
-      let collitionForceY = minnionPig.body.positionImpulse.y;
-
-      let collitionForce1 = collitionForceY;
-      let collitionForce2 = minnionPig2.body.positionImpulse.y;
-      let collitionForce3 = minnionPig3.body.positionImpulse.y;
-
-      if (collitionForce1 !== 0) {
-        World.remove(world, minnionPig.body);
+      if (objects[8].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[8].body);
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
@@ -322,11 +314,11 @@ function draw() {
 
       }
       else {
-        minnionPig.show();
+        objects[8].show();
         gameEnd = false;
       }
-      if (collitionForce2 !== 0) {
-        World.remove(world, minnionPig2.body);
+      if (objects[9].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[9].body);
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -335,13 +327,12 @@ function draw() {
           minnionPig2Die = false;
         }
 
-      }
-      else {
-        minnionPig2.show();
+      } else {
+        objects[9].show();
         gameEnd = false;
       }
-      if (collitionForce3 !== 0) {
-        World.remove(world, minnionPig3.body);
+      if (objects[10].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[10].body);
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -349,50 +340,36 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-
-      }
-      else {
-        minnionPig3.show();
+      } else {
+        objects[10].show();
         gameEnd = false;
       }
+
       if (counter === 3) {
         gameEnd = true;
       }
 
-
-      box1.show();
-      box2.show();
-      box3.show();
-      metal1.show();
-      metal2.show();
-      metal3.show();
-
-
-      slingshot.show();
       bird.show();
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
 
 
       if (birdX < 270) {
         slingShotRemoval = true;
-      }
-      else {
+      } else {
         slingShotRemoval = false;
       }
       if (mConstraint.body) {
 
         if (mConstraint.body.label === 'Bird') {
           World.add(world, mConstraint);
-        }
-        else {
+        } else {
 
           World.remove(world, mConstraint);
 
         }
 
 
-      }
-      else {
+      } else {
 
         World.remove(world, mConstraint);
 
@@ -410,15 +387,7 @@ function draw() {
     }
     if (stateLevel === "level3") {
       if (currentLevel === 3) {
-        if (minnionPig) {
-          World.remove(world, minnionPig.body);
-          if (minnionPig2) {
-            World.remove(world, minnionPig2.body);
-          }
-          if (minnionPig3) {
-            World.remove(world, minnionPig3.body);
-          }
-        }
+        bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
         objects.push(new Ground(width / 2, height - 10, width, 20));
         objects.push(new Wood(width / 1.52, height / 1.1, 120, 150, woodImg));
@@ -430,92 +399,28 @@ function draw() {
         objects.push(new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg));
 
-        objects.push(new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg));
-        objects.push(new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg));
-        objects.push(new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg));
-
         objects.push(new Pig(width / 1.37, height - 40, pigAndBirdSize));
         objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
         objects.push(new Pig(width / 1.5, height / 1.33, pigAndBirdSize));
 
-
+        objects.push(new Glass(width / 1.08, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg));
+        objects.push(new Glass(width / 1.9, height / 1.25, width / 25, height / 2.7 + width / 35, glassImg));
+        objects.push(new Glass(width / 1.376, height / 1.8, width / 2.28, width / 40, glassHorizontalImg));
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
 
-        bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
-
-
-
-
         currentLevel = 0;
-
       }
-
-
 
       levelClicked = false;
       checkIfPauseIsClicked();
 
-
-
       background(bkgImg);
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
-      ground.show();
-
-      let glass1CollitionForce = glass1.body.speed;
-      let glass2CollitionForce = glass2.body.speed;
-      let glass3CollitionForce = glass3.body.speed;
-
-
-
-
-      if (glass1CollitionForce > 1) {
-        World.remove(world, glass1.body);
-        if (glass1break) {
-          glassSound.play();
-          glass1break = false;
-        }
-      }
-      else {
-        glass1.show();
-      }
-      if (glass2CollitionForce > 1) {
-        World.remove(world, glass2.body);
-        if (glass2break) {
-          glassSound.play();
-          glass2break = false;
-        }
-
-      }
-      else {
-        glass2.show();
-      }
-      if (glass3CollitionForce > 1) {
-        if (galss3Wait > 10) {
-          World.remove(world, glass3.body);
-          if (glass3break) {
-            glassSound.play();
-            glass3break = false;
-          }
-        }
-
-
-      }
-      else {
-
-        glass3.show();
-      }
-      galss3Wait++;
-      let collitionForceY = minnionPig.body.positionImpulse.y;
-
-      let collitionForce1 = collitionForceY;
-      let collitionForce2 = minnionPig2.body.positionImpulse.y;
-      let collitionForce3 = minnionPig3.body.positionImpulse.y;
-
-      if (collitionForce1 !== 0) {
-        World.remove(world, minnionPig.body);
+      if (objects[8].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[8].body);
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
@@ -524,13 +429,12 @@ function draw() {
           minnionPig1Die = false;
         }
 
-      }
-      else {
-        minnionPig.show();
+      } else {
+        objects[8].show();
         gameEnd = false;
       }
-      if (collitionForce2 !== 0) {
-        World.remove(world, minnionPig2.body);
+      if (objects[9].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[9].body);
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -539,13 +443,12 @@ function draw() {
           minnionPig2Die = false;
         }
 
-      }
-      else {
-        minnionPig2.show();
+      } else {
+        objects[9].show();
         gameEnd = false;
       }
-      if (collitionForce3 !== 0) {
-        World.remove(world, minnionPig3.body);
+      if (objects[10].body.positionImpulse.y !== 0) {
+        World.remove(world, objects[10].body);
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -553,25 +456,52 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-
-      }
-      else {
-        minnionPig3.show();
+      } else {
+        objects[10].show();
         gameEnd = false;
       }
 
+      if (objects[11].body.speed > 1) {
+        World.remove(world, objects[11].body);
+        if (glass1break) {
+          glassSound.play();
+          glass1break = false;
+        }
+      } else {
+        objects[11].show();
+      }
+      if (objects[12].body.speed > 1) {
+        World.remove(world, objects[12].body);
+        if (glass2break) {
+          glassSound.play();
+          glass2break = false;
+        }
+      }
+      else {
+        objects[12].show();
+      }
+      if (objects[13].body.speed > 1) {
+        if (galss3Wait > 10) {
+          World.remove(world, objects[13].body);
+          if (glass3break) {
+            glassSound.play();
+            glass3break = false;
+          }
+        }
+      } else {
+        objects[13].show();
+      }
+      galss3Wait++;
 
+      for (let i = 0; i < 8; i++) {
+        objects[i].show();
+        World.remove(world, mConstraint);
+      }
 
-      box1.show();
-      box2.show();
-      box3.show();
-      metal1.show();
-      metal2.show();
-      metal3.show();
+     
 
-
-      slingshot.show();
       bird.show();
+
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
       if (counter === 3) {
         gameEnd = true;
@@ -588,19 +518,11 @@ function draw() {
 
         if (mConstraint.body.label === 'Bird') {
           World.add(world, mConstraint);
-        }
-        else {
-
+        } else {
           World.remove(world, mConstraint);
-
         }
-
-
-      }
-      else {
-
+      } else {
         World.remove(world, mConstraint);
-
       }
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
