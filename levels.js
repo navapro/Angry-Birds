@@ -22,7 +22,7 @@ class Levels {
         pop();
 
         // if a level is clicked then change its "state","stateLevel"and play sound.
-        if (levelClicked && levelWait > 30 && collidePointRect(mouseX, mouseY, this.x, this.y, this.w, this.h)) {
+        if (mouseIsPressed && levelWait > 30 && collidePointRect(mouseX, mouseY, this.x, this.y, this.w, this.h)) {
             state = "game";
             stateLevel = "level" + this.level;
             currentLevel = this.level;
