@@ -66,113 +66,95 @@ function draw() {
   pigDieSound.setVolume(volumeSlider2.value());
   woodSound.setVolume(volumeSlider2.value() / 1.5);
 
+  // if state is menu then display menupage.
   if (state === "menu") {
     levelWait = 0;
 
+    // display the background image and the menu buttons and check if buttons are clicked.
     background(bkgImg);
     if (!settings) {
       showMenu();
       checkIfButtonClicked();
     }
 
-    vv = 1;
+    // set the pig die variables to true.
     minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
-    image(settingsImg, width / 1.1, width / 100, width / 15, width / 15);
-    if (!settingsTemp) {
-      if (mouseIsPressed && collidePointCircle(mouseX, mouseY, width / 1.059, width / 24, width / 15)) {
-        settingsTemp = true;
-        settingsSound++;
-      }
-    }
-    if (settingsSound === 1) {
-      clickSound.play();
-    }
-    if (settingsTemp) {
-      showSettings();
-    }
-
-
-    push();
-    imageMode(CENTER);
-    image(storeImg, width / 1.059, height / 1.1, width / 15, width / 15);
-    pop();
-
-    if (mouseIsPressed && collidePointCircle(mouseX, mouseY, width / 1.059, height / 1.1, width / 15)) {
-      storeSound++;
-      if (storeSound === 1) {
-        clickSound.play();
-      }
-      state = 'store';
-    }
-
-
-
-
-
   }
 
 
-
+  // if state is store then show the birds and check for mouse interaction.
   if (state === "store") {
+    background(bkgImg);
+    storeSound = 0;
+
+    // create all the bird skins.
     for (let i = 0; i < 4; i++) {
       birds[i] = new StoreBird(width / 5 + i * width / 5, height / 2, width / 8, width / 8, i);
     }
-    storeSound = 0;
-    background(bkgImg);
+
+    // show all the skins.
     for (let Birds of birds) {
       Birds.show();
     }
-    if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
-      clickSound.play();
-      state = "menu";
 
-    }
+    // display back button.
     push();
     imageMode(CENTER);
     image(backImg, width / 15, height / 10, width / 15, width / 15);
     pop();
-  }
 
-
-  else if (state === "level") {
-    for (let i = 0; i < 5; i++) {
-      levels[i] = new Levels(width / 6 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
-    }
+    // check if a back button is clicked.
     if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
       clickSound.play();
       state = "menu";
-
     }
+  }
 
+  // display the levels.
+  else if (state === "level") {
     background(bkgImg);
     levelWait++;
-
     galss3Wait = 0;
 
+    // create all the levels
+    for (let i = 0; i < 5; i++) {
+      levels[i] = new Levels(width / 6 + i * width / 7, height / 2, width / 13, width / 13, i + 1);
+    }
 
+    // display all the levels.
     for (let Levels of levels) {
       Levels.show();
     }
 
-
-    deleteObjects();
+    // display back button.
     push();
     imageMode(CENTER);
     image(backImg, width / 15, height / 10, width / 15, width / 15);
     pop();
 
+    // check if a back button is clicked.
+    if (collidePointCircle(mouseX, mouseY, width / 15, height / 10, width / 15) && mouseIsPressed) {
+      clickSound.play();
+      state = "menu";
+    }
+
+    // delete objects.
+    deleteObjects();
   }
+
   else if (state === "game") {
 
+    // callback after sound stops playing.
     woodSound.onended(woodsoundCallback);
     metalSound.onended(metalsoundCallback);
 
-    if (birdFly) {
-      if (birdX > width / 3.5) {
-        birdFly = false;
-        objects[4].fly();
-      }
+    // if bird is allowed to fly and it has passed width/3 then relese the bird.
+    if (birdFly && birdX > width / 3.5) {
+      birdFly = false;
+      objects[4].fly();
     }
+
+    // if there is bird available then subtact one from the counter.
     if (bird) {
       if (birdCounter > 2 && birdX > windowWidth || birdCounter > 1 && birdX < 0) {
         if (birdCounterWait > 60) {
@@ -180,6 +162,7 @@ function draw() {
         }
         birdCounterWait++;
       }
+      // if bird is almost stoped then wait 60 frames and retatach the bird if counter is not 0.
       if (birdCounter === 1 && birdFlying && bird.body.speed < 0.28 || birdCounter === 1 && birdX > windowWidth || birdCounter === 1 && birdX < 0) {
         if (birdCounterWait > 60) {
           gameOver = true;

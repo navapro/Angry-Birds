@@ -19,10 +19,10 @@ The goal for this Major Project is to create an angry bird clone using p5.js and
 - only 3 birds and wgame over.
 - Inventory and store with fancy charecters.
 - mobile website, which support touch contols.
-- Atleast 2 mods for better performance (EX: guide lines for better aiming and bigger birds).
 - coins for purchasing skin and astethics.
 - More than 5 levels with incresing dificulty.
 - TNT and explotions with posibily fancy animations and GFX.
 - User name and password(maybe) to log in.
+- Atleast 2 mods for better performance (EX: guide lines for better aiming and bigger birds).
 - Smooth / fancy animations.
-- Maybe convert to a mobile hybrid app.
+- Maybe convert to a mobile or desktop hybrid app.
