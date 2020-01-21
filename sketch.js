@@ -183,6 +183,7 @@ function draw() {
 
     if (stateLevel === "level1") {
 
+      // creating all the requred objects and pushing it to the objects array.
       if (currentLevel === 1) {
 
         bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
@@ -196,19 +197,24 @@ function draw() {
 
         currentLevel = 0;
       }
+      background(bkgImg);
 
-
+      // display pause button.
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      // checking if pause button is clicked.
       checkIfPauseIsClicked();
 
-      background(bkgImg);
+      // display right part of the sling shot's handle.
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
-
-
+      // If the force applied on the pig's body is greater than 0 then remove the pig.
       if (objects[5].body.positionImpulse.y !== 0) {
         World.remove(world, objects[5].body);
 
+        // if pig dies then go to the game end screen.
         gameEnd = true;
+
+        // play sound and add 100 coins.
         if (minnionPig1Die) {
           pigDieSound.setVolume(.5);
           pigDieSound.play();
@@ -216,47 +222,53 @@ function draw() {
           minnionPig1Die = false;
         }
       }
+
+      // if not show the pig.
       else {
         gameEnd = false;
         objects[5].show();
       }
 
+      // display rest of the objects.
       for (let i = 0; i < 5; i++) {
         objects[i].show();
+
+        // remove mouse constrain so it doesn't interfere with other bodies.
         World.remove(world, mConstraint);
       }
 
+      // display the bird.
       bird.show();
+
+      // display left part of the sling shot's handle.
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
 
+      // depending on the birds x position set sligshot boolean.
       if (birdX < width / 10) {
         slingShotRemoval = true;
-      }
-      else {
+      } else {
         slingShotRemoval = false;
       }
 
+      // if mouse constraint is connected to bird and bird's x is less than width / 3 then add the mouse constraint else remove it.
       if (mConstraint.body && birdX < width / 3 && mConstraint.body.label === 'Bird') {
         World.add(world, mConstraint);
-      }
-
-      else {
+      } else {
         World.remove(world, mConstraint);
       }
 
+      // display coin and the number of coins.
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
       fill(0);
-
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
-
     }
 
     if (stateLevel === "level2") {
       if (currentLevel === 2) {
+        // creating all the requred objects and pushing it to the objects array.
 
         bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
@@ -277,20 +289,27 @@ function draw() {
         counter = 0;
         currentLevel = 0;
       }
+      background(bkgImg);
 
-
+      // display pause button.
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      // checking if pause button is clicked.
       checkIfPauseIsClicked();
 
-      background(bkgImg);
+      // display right part of the sling shot's handle.
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
+      // display all of the objects except for pigs and glasses.
       for (let i = 0; i < 8; i++) {
         objects[i].show();
         World.remove(world, mConstraint);
       }
 
+      // If the force applied on the pig 1's body is greater than 0 then remove the pig.
       if (objects[8].body.positionImpulse.y !== 0) {
         World.remove(world, objects[8].body);
+
+        // play sound and add 100 coins.
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
@@ -298,14 +317,19 @@ function draw() {
           pigDieSound.play();
           minnionPig1Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[8].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 2's body is greater than 0 then remove the pig.
       if (objects[9].body.positionImpulse.y !== 0) {
         World.remove(world, objects[9].body);
+
+        // play sound and add 100 coins.
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -313,13 +337,19 @@ function draw() {
           pigDieSound.play();
           minnionPig2Die = false;
         }
+      }
 
-      } else {
+      // if not show the pig.
+      else {
         objects[9].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 3's body is greater than 0 then remove the pig.
       if (objects[10].body.positionImpulse.y !== 0) {
         World.remove(world, objects[10].body);
+
+        // play sound and add 100 coins.
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -327,53 +357,52 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-      } else {
+      }
+
+      // if not show the pig.
+      else {
         objects[10].show();
         gameEnd = false;
       }
 
+      // if all three pigs are dead then go to the game end screen.
       if (counter === 3) {
         gameEnd = true;
       }
 
+      // display the bird.
       bird.show();
+
+      // display left part of the sling shot's handle.
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
 
-
+      // depending on the birds x position set sligshot boolean.
       if (birdX < 270) {
         slingShotRemoval = true;
       } else {
         slingShotRemoval = false;
       }
-      if (mConstraint.body) {
 
-        if (mConstraint.body.label === 'Bird') {
-          World.add(world, mConstraint);
-        } else {
-
-          World.remove(world, mConstraint);
-
-        }
-
-
+      // if mouse constraint is connected to bird and bird's x is less than width / 3 then add the mouse constraint else remove it.
+      if (mConstraint.body && mConstraint.body.label === 'Bird') {
+        World.add(world, mConstraint);
       } else {
-
         World.remove(world, mConstraint);
-
       }
+
+      // display coin and the number of coins.
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
       fill(0);
-
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15
-        , width / 15
-      );
     }
+
     if (stateLevel === "level3") {
       if (currentLevel === 3) {
+        // creating all the requred objects and pushing it to the objects array.
+
         bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
         objects.push(new Ground(width / 2, height - 10, width, 20));
@@ -396,18 +425,29 @@ function draw() {
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
-
         currentLevel = 0;
       }
+      background(bkgImg);
 
-
+      // display pause button.
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      // checking if pause button is clicked.
       checkIfPauseIsClicked();
 
-      background(bkgImg);
+      // display right part of the sling shot's handle.
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
+      // display all of the objects except for pigs.
+      for (let i = 0; i < 8; i++) {
+        objects[i].show();
+        World.remove(world, mConstraint);
+      }
+
+      // If the force applied on the pig 1's body is greater than 0 then remove the pig.
       if (objects[8].body.positionImpulse.y !== 0) {
         World.remove(world, objects[8].body);
+
+        // play sound and add 100 coins.
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
@@ -415,13 +455,19 @@ function draw() {
           pigDieSound.play();
           minnionPig1Die = false;
         }
+      }
 
-      } else {
+      // if not show the pig.
+      else {
         objects[8].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 2's body is greater than 0 then remove the pig.
       if (objects[9].body.positionImpulse.y !== 0) {
         World.remove(world, objects[9].body);
+
+        // play sound and add 100 coins.
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -429,13 +475,19 @@ function draw() {
           pigDieSound.play();
           minnionPig2Die = false;
         }
+      }
 
-      } else {
+      // if not show the pig.
+      else {
         objects[9].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 3's body is greater than 0 then remove the pig.
       if (objects[10].body.positionImpulse.y !== 0) {
         World.remove(world, objects[10].body);
+
+        // play sound and add 100 coins.
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -443,20 +495,34 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-      } else {
+      }
+
+      // if not show the pig.
+      else {
         objects[10].show();
         gameEnd = false;
       }
 
+      // if all three pigs are dead then go to the game end screen.
+      if (counter === 3) {
+        gameEnd = true;
+      }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[11].body.speed > 1) {
         World.remove(world, objects[11].body);
         if (glass1break) {
           glassSound.play();
           glass1break = false;
         }
-      } else {
+      }
+
+      // if not show the glass
+      else {
         objects[11].show();
       }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[12].body.speed > 1) {
         World.remove(world, objects[12].body);
         if (glass2break) {
@@ -464,9 +530,13 @@ function draw() {
           glass2break = false;
         }
       }
+
+      // if not show the glass
       else {
         objects[12].show();
       }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[13].body.speed > 1) {
         if (galss3Wait > 10) {
           World.remove(world, objects[13].body);
@@ -475,47 +545,39 @@ function draw() {
             glass3break = false;
           }
         }
-      } else {
+      }
+
+      // if not show the glass
+      else {
         objects[13].show();
       }
       galss3Wait++;
 
-      for (let i = 0; i < 8; i++) {
-        objects[i].show();
-        World.remove(world, mConstraint);
-      }
-
-
-
+      // show the bird.
       bird.show();
 
+      // display left part of the sling shot's handle.
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
-      if (counter === 3) {
-        gameEnd = true;
-      }
 
+      // depending on the birds x position set sligshot boolean.
       if (birdX < 270) {
         slingShotRemoval = true;
-      }
-      else {
+      } else {
         slingShotRemoval = false;
       }
 
-      if (mConstraint.body) {
-
-        if (mConstraint.body.label === 'Bird') {
-          World.add(world, mConstraint);
-        } else {
-          World.remove(world, mConstraint);
-        }
+      // if mouse constraint is connected to bird and bird's x is less than width / 3 then add the mouse constraint else remove it.
+      if (mConstraint.body && birdX < width / 3 && mConstraint.body.label === 'Bird') {
+        World.add(world, mConstraint);
       } else {
         World.remove(world, mConstraint);
       }
+
+      // display coin and the number of coins.
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
       fill(0);
-
       text(coinCounter, width / 12, width / 20);
       pop();
       image(goBack, width / 1.1, width / 100, width / 15, width / 15);
@@ -524,6 +586,7 @@ function draw() {
     if (stateLevel === "level4") {
       if (currentLevel === 4) {
 
+        // creating all the requred objects and pushing it to the objects array.
         bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
         objects.push(new Ground(width / 2, height - 10, width, 20));
@@ -545,55 +608,61 @@ function draw() {
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
-
         currentLevel = 0;
-
       }
+      background(bkgImg);
 
-
-
-
+      // display pause button.
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      // checking if pause button is clicked.
       checkIfPauseIsClicked();
 
-
-
-      background(bkgImg);
+      // display right part of the sling shot's handle.
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
 
 
-
+      // display all of the objects except for pigs.
+      for (let i = 0; i < 8; i++) {
+        objects[i].show();
+        World.remove(world, mConstraint);
+      }
+      // If enough force applied on the tnt then remove it and apply explotion.
       if (objects[11].body.speed > 4.5 && tntDone) {
         objects[11].explosion();
         tntDone = false;
         World.remove(world, objects[11].body);
-
       }
 
+      // if not show the tnt.
       if (tntDone) {
         objects[11].show();
       }
 
-
-
-
+      // If the force applied on the pig 1's body is greater than 0 then remove the pig.
       if (objects[8].body.positionImpulse.y !== 0) {
         World.remove(world, objects[8].body);
+
+        // play sound and add 100 coins.
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
-
           pigDieSound.play();
           minnionPig1Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[8].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 2's body is greater than 0 then remove the pig.
       if (objects[9].body.positionImpulse.y !== 0) {
         World.remove(world, objects[9].body);
+
+        // play sound and add 100 coins.
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -601,14 +670,19 @@ function draw() {
           pigDieSound.play();
           minnionPig2Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[9].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 3's body is greater than 0 then remove the pig.
       if (objects[10].body.positionImpulse.y !== 0) {
         World.remove(world, objects[10].body);
+
+        // play sound and add 100 coins.
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -616,60 +690,52 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[10].show();
         gameEnd = false;
       }
 
-      for (let i = 0; i < 8; i++) {
-        objects[i].show();
-        World.remove(world, mConstraint);
-      }
+      // display the bird.
       bird.show();
+
+      // display left part of the sling shot's handle.
       image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
+
+      // if all three pigs are dead then go to the game end screen.
       if (counter === 3) {
         gameEnd = true;
       }
 
+      // depending on the birds x position set sligshot boolean.
       if (birdX < 270) {
         slingShotRemoval = true;
-      }
-      else {
+      } else {
         slingShotRemoval = false;
       }
-      if (mConstraint.body) {
 
-        if (mConstraint.body.label === 'Bird') {
-          World.add(world, mConstraint);
-        }
-        else {
-
-          World.remove(world, mConstraint);
-
-        }
-
-
-      }
-      else {
-
+      // if mouse constraint is connected to bird and bird's x is less than width / 3 then add the mouse constraint else remove it.
+      if (mConstraint.body && mConstraint.body.label === 'Bird') {
+        World.add(world, mConstraint);
+      } else {
         World.remove(world, mConstraint);
-
       }
+
+      // display coin and the number of coins.
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
       fill(0);
-
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
 
     if (stateLevel === "level5") {
       if (currentLevel === 5) {
 
+        // creating all the requred objects and pushing it to the objects array.
         bird = new Bird(width / 3.5, height / 1.5, pigAndBirdSize);
 
         objects.push(new Ground(width / 2, height - 10, width, 20));
@@ -693,61 +759,70 @@ function draw() {
         objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
         objects.push(new Pig(width / 1.5, height / 1.33, pigAndBirdSize));
 
-
-
         objects.push(new TNT(width / 1.38, height / 2, width / 20, 90, tntImg));
 
         glass1break = glass2break = glass3break = true;
         counter = 0;
-
-
         currentLevel = 0;
-
       }
+      background(bkgImg);
 
-
+      // display pause button.
+      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
+      // checking if pause button is clicked.
       checkIfPauseIsClicked();
 
-
-
-      background(bkgImg);
+      // display right part of the sling shot's handle.
       image(slingShotImgRight, width / 3.5, height / 1.53, width / 25, height / 3);
 
+      // display all of the objects except for pigs and glasses.
+      for (let i = 0; i < 8; i++) {
+        objects[i].show();
+        World.remove(world, mConstraint);
+      }
 
+      // If enough force applied on the tnt then remove it and apply explotion.
       if (objects[objects.length - 1].body.speed > 4.5 && tntDone) {
         objects[objects.length - 1].explosion();
         tntDone = false;
         World.remove(world, objects[objects.length - 1].body);
-
       }
 
+      // if not show the tnt.
       if (tntDone) {
         objects[objects.length - 1].show();
       }
 
 
-
-      if (objects[8].body.speed > .5) {
+      // If the force applied on the glass body is greater than 1 then remove the glass.
+      if (objects[8].body.speed > 1) {
         World.remove(world, objects[8].body);
         if (glass1break) {
           glassSound.play();
           glass1break = false;
         }
       }
+
+      // if not show the glass
       else {
         objects[8].show();
       }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[9].body.speed > 1) {
         World.remove(world, objects[9].body);
         if (glass2break) {
           glassSound.play();
           glass2break = false;
         }
-
       }
+
+      // if not show the glass
       else {
         objects[9].show();
       }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[10].body.speed > 1) {
         if (galss3Wait > 10) {
           World.remove(world, objects[10].body);
@@ -756,18 +831,14 @@ function draw() {
             glass3break = false;
           }
         }
-
-
       }
-      else {
 
+      // if not show the glass
+      else {
         objects[10].show();
       }
 
-
-
-
-
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[11].body.speed > .5 && glassBreak > 10) {
         World.remove(world, objects[11].body);
         if (glass4break) {
@@ -776,9 +847,11 @@ function draw() {
         }
       }
 
+      // if not show the glass
       else {
         objects[11].show();
       }
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[12].body.speed > .5 && glassBreak > 10) {
         World.remove(world, objects[12].body);
         if (glass5break) {
@@ -786,9 +859,13 @@ function draw() {
           glass5break = false;
         }
       }
+
+      // if not show the glass
       else {
         objects[12].show();
       }
+
+      // If the force applied on the glass body is greater than 1 then remove the glass.
       if (objects[13].body.speed > .5 && glassBreak > 10) {
         World.remove(world, objects[13].body);
         if (glass6break) {
@@ -796,6 +873,8 @@ function draw() {
           glass6break = false;
         }
       }
+
+      // if not show the glass
       else {
         objects[13].show();
       }
@@ -805,24 +884,30 @@ function draw() {
 
 
 
-
+      // If the force applied on the pig 1's body is greater than 0 then remove the pig. 
       if (objects[14].body.positionImpulse.y !== 0) {
         World.remove(world, objects[14].body);
+
+        // play sound and add 100 coins.
         if (minnionPig1Die) {
           coinCounter += 100;
           counter++;
-
           pigDieSound.play();
           minnionPig1Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[14].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 2's body is greater than 0 then remove the pig.
       if (objects[15].body.positionImpulse.y !== 0) {
         World.remove(world, objects[15].body);
+
+        // play sound and add 100 coins.
         if (minnionPig2Die) {
           coinCounter += 100;
           counter++;
@@ -830,14 +915,19 @@ function draw() {
           pigDieSound.play();
           minnionPig2Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[15].show();
         gameEnd = false;
       }
+
+      // If the force applied on the pig 3's body is greater than 0 then remove the pig.
       if (objects[16].body.positionImpulse.y !== 0) {
         World.remove(world, objects[16].body);
+
+        // play sound and add 100 coins.
         if (minnionPig3Die) {
           coinCounter += 100;
           counter++;
@@ -845,73 +935,61 @@ function draw() {
           pigDieSound.play();
           minnionPig3Die = false;
         }
-
       }
+
+      // if not show the pig.
       else {
         objects[16].show();
         gameEnd = false;
       }
 
 
-
-      for (let i = 0; i < 8; i++) {
-        objects[i].show();
-        World.remove(world, mConstraint);
-      }
-      bird.show();
-
-      image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
+      // if all three pigs are dead then go to the game end screen.
       if (counter === 3) {
         gameEnd = true;
       }
 
+      // show the bird.
+      bird.show();
+
+      // display left part of the sling shot's handle.
+      image(slingShotImgLeft, width / 4, height / 1.56, width / 25, height / 3);
+
+      // depending on the birds x position set sligshot boolean.
       if (birdX < 270) {
         slingShotRemoval = true;
-      }
-      else {
+      } else {
         slingShotRemoval = false;
       }
-      if (mConstraint.body) {
 
-        if (mConstraint.body.label === 'Bird') {
-          World.add(world, mConstraint);
-        }
-        else {
-
-          World.remove(world, mConstraint);
-
-        }
-
-
-      }
-      else {
-
+      // if mouse constraint is connected to bird and bird's x is less than width / 3 then add the mouse constraint else remove it.
+      if (mConstraint.body && birdX < width / 3 && mConstraint.body.label === 'Bird') {
+        World.add(world, mConstraint);
+      } else {
         World.remove(world, mConstraint);
-
       }
+
+      // display coin and the number of coins.
       image(coin, width / 100, width / 100, width / 20, width / 20);
       push();
       textSize(width / 25);
       fill(0);
-
       text(coinCounter, width / 12, width / 20);
       pop();
-      image(goBack, width / 1.1, width / 100, width / 15, width / 15);
     }
 
-
-
-
+    // display a pop up window.
     if (gameEnd || pause || gameOver) {
-
       instructions = false;
+      pauseClicked = false;
 
+      // if pause is clicked then play sound.
       if (mouseIsPressed && pauseClicked) {
         clickSound.play();
       }
-      pauseClicked = false;
-      push();
 
+      // display all the buttons.
+      push();
       imageMode(CENTER)
       let buttonSize = (width + height) / 17;
       image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
@@ -923,78 +1001,79 @@ function draw() {
       }
       pop();
 
+      // if close is clicked then close the window and play sound.
       if (pause) {
         if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
           pause = false;
           clickSound.play();
         }
       }
+
+      // if levels is clicked then change state to levels.
       if (collidePointCircle(mouseX, mouseY, width / 2, height / 1.4, buttonSize - 5) && mouseIsPressed) {
         state = "level";
-
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         pause = false;
         clickSound.play();
       }
-      if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize - 5) && mouseIsPressed) {
 
+      // if the replay is pressed then reconstruct the level again.
+      if (collidePointCircle(mouseX, mouseY, width / 3, height / 1.4, buttonSize - 5) && mouseIsPressed) {
         deleteObjects();
         currentLevel = int(stateLevel[5]);
-
         minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
         pause = false;
         clickSound.play();
       }
-      if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize - 5) && mouseIsPressed) {
 
+      // if next is clicked then go to next level.
+      if (collidePointCircle(mouseX, mouseY, width / 1.5, height / 1.4, buttonSize - 5) && mouseIsPressed) {
         let temp = int(stateLevel[5]) + 1;
         if (temp < 6) {
           deleteObjects();
-
           minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
           stateLevel = "level" + temp;
           currentLevel = temp;
-
           pause = false;
           clickSound.play();
         }
       }
+
+      // if game is won then write victory.
       if (gameEnd) {
         push();
         noStroke();
         textFont(font);
         textSize(width / 10);
-
         text("Victory !", width / 3, height / 2);
-
         pop();
         pause = false;
         gameOver = false;
-
       }
+
+      // if gameover then write gameover.
       if (gameOver) {
         push();
         noStroke();
         textFont(font);
         textSize(width / 15);
-
         text("Game Over", width / 3, height / 2);
-
         pop();
         pause = false;
       }
+
+      // if paused then write paused.
       if (pause) {
         push();
         noStroke();
         textFont(font);
         textSize(width / 15);
-
         text("Paused", width / 2.5, height / 2);
-
         pop();
-
       }
     }
+
+    // if mouse is pressed then dont show instructions.
     else {
       pauseClicked = true;
       if (mouseIsPressed && instructionsDelay > 10) {
@@ -1002,109 +1081,99 @@ function draw() {
       }
     }
 
+    // show the instructions.
     if (instructions) {
       push();
       noStroke();
       textFont(font);
       textSize(width / 25);
       instructionsDelay++;
-
       text("Click And Drag The Bird  Back To Shoot The Pig !", width / 8, height / 4);
-
       pop();
-
     }
 
     if (mouseX > width / 3 || birdX > width / 3) {
       World.remove(world, mConstraint);
-
     }
   }
-
-
-
 }
 
-
-
 function showSettings() {
-
-
   settingsSound = 0;
-  volumeSlider.position(width / 1.7, height / 2.7);
 
+  // reposition volume sliders.
+  volumeSlider.position(width / 1.7, height / 2.7);
   volumeSlider2.position(width / 1.7, height / 2.125);
 
+  // show closing button and settings background.
   push();
   imageMode(CENTER)
   let buttonSize = (width + height) / 17;
   image(gameEndImg, width / 2, height / 2, width / 2, height / 2);
   image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
-
   pop();
 
-  if (!collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2)) {
+  // if settings button is clicked then reposition the volume slider.
+  if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2)) {
+
+    if (mouseIsPressed) {
+      settingsTemp = false;
+      clickSound.play();
+      settings = false;
+      volumeSlider.position(width / 2, -height / 2);
+      volumeSlider2.position(width / 2, -height / 2);
+    }
+  }
+
+  // if settings is not clicked then set boolean.
+  else {
     settings = true;
   }
 
-  if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2) && mouseIsPressed) {
-    settingsTemp = false;
-    clickSound.play();
-    settings = false;
-    volumeSlider.position(width / 2, -height / 2);
-    volumeSlider2.position(width / 2, -height / 2);
-
-  }
-
-
+  // add text for volume sliders.
   push();
   noStroke();
-
   textSize(width / 50);
   fill(0);
-
   text('Background Music Volume', width / 3.5, height / 2.5);
   text('SFX Volume', width / 3.5, height / 2);
   pop();
-
-
 }
 
-
-
-
+// if mouse is relesed then set bird fly boolean.
 function mouseReleased() {
-
-
-
   if (birdX < width / 4) {
-
     birdFly = true;
-
   }
-
 }
 
+// if wood sound gets call backs then set wood boolean.
 function woodsoundCallback() {
   woodSoundPlayed = true;
 }
+
+// if metal sound gets call backs then set metal boolean.
 function metalsoundCallback() {
   metalSoundPlayed = true;
 }
+
+// if collisions event is called.
 function collision(event) {
+
+  // if instructions are done displaying.
   if (!instructions) {
     let pairs = event.pairs;
-
     let bodyB = pairs[0].bodyB.label;
 
+    // play wood collide sound.
     if (bodyB === "Wood") {
-
       if (woodSoundPlayed) {
         woodSound.play();
         woodSoundPlayed = false;
       }
-
     }
+
+    // play metal collide sound.
     if (bodyB === "Metal") {
       if (metalSoundPlayed) {
         metalSound.play();

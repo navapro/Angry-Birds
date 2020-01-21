@@ -19,7 +19,7 @@ class Metal {
     Matter.Body.setMass(this.body, this.body.mass * 5);
     this.body.density = 0.5;
     this.body.friction = .05;
-    this.body.frictionAir = .01;
+    this.body.frictionAir = .002;
     this.body.label = 'Metal';
     Matter.World.add(world, this.body, options);
   }
