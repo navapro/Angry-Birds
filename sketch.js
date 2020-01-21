@@ -1,10 +1,6 @@
-// Image slider with zoom.
+// major project (angry birds clone).
 // Navaneeth Krishna
-// 23 September 2019
-// Extra for Experts:
-// - Used mouse wheel as an input to zoom in and out of the image.
-// - Used windowResized() to adapt the code if the user resized the window.
-// - Added sound to the project.
+// 20 january 2020
 
 // I beta tested my game with a few people and I implemented the following :
 // A loading screen, slightly changed my instructions and added some new sound effects.
