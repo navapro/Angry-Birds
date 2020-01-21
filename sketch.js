@@ -72,6 +72,10 @@ function draw() {
       showMenu();
       checkIfButtonClicked();
     }
+    // display the settings.
+    else {
+        showSettings();
+    }
 
     // set the pig die variables to true.
     minnionPig1Die = minnionPig2Die = minnionPig3Die = true;
@@ -276,7 +280,7 @@ function draw() {
 
         objects.push(new Metal(width / 1.1, height / 1.26, width / 20, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.7, height / 1.26, width / 20, height / 2.7, metalImg));
-        objects.push(new Metal(width / 1.333333, height / 1.75, width / 2.7, width / 30, metalHorizontalImg));
+        objects.push(new Metal(width / 1.33333, height / 1.75, width / 2.7, width / 30, metalHorizontalImg));
 
         objects.push(new Pig(width / 1.33, height / 1.09, pigAndBirdSize));
         objects.push(new Pig(width / 1.2, height / 1.4, pigAndBirdSize));
@@ -409,7 +413,7 @@ function draw() {
 
         objects.push(new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg));
-        objects.push(new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg));
+        objects.push(new Metal(width / 1.38, height / 1.7, width / 3.1, width / 40, metalHorizontalImg));
 
         objects.push(new Pig(width / 1.37, height - 40, pigAndBirdSize));
         objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
@@ -593,7 +597,7 @@ function draw() {
 
         objects.push(new Metal(width / 1.15, (height - 40), width / 25, height / 2.7, metalImg));
         objects.push(new Metal(width / 1.75, (height - 40), width / 25, height / 2.7, metalImg));
-        objects.push(new Metal(width / 1.395, height / 1.7, width / 3.1, width / 40, metalHorizontalImg));
+        objects.push(new Metal(width / 1.38, height / 1.7, width / 3.1, width / 40, metalHorizontalImg));
 
         objects.push(new Pig(width / 1.37, height - 40, pigAndBirdSize));
         objects.push(new Pig(width / 1.2, height / 1.33, pigAndBirdSize));
@@ -1109,7 +1113,7 @@ function showSettings() {
   image(closeImg, width / 1.35, height / 3.8, buttonSize / 2, buttonSize / 2);
   pop();
 
-  // if settings button is clicked then reposition the volume slider.
+  // if close button is clicked then reposition the volume slider.
   if (collidePointCircle(mouseX, mouseY, width / 1.35, height / 3.8, buttonSize / 2)) {
 
     if (mouseIsPressed) {
@@ -1121,7 +1125,7 @@ function showSettings() {
     }
   }
 
-  // if settings is not clicked then set boolean.
+  // if close is not clicked then set boolean.
   else {
     settings = true;
   }
